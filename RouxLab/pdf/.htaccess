@@ -1,0 +1,4 @@
+AuthUserFile /etc/apache2/.htpasswd
+AuthType Basic
+AuthName "PDF access (username rouxlab):"
+Require valid-user

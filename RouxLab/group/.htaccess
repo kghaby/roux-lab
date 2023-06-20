@@ -1,0 +1,7 @@
+AuthUserFile /etc/apache2/.htpasswd
+AuthName "Secure Document"
+AuthType Basic
+
+<LIMIT GET PUT POST>
+require user rouxgroup
+</LIMIT>

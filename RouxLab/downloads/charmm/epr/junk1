@@ -1,0 +1,610 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+                   (CHARMM) - Developmental Version 36a2  February 15, 2008    
+       Copyright(c) 1984-2001  President and Fellows of Harvard College
+                              All Rights Reserved
+      Current operating system: Darwin-9.8.0(i386)@benoit-rouxs-macbook-pro.
+                 Created on  3/16/10 at 10:46:35 by user: roux        
+
+            Maximum number of ATOMS:     60120, and RESidues:       20040
+            Current HEAP size:        10240000, and STACK size:  10000000
+
+ RDTITL> * DYNAMICS WITH R1
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    !read topology
+ CHARMM>    open read card unit 1 name ~/progs/charmm/c35a1/toppar/top_all27_prot_lipid.rtf
+ VOPEN> Attempting to open::/Users/roux/PROGS/CHARMM/C35A1/TOPPAR/TOP_ALL27_PROT_LIPID.RTF::
+ OPNLGU> Unit  1 opened for READONLY access to /Users/roux/PROGS/CHARMM/C35A1/TOPPAR/TOP_ALL27_PROT_LIPID.RTF
+  
+ CHARMM>    read rtf card unit 1
+ MAINIO> Residue topology file being read from unit   1.
+ TITLE> *> CHARMM22 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS AND LIPIDS <<
+ TITLE> *>>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>   JULY 2004    <<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO ADM JR. VIA THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *               PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+ PRES
+  
+ CHARMM>     
+  
+ CHARMM>    !stream R1 topology
+ CHARMM>    stream top_r1.str
+ VOPEN> Attempting to open::TOP_R1.STR::
+ OPNLGU> Unit 99 opened for READONLY access to TOP_R1.STR
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> *STREAM FILE FOR R1 TOPOLOGY
+ RDTITL> *TO BE TREAMED AFTER THE CHARMM TOPOLOGY FILE
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card append
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * ////////// \\\\\\\\\ JULY 4TH 2006 /////////\\\\\\\\\
+ RDTITL> *
+ PRES
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    !read parameters
+ CHARMM>    open read card unit 1 name ~/progs/charmm/c35a1/toppar/par_all27_prot_lipid.prm
+ OPNLGU> Unit already open. The old file will be closed first.
+ VCLOSE: Closing unit    1 with status "KEEP"
+ VOPEN> Attempting to open::/Users/roux/PROGS/CHARMM/C35A1/TOPPAR/PAR_ALL27_PROT_LIPID.PRM::
+ OPNLGU> Unit  1 opened for READONLY access to /Users/roux/PROGS/CHARMM/C35A1/TOPPAR/PAR_ALL27_PROT_LIPID.PRM
+  
+ CHARMM>    read param card unit 1
+
+          PARAMETER FILE BEING READ FROM UNIT  1
+ TITLE> *>CHARMM22 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS AND LIPIDS <<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>   JULY, 2003   <<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO ADM JR. VIA THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *               PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+*****  WARNING  ***** PARRDR no nonbond parameters for atom type: 200  ON  
+ NO nonbond interactions will be computed for this atom type.
+*****  WARNING  ***** PARRDR no nonbond parameters for atom type: 201  NN  
+ NO nonbond interactions will be computed for this atom type.
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    !stream R1 parameters
+ CHARMM>    stream par_supl.str
+ VOPEN> Attempting to open::PAR_SUPL.STR::
+ OPNLGU> Unit 99 opened for READONLY access to PAR_SUPL.STR
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> *STREAM FILE FOR THE CHOLESTEROL AND SM-LIPID PARAMETERS
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    read param card append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * SLX
+ RDTITL> *
+*****  WARNING  ***** PARRDR no nonbond parameters for atom type: 200  ON  
+ NO nonbond interactions will be computed for this atom type.
+*****  WARNING  ***** PARRDR no nonbond parameters for atom type: 201  NN  
+ NO nonbond interactions will be computed for this atom type.
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    stream par_r1.str
+ VOPEN> Attempting to open::PAR_R1.STR::
+ OPNLGU> Unit 99 opened for READONLY access to PAR_R1.STR
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> *STREAM FILE FOR R1 PARAMETERS
+ RDTITL> *STRAM AFTER THE CHARMM PARAM27 FILE
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    read param card append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * SLX
+ RDTITL> *
+ PARRDR> WARNING: ATOM FOR NBOND ONR  DOESNT EXIST
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    stream par_r1_cmap.str
+ VOPEN> Attempting to open::PAR_R1_CMAP.STR::
+ OPNLGU> Unit 99 opened for READONLY access to PAR_R1_CMAP.STR
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> *STREAM FILE FOR R1 CMAP PARAMETERS
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    read param card append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * SLX
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    read sequence card unit 5
+ MAINIO> Sequence information being read from unit   5.
+ RDTITL> * 3 RESIDUES
+ RDTITL> *
+  
+ SEQRDR>       3
+  
+ SEQRDR>    ala cyr1 ala
+
+          RESIDUE SEQUENCE --     3 RESIDUES
+          ALA CYR1ALA 
+  
+ CHARMM>    generate pep
+ THE PATCH 'NTER' WILL BE USED FOR THE FIRST RESIDUE
+ THE PATCH 'CTER' WILL BE USED FOR THE LAST  RESIDUE
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ this is where one bond could be added in GENIC
+ bond will be added 
+ GENPSF> Segment   1 has been generated. Its identifier is PEP.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        1   Number of residues   =        3
+         Number of atoms         =       60   Number of groups     =       16
+         Number of bonds         =       60   Number of angles     =      110
+         Number of dihedrals     =      151   Number of impropers  =        7
+         Number of cross-terms   =        2
+         Number of HB acceptors  =        5   Number of HB donors  =        5
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>     
+  
+ CHARMM>    write psf card unit 6
+ RDTITL>  
+ RDTITL> No title read.
+PSF CMAP CHEQ
+
+       2 !NTITLE
+* DYNAMICS WITH R1                                                              
+*  DATE:     3/16/10     10:46:36      CREATED BY USER: roux                    
+
+      60 !NATOM
+ write(U,fmt02a)
+ I,SEGID,RESID,RES,TYPE,ATC,CG,AMASS,IMOVE,ALPHA,THOLE
+       1 PEP  1    ALA  N      56  -0.300000       14.0070           0   0.00000     -0.301140E-02
+       2 PEP  1    ALA  HT1     2   0.330000       1.00800           0   0.00000     -0.301140E-02
+       3 PEP  1    ALA  HT2     2   0.330000       1.00800           0   0.00000     -0.301140E-02
+       4 PEP  1    ALA  HT3     2   0.330000       1.00800           0   0.00000     -0.301140E-02
+       5 PEP  1    ALA  CA     22   0.210000       12.0110           0   0.00000     -0.301140E-02
+       6 PEP  1    ALA  HA      6   0.100000       1.00800           0   0.00000     -0.301140E-02
+       7 PEP  1    ALA  CB     24  -0.270000       12.0110           0   0.00000     -0.301140E-02
+       8 PEP  1    ALA  HB1     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+       9 PEP  1    ALA  HB2     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      10 PEP  1    ALA  HB3     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      11 PEP  1    ALA  C      20   0.510000       12.0110           0   0.00000     -0.301140E-02
+      12 PEP  1    ALA  O      70  -0.510000       15.9990           0   0.00000     -0.301140E-02
+      13 PEP  2    CYR1 N      54  -0.470000       14.0070           0   0.00000     -0.301140E-02
+      14 PEP  2    CYR1 HN      1   0.310000       1.00800           0   0.00000     -0.301140E-02
+      15 PEP  2    CYR1 CA     22   0.700000E-01   12.0110           0   0.00000     -0.301140E-02
+      16 PEP  2    CYR1 HA      6   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      17 PEP  2    CYR1 CB     23  -0.100000       12.0110           0   0.00000     -0.301140E-02
+      18 PEP  2    CYR1 HB1     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      19 PEP  2    CYR1 HB2     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      20 PEP  2    CYR1 SG     82  -0.800000E-01   32.0600           0   0.00000     -0.301140E-02
+      21 PEP  2    CYR1 ON    200  -0.438000       15.9994           0   0.00000     -0.301140E-02
+      22 PEP  2    CYR1 NN    201   0.220000       14.0070           0   0.00000     -0.301140E-02
+      23 PEP  2    CYR1 C1    121   0.334000       12.0110           0   0.00000     -0.301140E-02
+      24 PEP  2    CYR1 C2    121   0.329000       12.0110           0   0.00000     -0.301140E-02
+      25 PEP  2    CYR1 C1A   123  -0.337000       12.0110           0   0.00000     -0.301140E-02
+      26 PEP  2    CYR1 H1A   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      27 PEP  2    CYR1 H1B   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      28 PEP  2    CYR1 H1C   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      29 PEP  2    CYR1 C2A   123  -0.335000       12.0110           0   0.00000     -0.301140E-02
+      30 PEP  2    CYR1 H2A   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      31 PEP  2    CYR1 H2B   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      32 PEP  2    CYR1 H2C   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      33 PEP  2    CYR1 C1D   123  -0.337000       12.0110           0   0.00000     -0.301140E-02
+      34 PEP  2    CYR1 H1D   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      35 PEP  2    CYR1 H1E   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      36 PEP  2    CYR1 H1F   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      37 PEP  2    CYR1 C2D   123  -0.335000       12.0110           0   0.00000     -0.301140E-02
+      38 PEP  2    CYR1 H2D   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      39 PEP  2    CYR1 H2E   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      40 PEP  2    CYR1 H2F   107   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      41 PEP  2    CYR1 C1R   125  -0.300000E-02   12.0110           0   0.00000     -0.301140E-02
+      42 PEP  2    CYR1 C2R   125  -0.340000       12.0110           0   0.00000     -0.301140E-02
+      43 PEP  2    CYR1 H2R   108   0.162000       1.00800           0   0.00000     -0.301140E-02
+      44 PEP  2    CYR1 C1L   122  -0.100000       12.0110           0   0.00000     -0.301140E-02
+      45 PEP  2    CYR1 H1L   106   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      46 PEP  2    CYR1 H1M   106   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      47 PEP  2    CYR1 S1L    82  -0.800000E-01   32.0600           0   0.00000     -0.301140E-02
+      48 PEP  2    CYR1 C      20   0.510000       12.0110           0   0.00000     -0.301140E-02
+      49 PEP  2    CYR1 O      70  -0.510000       15.9990           0   0.00000     -0.301140E-02
+      50 PEP  3    ALA  N      54  -0.470000       14.0070           0   0.00000     -0.301140E-02
+      51 PEP  3    ALA  HN      1   0.310000       1.00800           0   0.00000     -0.301140E-02
+      52 PEP  3    ALA  CA     22   0.700000E-01   12.0110           0   0.00000     -0.301140E-02
+      53 PEP  3    ALA  HA      6   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      54 PEP  3    ALA  CB     24  -0.270000       12.0110           0   0.00000     -0.301140E-02
+      55 PEP  3    ALA  HB1     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      56 PEP  3    ALA  HB2     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      57 PEP  3    ALA  HB3     3   0.900000E-01   1.00800           0   0.00000     -0.301140E-02
+      58 PEP  3    ALA  C      32   0.340000       12.0110           0   0.00000     -0.301140E-02
+      59 PEP  3    ALA  OT1    72  -0.670000       15.9990           0   0.00000     -0.301140E-02
+      60 PEP  3    ALA  OT2    72  -0.670000       15.9990           0   0.00000     -0.301140E-02
+
+      60 !NBOND: bonds
+       2       1       3       1       4       1       7       5
+       1       5      11       5      11      13       5       6
+       7       8       7       9       7      10      12      11
+      17      15      20      17      13      14      13      15
+      48      15      48      50      15      16      17      18
+      17      19      21      22      22      23      22      24
+      25      23      33      23      29      24      37      24
+      26      25      27      25      28      25      34      33
+      35      33      36      33      30      29      31      29
+      32      29      38      37      39      37      40      37
+      23      41      24      42      43      42      44      41
+      45      44      46      44      44      47      20      47
+      49      48      41      42      54      52      50      51
+      50      52      58      52      52      53      54      55
+      54      56      54      57      58      60      58      59
+
+     110 !NTHETA: angles
+       2       1       3       2       1       4       2       1       5
+       3       1       4       3       1       5       4       1       5
+       1       5       6       1       5       7       1       5      11
+       6       5       7       6       5      11       7       5      11
+       5       7       8       5       7       9       5       7      10
+       8       7       9       8       7      10       9       7      10
+       5      11      12       5      11      13      12      11      13
+      11      13      14      11      13      15      14      13      15
+      13      15      16      13      15      17      13      15      48
+      16      15      17      16      15      48      17      15      48
+      15      17      18      15      17      19      15      17      20
+      18      17      19      18      17      20      19      17      20
+      17      20      47      21      22      23      21      22      24
+      23      22      24      22      23      25      22      23      33
+      22      23      41      25      23      33      25      23      41
+      33      23      41      22      24      29      22      24      37
+      22      24      42      29      24      37      29      24      42
+      37      24      42      23      25      26      23      25      27
+      23      25      28      26      25      27      26      25      28
+      27      25      28      24      29      30      24      29      31
+      24      29      32      30      29      31      30      29      32
+      31      29      32      23      33      34      23      33      35
+      23      33      36      34      33      35      34      33      36
+      35      33      36      24      37      38      24      37      39
+      24      37      40      38      37      39      38      37      40
+      39      37      40      23      41      42      23      41      44
+      42      41      44      24      42      41      24      42      43
+      41      42      43      41      44      45      41      44      46
+      41      44      47      45      44      46      45      44      47
+      46      44      47      20      47      44      15      48      49
+      15      48      50      49      48      50      48      50      51
+      48      50      52      51      50      52      50      52      53
+      50      52      54      50      52      58      53      52      54
+      53      52      58      54      52      58      52      54      55
+      52      54      56      52      54      57      55      54      56
+      55      54      57      56      54      57      52      58      59
+      52      58      60      59      58      60
+
+     151 !NPHI: dihedrals
+       1       5       7       8       1       5       7       9
+       1       5       7      10       1       5      11      12
+       1       5      11      13       2       1       5       6
+       2       1       5       7       2       1       5      11
+       3       1       5       6       3       1       5       7
+       3       1       5      11       4       1       5       6
+       4       1       5       7       4       1       5      11
+       5      11      13      14       5      11      13      15
+       6       5       7       8       6       5       7       9
+       6       5       7      10       6       5      11      12
+       6       5      11      13       7       5      11      12
+       7       5      11      13       8       7       5      11
+       9       7       5      11      10       7       5      11
+      11      13      15      16      11      13      15      17
+      11      13      15      48      12      11      13      14
+      12      11      13      15      13      15      17      18
+      13      15      17      19      13      15      17      20
+      13      15      48      49      13      15      48      50
+      14      13      15      16      14      13      15      17
+      14      13      15      48      15      17      20      47
+      15      48      50      51      15      48      50      52
+      16      15      17      18      16      15      17      19
+      16      15      17      20      16      15      48      49
+      16      15      48      50      17      15      48      49
+      17      15      48      50      17      20      47      44
+      18      17      15      48      18      17      20      47
+      19      17      15      48      19      17      20      47
+      20      17      15      48      20      47      44      41
+      20      47      44      45      20      47      44      46
+      21      22      23      25      21      22      23      33
+      21      22      23      41      21      22      24      29
+      21      22      24      37      21      22      24      42
+      22      23      25      26      22      23      25      27
+      22      23      25      28      22      23      33      34
+      22      23      33      35      22      23      33      36
+      22      23      41      42      22      23      41      44
+      22      24      29      30      22      24      29      31
+      22      24      29      32      22      24      37      38
+      22      24      37      39      22      24      37      40
+      22      24      42      41      22      24      42      43
+      23      22      24      29      23      22      24      37
+      23      22      24      42      23      41      42      24
+      23      41      42      43      23      41      44      45
+      23      41      44      46      23      41      44      47
+      24      22      23      25      24      22      23      33
+      24      22      23      41      24      42      41      44
+      25      23      33      34      25      23      33      35
+      25      23      33      36      25      23      41      42
+      25      23      41      44      26      25      23      33
+      26      25      23      41      27      25      23      33
+      27      25      23      41      28      25      23      33
+      28      25      23      41      29      24      37      38
+      29      24      37      39      29      24      37      40
+      29      24      42      41      29      24      42      43
+      30      29      24      37      30      29      24      42
+      31      29      24      37      31      29      24      42
+      32      29      24      37      32      29      24      42
+      33      23      41      42      33      23      41      44
+      34      33      23      41      35      33      23      41
+      36      33      23      41      37      24      42      41
+      37      24      42      43      38      37      24      42
+      39      37      24      42      40      37      24      42
+      42      41      44      45      42      41      44      46
+      42      41      44      47      43      42      41      44
+      48      50      52      53      48      50      52      54
+      48      50      52      58      49      48      50      51
+      49      48      50      52      50      52      54      55
+      50      52      54      56      50      52      54      57
+      50      52      58      59      50      52      58      60
+      51      50      52      53      51      50      52      54
+      51      50      52      58      53      52      54      55
+      53      52      54      56      53      52      54      57
+      53      52      58      59      53      52      58      60
+      54      52      58      59      54      52      58      60
+      55      54      52      58      56      54      52      58
+      57      54      52      58
+
+       7 !NIMPHI: impropers
+      11       5      13      12      13      11      15      14
+      48      15      50      49      24      41      42      43
+      23      42      41      44      50      48      52      51
+      58      52      60      59
+
+       5 !NDON: donors
+       1       2       1       3       1       4      13      14
+      50      51
+
+       5 !NACC: acceptors
+      12      11      49      48      21      22      59      58
+      60      58
+
+       0 !NNB
+
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0
+       0       0       0       0
+
+      16       0 !NGRP NST2
+       0       2       0       6       1       0      10       1       0
+      12       1       0      16       1       0      20       2       0
+      24       2       0      28       2       0      32       2       0
+      36       2       0      40       2       0      43       1       0
+      47       1       0      49       1       0      53       1       0
+      57       2       0
+
+       1 !MOLNT
+       1       1       1       1       1       1       1       1
+       1       1       1       1       1       1       1       1
+       1       1       1       1       1       1       1       1
+       1       1       1       1       1       1       1       1
+       1       1       1       1       1       1       1       1
+       1       1       1       1       1       1       1       1
+       1       1       1       1       1       1       1       1
+       1       1       1       1
+
+       0       0 !NUMLP NUMLPH
+
+       2 !NCRTERM: cross-terms
+      11      13      15      48      13      15      48      50
+      42      41      44      47      41      44      47      20
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+ VCLOSE: Closing unit    1 with status "KEEP"
+$$$$$$  New timer profile $$$$$
+ Total time                      0.48 Other:            0.00
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MAXIMUM STACK SPACE USED IS   31026
+                    STACK CURRENTLY IN USE IS         0
+                    NO WARNINGS WERE ISSUED
+                    HEAP PRINTOUT-  HEAP SIZE  10240000
+                    SPACE CURRENTLY IN USE IS     31104
+                    MAXIMUM SPACE USED IS         37788
+                    FREE LIST
+            PRINHP> ADDRESS:         1 LENGTH:  10208356 NEXT:  10239461
+            PRINHP> ADDRESS:  10239461 LENGTH:       540 NEXT:         0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     0.48  SECONDS 
+                         CPU TIME:     0.37  SECONDS 

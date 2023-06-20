@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<title>The World of Roux Craft</title>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map_canvas { height: 100% }
+</style>
+
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?sensor=true">
+</script>
+
+<script type="text/javascript">
+function initialize() 
+{
+  var latlngRowley = new google.maps.LatLng(47.573329,-52.732886);
+  var latlngRoux = new google.maps.LatLng(41.789132,-87.600122);
+  var latlngNoskov = new google.maps.LatLng(51.074712,-114.13666);
+  var latlngLamoureux = new google.maps.LatLng(45.497116,-73.579254);
+  var latlngPomes = new google.maps.LatLng(43.657564,-79.388361);
+  var latlngYang = new google.maps.LatLng(41.505772,-81.605562);
+  var latlngHopkins = new google.maps.LatLng(39.329548,-76.620849);
+//  var latlngWoolf = new google.maps.LatLng(39.329,-76.62);
+  var latlngIm = new google.maps.LatLng(38.955859,-95.250163);
+  var latlngBerneche = new google.maps.LatLng(47.563546,7.580365);
+  var latlngFaraldo = new google.maps.LatLng(50.173524,8.629729);
+  var latlngAllen = new google.maps.LatLng(-37.743211,142.058391);
+  var latlngYu = new google.maps.LatLng(-34.405523,150.878737);
+  var latlngShawSchrodinger = new google.maps.LatLng(40.757017,-73.983915);
+  var latlngSezer= new google.maps.LatLng(40.891817,29.378748);
+  var latlngBanavali= new google.maps.LatLng(42.650436,-73.75992);
+  var latlngWoo = new google.maps.LatLng(39.437562,-77.433371);
+  var latlngLague = new google.maps.LatLng(46.777551,-71.27497);
+  var latlngLuca = new google.maps.LatLng(44.475089, 8.90635);
+  var latlngJCGumbart = new google.maps.LatLng(33.777566,-84.398681);
+  var latlngLuo =  new google.maps.LatLng(34.054,-117.747);
+  var latlngMinh =  new google.maps.LatLng(41.83449, -87.62854);
+  var latlngFatemeh = new google.maps.LatLng(41.87068,-87.67437);
+
+  var myOptions = {
+      zoom: 3,
+      center: latlngRoux,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+  var markerMinh = new google.maps.Marker({
+     position: latlngMinh,
+     map: map,
+     title:"David Minh - Illinois Institute of Technology"
+   });
+
+  var markerFatemeh = new google.maps.Marker({
+     position: latlngFatemeh,
+     map: map,
+     title:"Fatemeh Khalili-Araghi - University of Illinois at Chicago"
+   });
+
+  var markerLuo = new google.maps.Marker({
+     position: latlngLuo,
+     map: map,
+     title:"Yun Luo - Western University"
+   });
+
+  var markerRowley = new google.maps.Marker({
+     position: latlngRowley,
+     map: map,
+     title:"Christopher Rowley - Memorial University"
+   });
+
+  var markerBenoit = new google.maps.Marker({
+      position: latlngRoux, 
+      map: map,
+      title:"Benoit Roux - The University of Chicago"
+  });
+
+  var markerNoskov = new google.maps.Marker({
+      position: latlngNoskov, 
+      map: map,
+      title:"Sergei Noskov - The University of Calgary"
+  });
+
+  var markerLamoureux = new google.maps.Marker({
+      position: latlngLamoureux, 
+      map: map,
+      title:"Guillaume Lamoureux - Concordia University"
+  });
+
+  var markerPomes = new google.maps.Marker({
+      position: latlngPomes, 
+      map: map,
+      title:"Regis Pomes - Sick Kids Hospital Research Institute, University of Toronto"
+  });
+
+  var markerYang = new google.maps.Marker({
+      position: latlngYang, 
+      map: map,
+      title:"Sichun Yang - Case Western Reserve University"
+  });
+
+  var markerHopkins = new google.maps.Marker({
+      position: latlngHopkins, 
+      map: map,
+      title:"Albert Lau, Tom Woolf - Johns Hopkins University"
+  });
+
+  var markerIm = new google.maps.Marker({
+      position: latlngIm, 
+      map: map,
+      title:"Wonpil Im - University of Kansas"
+  });
+
+  var markerFaraldo = new google.maps.Marker({
+      position: latlngFaraldo, 
+      map: map,
+      title:"Jose Faraldo-Gomez - Max Planck Institute for Biophysics"
+  });
+
+  var markerBerneche = new google.maps.Marker({
+      position: latlngBerneche, 
+      map: map,
+      title:"Simon Berneche - Biozentrum in Basel"
+  });
+
+  var markerYu = new google.maps.Marker({
+      position: latlngYu, 
+      map: map,
+      title:"Haibo Yu - University of Wollongong"
+  });
+
+  var markerAllen = new google.maps.Marker({
+      position: latlngAllen, 
+      map: map,
+      title:"Toby Allen - Royal Melbourne Institute of Technology"
+  });
+
+  var markerShawSchrodinger = new google.maps.Marker({
+      position: latlngShawSchrodinger, 
+      map: map,
+      title:"D.E. Shaw Research - Schrodinger Inc."
+  });
+
+  var markerSezer = new google.maps.Marker({
+      position: latlngSezer, 
+      map: map,
+      title:"Deniz Sezer - Sabanci University"
+  });
+
+  var markerBanavali = new google.maps.Marker({
+      position: latlngBanavali, 
+      map: map,
+      title:"Nilesh Banavali - Wadsworth Center"
+  });
+
+  var markerWoo = new google.maps.Marker({
+      position: latlngWoo,
+      map: map,
+      title:"Hyung-June Woo - Biotechnology High Performance Computing Software Applications Institute"
+  });
+
+  var markerLague = new google.maps.Marker({
+      position: latlngLague,
+      map: map,
+      title:"Patrick Lague - PROTEO"
+  });
+
+  var markerLuca = new google.maps.Marker({
+      position: latlngLuca,
+      map: map,
+      title:"Luca Maragliano - Italian Institute of Technology"
+  });
+
+  var markerJCGumbart = new google.maps.Marker({
+      position: latlngJCGumbart,
+      map: map,
+      title:"JC Gumbart - Georgia Institute of Technology"
+  });
+
+  var contentStringFatemeh = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Fatemeh Khalili-Araghi</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Assistant Professor<br>' +
+    'Department of Physics<br>'+
+    'University of Illinois at Chicaog<BR>'+
+    'Chicago, IL, USA<BR>'+
+    '<A href="http://http://www.ks.uiuc.edu/~akhalili/">Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringMinh = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">David Minh</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Assistant Professor<br>' +
+    'Chemistry Division<br>'+
+    'Illinois Institute of Technology<BR>'+
+    'Chicago, IL, USA</P>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringLuo = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Yun Luo</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Assistant Professor<br>' +
+    'Western University of Health Sciences<br>'+
+    'Pomona, CA, USA</P>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringRowley = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Christopher Rowley</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Assistant Professor<br>' +
+    'Department of Chemistry<br>'+
+    'Memorial University of Newfoundland<br>'+
+    'St. John\'s, NL, Canada<br>'+
+    '<A href="http://www.chem.mun.ca/homes/cnrhome/group_page/main.html">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+    var contentStringRoux = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Beno&#238;t Roux</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Professor<br>' +
+    'Department of Biochemistry and Molecular Biology<br>'+
+    'The University of Chicago<br>'+
+    'Chicago, IL, U.S.A.<br>'+
+    '<A href="http://thallium.bsd.uchicago.edu">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringNoskov = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Sergei Noskov</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Associate Professor<br>' +
+    'Department of Biological Sciences<br>'+
+    'University of Calgary<br>'+
+    'Calgary, AB, Canada<br>'+
+    '<A href="http://www.noskovlab.com/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringLamoureux = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Guillaume Lamoureux</h3>'+
+    '<div id="bodyContent">'+
+    'Assistant Professor<br>' +
+    'Department of Chemistry and Biochemistry<br>'+
+    'Concordia University<br>'+
+    'Montreal, PQ, Canada<br>'+
+    '<A href="http://faculty.concordia.ca/glamoure/index.html">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringLague = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Patrick Lag&#252;e</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Professeur agr&#233;g&#233;<br>' +
+    'PROTEO<br>'+
+    'Universit&#233; Laval<br>'+
+    'Sillery, PQ, Canada<br>'+
+    '<A href="http://proteo.ca/fr/membres/patrick_lague.html">Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringPomes = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">R&#233;gis Pom&#232;s</h3>'+
+    '<div id="bodyContent">'+
+    'Canada Research Chair<br>' +
+    'Sick Kids Hospital Research Institute<br>'+
+    'The University of Toronto<br>'+
+    'Toronto, ON, Canada<br>'+
+    '<A href="http://www.pomeslab.com/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringIm = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Wonpil Im</h3>'+
+    '<div id="bodyContent">'+
+    'Associate Professor<br>' +
+    'Center for Bioinformatics<br>' +
+    'Department of Molecular Sciences<br>' +
+    'The University of Kansas<br>' +
+    'Lawrence, KS, U.S.A.<br>' +
+    '<A href="http://im.bioinformatics.ku.edu/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringYang = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Sichun Yang</h3>'+
+    '<div id="bodyContent">'+
+    'Center for Proteomics and Bioinformatics<br>' +
+    'Department of Pharmacology<br>' +
+    'Case Western Reserve University<br>' +
+    'Cleveland, OH, U.S.A.<br>' +
+    '<A href="http://yanglab.case.edu/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringYu = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Haibo Yu</h3>'+
+    '<div id="bodyContent">'+
+    'Lecturer<br>'+
+    'Department of Chemistry<br>' +
+    'University of Wollongong<br>' +
+    'Wollongong, Australia<br>' +
+    '<A href="http://www.uow.edu.au/science/chem/academics/UOW086349.html">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringWoolf = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Tom Woolf</h3>'+
+    '<div id="bodyContent">'+
+    'Professor<br>'+
+    'Johns Hopkins University, School of Medicine<br>'+
+    'Department of Physiology<br>'+
+    'Department of Biophysics and Biophysical Chemistry<br>'+
+    'Department of Biomedical Engineering<br>'+ 
+    'Johns Hopkins University<br>' +
+    'Baltimore, MD, U.S.A.<br>' +
+    '<A href="http://gonzo.med.jhmi.edu/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringHopkins = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Albert Lau</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Assistant Professor<br>'+
+    'Department of Biophysics and Biophysical Chemistry<br>' +
+    'Johns Hopkins University<br>' +
+    'Baltimore, MD, U.S.A.<br>' +
+    '<A href="http://pmcb.jhu.edu/faculty/lau-profile.html">Group Web Page</A></p>'+
+    '<h3 id="secondHeading" class="secondHeading">Tom Woolf</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Professor<br>'+
+    'Johns Hopkins University, School of Medicine<br>'+
+    'Department of Physiology<br>'+
+    'Department of Biophysics and Biophysical Chemistry<br>'+
+    'Department of Biomedical Engineering<br>'+
+    'Johns Hopkins University<br>' +
+    'Baltimore, MD, U.S.A.<br>' +
+    '<A href="http://gonzo.med.jhmi.edu/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringFaraldo = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Jos&#233; Faraldo-G&#243;mez</h3>'+
+    '<div id="bodyContent">'+
+    'Principal Investigator<br>' + 
+    'Theoretical Molecular Biophysics Group<br>' +
+    'Max Planck Institute of Biophysics<br>' + 
+    'Frankfurt am Main<br>' + 
+    'Germany<br>'
+    '<A href="http://www.faraldolab.org/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringBerneche = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Simon Bern&#232;che</h3>'+
+    '<div id="bodyContent">'+
+    'Professor<br>' + 
+    'Biozentrum<br>' +
+    'University of Basel<br>' +
+    'Basel, Switzerland<br>' +
+    '<A href="http://www.biozentrum.unibas.ch/research/groups-platforms/overview/unit/berneche/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringSezer = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Deniz Sezer</h3>'+
+    '<div id="bodyContent">'+
+    'Professor<br>' + 
+    'Faculty of Engineering and Natural Sciences<br>' +
+    'Sabanci University<br>' +
+    'Istanbul, Turkey<br>' +
+    '<A href="http://myweb.sabanciuniv.edu/dsezer/">Group Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+  var contentStringShawSchrodinger = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">D.E. Shaw Research</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Albert Pan<br>Vishwanath Jogini<br>' + 
+    '<A href="http://www.deshawresearch.com/">Web Page</A></p>'+
+    '<h3 id="secondHeading" class="secondHeading">Schr&#246;dinger Inc.</h3>'+
+    '<div id="bodyContent">'+
+    '<p>Ed Harder<br>Devleena Shivakumar<br>Yuqing Deng<br>' +
+    '<A href="http://www.schrodinger.com/">Web Page</A><br>'+
+    '<br>New York, NY, U.S.A.<br></p>' +
+    '</div>'+
+    '</div>';
+
+   var contentStringBanavali = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Nilesh Banavali</h3>'+
+    '<div id="bodyContent">'+
+    'Research Scientist<br>' +
+    'Wadsworth Center<br>' +
+    'New York State Department of Health<br>' +
+    'Albany, NY, U.S.A.<br>' +
+    '<A href="http://www.wadsworth.org/resnres/bios/banavali.htm">Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+   var contentStringWoo = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Hyung-June Woo</h3>'+
+    '<div id="bodyContent">'+
+    'Biotechnology High Performance Computing Software Applications Institute<br>' +
+    'Telemedicine and Advanced Technology Research Center<br>' +
+    'United States Army Medical Research and Materiel Command<br>' +
+    'Fort Detrick, MD, U.S.A.<br>' +
+    '<A href="http://www.bhsai.org/">Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+   var contentStringLuca = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">Luca Maragliano</h3>'+
+    '<div id="bodyContent">'+
+    'Italian Institute of Technology<br>' +
+    'Genova, Italy<br>' +
+    '<A href="http://www.iit.it/">Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+   var contentStringJCGumbart = '<div id="content">'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h3 id="firstHeading" class="firstHeading">JC Gumbart</h3>'+
+    '<div id="bodyContent">'+
+    'School of Physics<br>' +
+    'Georgia Institute of Technology<br>' +
+    'Atlanta, GA<br>' +
+    '<A href="http://www.mcs.anl.gov/~gumbart/">Web Page</A></p>'+
+    '</div>'+
+    '</div>';
+
+// Rowley
+
+  var infowindowRowley = new google.maps.InfoWindow({
+    content: contentStringRowley
+  });
+  google.maps.event.addListener(markerRowley, 'click', function() {
+    infowindowRowley.open(map,markerRowley);
+  });
+
+// Benoit 1
+
+  var infowindowBenoit = new google.maps.InfoWindow({
+    content: contentStringRoux
+  });
+  google.maps.event.addListener(markerBenoit, 'click', function() {
+    infowindowBenoit.open(map,markerBenoit);
+  });
+
+// Noskov 2
+  var infowindowNoskov = new google.maps.InfoWindow({
+    content: contentStringNoskov
+  });
+
+  google.maps.event.addListener(markerNoskov, 'click', function() {
+    infowindowNoskov.open(map,markerNoskov);
+  });
+
+// Lague
+  var infowindowLague = new google.maps.InfoWindow({
+    content: contentStringLague
+  });
+
+  google.maps.event.addListener(markerLague, 'click', function() {
+    infowindowLague.open(map,markerLague);
+  });
+
+// Lamoureux 3 
+  var infowindowLamoureux = new google.maps.InfoWindow({
+    content: contentStringLamoureux
+  });
+
+  google.maps.event.addListener(markerLamoureux, 'click', function() {
+    infowindowLamoureux.open(map,markerLamoureux);
+  });
+
+// Regis 4
+  var infowindowPomes = new google.maps.InfoWindow({
+    content: contentStringPomes
+  });
+
+  google.maps.event.addListener(markerPomes, 'click', function() {
+    infowindowPomes.open(map,markerPomes);
+  });
+
+// Sichun 5
+  var infowindowYang = new google.maps.InfoWindow({
+    content: contentStringYang
+  });
+
+  google.maps.event.addListener(markerYang, 'click', function() {
+    infowindowYang.open(map,markerYang);
+  });
+
+// Albert Lau 7
+  var infowindowHopkins= new google.maps.InfoWindow({
+    content: contentStringHopkins
+  });
+
+  google.maps.event.addListener(markerHopkins, 'click', function() {
+    infowindowHopkins.open(map,markerHopkins);
+  });
+
+// Wonpil 8
+  var infowindowIm= new google.maps.InfoWindow({
+    content: contentStringIm
+  });
+
+  google.maps.event.addListener(markerIm, 'click', function() {
+    infowindowIm.open(map,markerIm);
+  });
+
+// Jose 9
+  var infowindowFaraldo= new google.maps.InfoWindow({
+    content: contentStringFaraldo
+  });
+
+  google.maps.event.addListener(markerFaraldo, 'click', function() {
+    infowindowFaraldo.open(map,markerFaraldo);
+  });
+
+// Berneche 10
+  var infowindowBerneche= new google.maps.InfoWindow({
+    content: contentStringBerneche
+  });
+
+  google.maps.event.addListener(markerBerneche, 'click', function() {
+    infowindowBerneche.open(map,markerBerneche);
+
+  });
+// Yu 11
+  var infowindowYu= new google.maps.InfoWindow({
+    content: contentStringYu
+  });
+
+  google.maps.event.addListener(markerYu, 'click', function() {
+    infowindowYu.open(map,markerYu);
+  });
+
+// Schrodinger 12
+  var infowindowShawSchrodinger= new google.maps.InfoWindow({
+    content: contentStringShawSchrodinger
+  });
+
+  google.maps.event.addListener(markerShawSchrodinger, 'click', function() {
+    infowindowShawSchrodinger.open(map,markerShawSchrodinger);
+  });
+
+
+// Sezer
+  var infowindowSezer= new google.maps.InfoWindow({
+    content: contentStringSezer
+  });
+
+  google.maps.event.addListener(markerSezer, 'click', function() {
+    infowindowSezer.open(map,markerSezer);
+  });
+
+// Woo
+  var infowindowWoo= new google.maps.InfoWindow({
+    content: contentStringWoo
+  });
+
+  google.maps.event.addListener(markerWoo, 'click', function() {
+    infowindowWoo.open(map,markerWoo);
+  });
+
+//Nilesh
+  var infowindowBanavali= new google.maps.InfoWindow({
+    content: contentStringBanavali
+  });
+
+  google.maps.event.addListener(markerBanavali, 'click', function() {
+    infowindowBanavali.open(map,markerBanavali);
+  });
+
+// Luca
+  var infowindowLuca= new google.maps.InfoWindow({
+    content: contentStringLuca
+  });
+
+  google.maps.event.addListener(markerLuca, 'click', function() {
+    infowindowLuca.open(map,markerLuca);
+  });
+
+// JC Gumbart
+  var infowindowJCGumbart= new google.maps.InfoWindow({
+    content: contentStringJCGumbart
+  });
+
+  google.maps.event.addListener(markerJCGumbart, 'click', function() {
+    infowindowJCGumbart.open(map,markerJCGumbart);
+  });
+
+//Lyna
+  var infowindowLuo= new google.maps.InfoWindow({
+    content: contentStringLuo
+  });
+
+  google.maps.event.addListener(markerLuo, 'click', function() {
+    infowindowLuo.open(map,markerLuo);
+  });
+
+//Minh
+  var infowindowMinh= new google.maps.InfoWindow({
+    content: contentStringMinh
+  });
+
+  google.maps.event.addListener(markerMinh, 'click', function() {
+    infowindowMinh.open(map,markerMinh);
+  });
+
+}
+
+</script>
+</head>
+<body onload="initialize()">
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>

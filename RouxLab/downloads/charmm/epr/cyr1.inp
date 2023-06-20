@@ -1,0 +1,36 @@
+* dynamics with r1
+*
+
+!read topology
+read rtf card name ~/progs/charmm/c35a1/toppar/top_all27_prot_lipid.rtf
+
+!R1 topology
+read rtf card appen name cyr1.rtf   
+
+!read parameters
+read param card name ~/progs/charmm/c35a1/toppar/par_all27_prot_lipid.prm
+
+!R1 parameters
+read param card append name cyr1.par
+
+read sequence card unit 5
+* 3 residues
+* 
+   3
+ala cyr1   ala
+generate pep setup
+
+ic param
+ic seed 1 N 1 CA 1 C
+ic build
+hbuild
+
+energy
+
+write coor card name cyr1.crd
+* ala cyr1 ala 
+* ENER=?ener ELEC=?elec  VDW=?vdw  
+* BOND=?bond  ANGL=?angl  DIHE=?dihe  IMPR=?impr
+*
+
+stop

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>The Roux Group</title>
+	<link href="../../css/bootstrap.min.css"   rel="stylesheet">
+	<link href="../../css/overwrite.css"       rel="stylesheet">
+	<link href="../../img/icon.png"     rel="icon">
+</head>
+<header>
+	<div class="header-left">
+		<a href="../../index.html">
+		<img src="../../img/Group_Logo.png" class="img-responsive" /></a>	
+	</div>
+	<div class="header-right">
+		<a href="http://www.uchicago.edu/">
+		<img src="../../img/Chicago_Logo.png" class="img-responsive" /></a>
+	</div>
+</header>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="well bs-sidebar affix" id="sidebar">
+			<ul class="nav nav-pills nav-stacked">
+				<li><a href="../../index.html">Home</a></li>
+				<li><a href="http://bmb.bsd.uchicago.edu/faculty/benoit-roux">About PI</a></li>
+				<li><a href="../../research.html">Research Projects</a></li>
+				<li><a href="../../method.html">Methods</a></li>
+				<li><a href="../../publication.html">Publications</a></li>
+				<li><a href="../../opening.html">Openings</a></li>
+				<li><a href="../../members.html">Group Members</a></li>
+				<li><a href="../../gallery.html">Gallery</a></li>
+				<li><a href="../../contact.html">Contacts</a></li>
+				<li><a href="../../ulinks.html">Useful Links</a></li>
+			</ul>
+		</div> <!--well bs-sidebar affix-->
+	</div> <!--col-sm-3-->
+</div> <!--row-->
+<!--#####################################Common#####################################-->
+<body>
+	<div class="main">
+		<h3><b>Binding Free Energy Calculation</b></h3></b><br>
+			<p>  
+				The calculation of the  standard (absolute) binding free energy of a small ligand to a receptor macromolecule
+				is one of the most important problem in computational biophysics. 
+				In recent years, there have been important advances in methodologies that enable
+				one to carry out such calculations with a reasonable accuracy (see 
+				<a href=../../pdf/deng_jpc_2009.pdf>Deng and Roux, 2009</a> for a recent review).<br>
+
+				One approach to compute the binding free energy of a small molecule ligand is to use alchemical FEP/MD.
+				(<a href=../../pdf/deng_jctc_2006.pdf>Deng and Roux, 2006</a>).  The free energy associated with the interactions is
+				split into repulsive, dispersive and electrostatic contributions.  To accelerate convergence and avoid
+				instability in simulations, a soft-core potential is used on the repulsive interaction.  
+				Various restraining potentials can be used to enhance the sampling and take into
+				account of the standard state.  The effect of these
+				restraint potentials are removed with extra simulation steps.
+				For a typical drug-like ligand, restraint potentials on the
+				ligand translation, rotation and conformation degrees of
+				freedom are required.  The ligand conformation (measured by RMSD 
+				from bound conformation) can be calculated using umbrella sampling.<br>
+				
+				Another approach to compute the binding free energy of a small molecule ligand is 
+				to use a PMF as a function of the ligand-receptor separation (<a href=../../pdf/Woo_pnas_2005.pdf>Woo and Roux, 2004</a>). This work was extended to incorporate a protein conformational PMF in a paper in Nature Structural & Molecular Biology <a href="http://www.nature.com/nsmb/journal/v18/n3/full/nsmb.2010.html">(Lau and Roux, 2011)</a>.
+				Again, various restraining potentials can be used to enhance the sampling and convergence.
+				<br><br><b>Download:</b><br>
+			</p> 
+			<ul><b>
+				<li><a href="fep/fep_tutorial.tar.gz"> Absolute binding free energy calculation from FEP/MD</a></li>
+				<li><a href="fep/binding_pmf.tar.gz"> Absolute binding free energy calculation from PMF</a></li>
+			</b></ul>
+    </div>
+</body>

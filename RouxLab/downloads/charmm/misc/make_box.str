@@ -1,0 +1,63 @@
+* file: make_box.str
+* make a water box of any size
+*
+
+if @?MAX1 .eq. 0  set MAX1 = 4   
+if @?MAX2 .eq. 0  set MAX2 = 4   
+if @?MAX3 .eq. 0  set MAX3 = 4   
+
+set 3  1
+label DO_3
+
+     set 2  1
+     label DO_2
+
+          set 1  1
+          label DO_1
+
+               read sequence tip3 125
+               generate W@1@2@3 setup noangle nodihedral
+
+          incr 1 by 1
+          if 1 le @MAX1 goto DO_1
+
+     incr 2 by 1
+     if 2 le @MAX2 goto DO_2
+
+incr 3 by 1
+if 3 le @MAX3 goto DO_3
+
+
+! This is the basic length of the cubic box
+set L  15.5516
+
+open read card unit 1 name @charmm/support/membrane/tip125.crd 
+read coor card unit 1 
+close unit 1
+
+set 3  1
+label LO_3
+
+     set 2  1
+     label LO_2
+
+          set 1  1
+          label LO_1
+
+               if W@1@2@3 ne W111 coor duplicate select segid W111 end select segid  W@1@2@3 end
+               calc  X  = @L * (@1-1)
+               calc  Y  = @L * (@2-1)
+               calc  Z  = @L * (@3-1)
+               coor trans xdir @X ydir @Y  zdir @Z select segid  W@1@2@3 end
+
+          incr 1 by 1
+          if 1 le @MAX1 goto LO_1
+
+     incr 2 by 1
+     if 2 le @MAX2 goto LO_2
+
+incr 3 by 1
+if 3 le @MAX3 goto LO_3
+
+coor orient norotation 
+

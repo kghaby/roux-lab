@@ -1,0 +1,76 @@
+!spin label r5
+RESI R5          0.00 ! Spin Label for Proteins       chi2(pot) = 0.04066
+GROUP                 !
+ATOM O    ON    -0.433!              H1A
+ATOM N    NN     0.249!      H1B\   /
+ATOM C1   CTL1   0.245!          C1A
+ATOM C2   CTL1   0.267!          |  \H1C         
+GROUP
+ATOM C1A  CTL3  -0.323!          |                    H2A
+ATOM H1A  HAL3   0.09 !          |            H2B\   / 
+ATOM H1B  HAL3   0.09 !          |                C2A      
+ATOM H1C  HAL3   0.09 !          |               /   \H2C
+GROUP                 !                 O
+ATOM C2A  CTL3  -0.338!          |      |      /
+ATOM H2A  HAL3   0.09 !           \     N     /
+ATOM H2B  HAL3   0.09 !            \  /   \  /
+ATOM H2C  HAL3   0.09 !             C1     C2 ---- 
+GROUP
+ATOM C1D  CTL3  -0.323!           /  |     |       \
+ATOM H1D  HAL3   0.09 !          /  C1R---C2R-H2R   \
+ATOM H1E  HAL3   0.09 !          |   | \H1R  \H2S    |
+ATOM H1F  HAL3   0.09 !
+GROUP
+ATOM C2D  CTL3  -0.338!          |   |               | /H2D	      
+ATOM H2D  HAL3   0.09 !          |    \             C2D    	 
+ATOM H2E  HAL3   0.09 !          |     \       H2E/   \   	 
+ATOM H2F  HAL3   0.09 !          |      |               H2F	
+GROUP
+ATOM C1R  CTL1  -0.127!     H1D\ |      |	
+ATOM H1R  HAL1   0.09!         C1D     | 
+ATOM C2R  CTL2  -0.229!        /  \H1E  |
+ATOM H2R  HAL2   0.09 !      H1F        |   
+ATOM H2S  HAL2   0.09 !              - C1L -
+GROUP                 !                 |   
+ATOM C1L  CTL2  -0.10 !                 |
+ATOM H1L  HAL2   0.09 !                 |
+ATOM H1M  HAL2   0.09 !                 |
+ATOM S1L  SM    -0.08 !                S1L            
+GROUP                 !                 |
+ATOM S2L  SM    -0.08 !                S2L
+ATOM C2L  CTL3  -0.19 !                 |
+ATOM H2L  HAL3   0.09 !                C2L
+ATOM H2M  HAL3   0.09 !               / | \
+ATOM H2N  HAL3   0.09 !            H2L H2M H2N
+BOND  O    N
+BOND  N    C1        N    C2 
+BOND  C1A  C1        C1D  C1
+BOND  C2A  C2        C2D  C2
+BOND  H1A  C1A       H1B  C1A       H1C  C1A  
+BOND  H1D  C1D       H1E  C1D       H1F  C1D  
+BOND  H2A  C2A       H2B  C2A       H2C  C2A  
+BOND  H2D  C2D       H2E  C2D       H2F  C2D 
+BOND  C1   C1R       C1R  C2R       H1R  C1R      
+BOND  C2   C2R       H2R  C2R       H2S  C2R 
+BOND  C1L  C1R       
+BOND  H1L  C1L       H1M  C1L       C1L  S1L 
+BOND  S1L  S2L       S2L  C2L
+BOND  C2L  H2L       C2L  H2M       C2L  H2N
+ACCEPTOR O N
+IC      C1R   C1    N     C2     1.5527  100.83   16.01  115.50   1.4903
+IC      C1    N     C2    C2R    1.4894  115.50    5.63  101.30   1.5438
+IC      N     C2    C2R   C1R    1.4903  101.30  -25.40  105.67   1.5454
+IC      C2    C2R   C1R   C1     1.5438  105.67   36.22  104.15   1.5527
+IC      C2R   C1R   C1    N      1.5454  104.15  -30.82  100.83   1.4894
+IC      C1R   C1    N     O      1.5527  100.83 -169.73  122.18   1.2765
+IC      C2R   C1R   C1    C1A    1.5454  104.15 -147.41  113.38   1.5328
+IC      C2R   C1R   C1    C1D    1.5454  104.15   85.33  114.36   1.5405
+IC      C2A   C2    C2R   C1R    1.5390  112.84   90.62  105.67   1.5454
+IC      C2D   C2    C2R   C1R    1.5337  113.70 -142.79  105.67   1.5454
+IC      C1L   C1R   C1    N      1.5292  116.21 -156.85  100.83   1.4894
+IC      C1L   C1R   C2R   C2     1.5292  113.82  163.75  105.67   1.5438
+IC      C1    C1R   C1L   S1L    1.5455  113.90  -62.01  112.69   1.8582
+IC      C2R   C1R   C1L   S1L    1.5432  116.20  176.13  112.69   1.8582
+IC      C1R   C1L   S1L   S2L    1.5334  112.69  175.10  102.34   2.0808
+IC      C1L   S1L   S2L   C2L    1.8582  102.34   87.11  103.39   1.8367
+

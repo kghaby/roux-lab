@@ -1,0 +1,66 @@
+C     COMMON BLOCK FOR GENERALIZED SOLVENT BOUNDARY POTENTIAL FOR PROGRAM SIMUL
+
+c     SRDIST                                   radius of a sphere  
+c     NTPOL                                    number of basis functions
+c     MMIJ(*)                                  generalized reaction field matrix
+c     BNORM(*)                                 normalization constant for basis functions
+c     COEF(*)                                  generalized multipole moments
+c     LSTPL(*)                                 list of L index number in spherical harmonics Y_{lm}
+c     LSTPM(*)                                 list of M index number in spherical harmonics Y_{lm}
+c     PHIX(*)                                  static field 
+c     EGSBPA                                   static field energy
+c     EGSBPB                                   reaction field energy
+c     PHIV(*)                                  grid-based uniform repulsive potential 
+c                                              (zero inside and one outside protein and membrane)
+c     EVDWGD                                   repulsive energy
+c     SVDW                                     scaling factor of PHIV
+c     NCLX, NCLY, NCLZ                         grid parameters
+c     DCEL                                     mesh size (grid spacing)
+c     TRANX = HALF*(NCLX-1)*DCEL               origin of of corner of the grid in X
+c     TRANY = HALF*(NCLY-1)*DCEL               origin of of corner of the grid in Y
+c     TRANZ = HALF*(NCLZ-1)*DCEL               origin of of corner of the grid in Z
+
+c GSBP parameters    
+      integer   dgrid1,dgrid2,dbasis
+      parameter ( dgrid1=201*201*301,dgrid2=201*201*301*2,dbasis=500 )
+c      parameter ( dgrid1=181*181*181,dgrid2=181*181*181*2,dbasis=500 )
+
+      INTEGER   NCLx1,NCLy1,NCLz1,NCLx2,NCLy2,NCLz2
+      INTEGER   NTPOL,NMPOL,LSTPL(dbasis),LSTPM(dbasis)
+      INTEGER   XNPOL,YNPOL,ZNPOL
+      INTEGER   LSTPX(dbasis),LSTPY(dbasis),LSTPZ(dbasis)
+
+      COMMON / GSBP1 /  NCLx1,NCLy1,NCLz1,NCLx2,NCLy2,NCLz2,
+     $                  NTPOL,NMPOL,LSTPL,LSTPM,
+     $                  XNPOL,YNPOL,ZNPOL,
+     $                  LSTPX,LSTPY,LSTPZ
+
+      REAL*8    DCEL1,TRANX1,TRANY1,TRANZ1,DCEL2,TRANX2,TRANY2,TRANZ2
+      REAL*8    XBCEN1,YBCEN1,ZBCEN1,XBCEN2,YBCEN2,ZBCEN2
+      REAL*8    SRDIST,BNORM(dbasis),COEF(dbasis),MMIJ(dbasis*dbasis)
+      REAL*8    RBXMAX,RBXMIN,RBYMAX,RBYMIN,RBZMAX,RBZMIN
+      REAL*8    XSCAL,YSCAL,ZSCAL,RFSCAL
+      REAL*8    EVDWGD,SVDW,EGSBPA,EGSBPB,VZMAX,VZMIN
+      REAL*4    PHIX(dgrid1),PHIV(dgrid2)
+
+      COMMON / GSBP2 /  DCEL1,TRANX1,TRANY1,TRANZ1,
+     $                  DCEL2,TRANX2,TRANY2,TRANZ2,
+     $                  XBCEN1,YBCEN1,ZBCEN1,
+     $                  XBCEN2,YBCEN2,ZBCEN2,
+     $                  SRDIST,MMIJ,BNORM,COEF,
+     $                  RBXMAX,RBXMIN,RBYMAX,RBYMIN,RBZMAX,RBZMIN,
+     $                  XSCAL,YSCAL,ZSCAL,RFSCAL,
+     $                  EVDWGD,SVDW,EGSBPA,EGSBPB,VZMAX,VZMIN,
+     $                  PHIX,PHIV
+
+      CHARACTER*8 SHAPE
+
+      COMMON / GSBP3 /  SHAPE
+
+      LOGICAL   Qmmij,Qphix,Qphiv,Qtrln,Qnmcden
+
+      COMMON / GSBP4 /  Qmmij,Qphix,Qphiv,Qtrln,Qnmcden
+
+
+
+

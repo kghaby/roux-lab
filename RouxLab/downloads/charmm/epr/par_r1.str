@@ -1,0 +1,151 @@
+*stream file for R1 parameters
+*stram after the charmm param27 file 
+*
+
+read param card append
+* SLX
+*
+
+BONDS
+NN    ON     485.17      1.264  ! H R T P 1
+NN    CTL1   182.65      1.444  ! H R T P 1
+CEL1  CTL1   240.00      1.502  ! 
+
+ANGLES
+CTL1  NN    ON     45.12     115.52 ! H R T P 1
+CTL1  NN    CTL1   38.60     119.08 ! H R T P 1
+NN    CTL1  CTL3   51.55     104.19 ! H R T P 3
+NN    CTL1  CTL2   51.55     104.19 ! - - - - 0
+NN    CTL1  CTL1   51.55     104.19 ! - - - - 0
+NN    CTL1  CEL1   64.23     103.75 ! X X X P 1
+CTL1  CEL1  CTL2   45.15     112.75 ! X X X P 2
+CTL1  CEL1  CTL3   45.15     112.75 ! - - - - 0
+HEL1  CEL1  CTL1   30.66     103.41 ! X X X P 1
+CTL3  CTL1  CEL1   32.49     112.20 !
+CEL1  CEL1  CTL1   48.00     123.50 !
+!
+!CTL2 CTL1 CTL2   58.350    113.50   11.16   2.561  ! glycerol
+CTL3 CTL1 CTL3   58.350    113.50   11.16   2.561  ! glycerol
+!link
+SM   CTL2 CEL1   58.000   112.5000 ! ALLOW   ALI SUL ION
+CTL3  CEL1  CTL2   42.63     112.34 ! X X X P 2
+!
+!compare
+!HEL1 CEL1 CTL2   40.00     116.00   ! from propene, yin,adm jr., 12/95
+!HEL1 CEL1 CTL3   22.00     117.00   ! propene, yin,adm jr., 12/95
+
+DIHEDRALS
+ON   NN   CTL1 CTL3     0.099   3     0.00 ! H R T P 3
+ON   NN   CTL1 CTL2     0.099   3     0.00 ! - - - - 0
+ON   NN   CTL1 CTL1     0.099   3     0.00 ! - - - - 0
+ON   NN   CTL1 CEL1     0.052   3     0.00 ! X X X P 1
+HAL3 CTL3 CTL1 NN       0.093   3     0.00 ! H R T P 2
+HAL2 CTL2 CTL1 NN       0.093   3     0.00 ! - - - - 0
+NN   CTL1 CTL1 CTL2     0.481   3     0.00 ! X R X X 2
+NN   CTL1 CTL1 CTL3     0.481   3     0.00 ! - - - - 0
+CTL3 CTL1 CTL2 CTL2     0.151   3     0.00 ! H R X X 2
+CTL3 CTL1 CTL2 CTL1     0.151   3     0.00 ! - - - - 0
+HAL3 CTL3 CTL1 CTL2     0.046   3     0.00 ! H R T X 2
+HAL3 CTL3 CTL1 CTL1     0.046   3     0.00 ! - - - - 0
+NN   CTL1 CTL2 CTL2     0.593   3     0.00 ! H R X X 2
+NN   CTL1 CTL2 CTL1     0.593   3     0.00 ! - - - - 0
+CTL1 CTL1 CTL2 CTL1     1.368   3     0.00 ! X R X X 1
+CTL3 CTL1 CTL1 CTL2     0.104   3     0.00 ! X R X X 2
+CTL3 CTL1 CTL1 CTL3     0.104   3     0.00 ! - - - - 0
+NN   CTL1 CEL1 CEL1     3.178   3     0.00 ! X X X P 1
+NN   CTL1 CEL1 CTL3    -0.312   3     0.00 ! X X X P 2
+NN   CTL1 CEL1 CTL2    -0.312   3     0.00 ! - - - - 0
+NN   CTL1 CEL1 HEL1     2.165   3     0.00 ! X X X P 1
+CTL3 CEL1 CTL1 CTL3     0.308   3     0.00 ! X X X P 2
+CTL2 CEL1 CTL1 CTL3     0.308   3     0.00 ! - - - - 0
+
+CEL1 CEL1 CTL1 CTL3     0.500   1   180.00 !
+CEL1 CEL1 CTL1 CTL3     1.300   3   180.00 !
+!CTL1 CEL1 CEL1 CTL1     0.226   2     0.00 ! X X X P 1
+!CTL1 CEL1 CEL1 CTL2     0.247   2   180.00 ! X X X P 2
+!CTL1 CEL1 CEL1 CTL3     0.247   2   180.00 ! - - - - 0
+!use 
+!X    CEL1 CEL1 X        0.1500  1     0.00 ! 2-butene, adm jr., 2/00 update
+!X    CEL1 CEL1 X        8.5000  2   180.00 ! 2-butene, adm jr., 2/00 update
+
+!zeros                                                  
+CTL1 NN   CTL1 CTL3     0.0     3     0.00 ! H R T P 2  
+CTL1 NN   CTL1 CTL2     0.0     3     0.00 ! - - - - 0
+CTL1 NN   CTL1 CTL1     0.0     3     0.00 ! X R X X 1  
+CTL1 NN   CTL1 CEL1     0.0     3     0.00 ! X X X P 1  
+HAL3 CTL3 CTL1 CEL1     0.0     3     0.00 ! X X X P 1 
+
+
+!HAL2 CTL2 CEL1 CTL1     0.617   3     0.00 ! X X X P 1
+!compare from cholest
+!HAL3 CTL3 CEL1 CTL1     0.0300  3     0.0  !HAL2 CTL2 CEL1 CTL1 0.03  3  0.0
+!
+!link
+!HAL3 CTL3 CEL1 CTL1     0.090   3     0.00 ! X X X P X 1
+
+!SCAN-DIHEDRALS
+SM   CTL2 CEL1 CEL1    -0.274   1     0.00 ! X X X P X 1
+SM   CTL2 CEL1 CEL1     0.220   2     0.00 ! X X X P X 1
+SM   CTL2 CEL1 CEL1    -0.105   3     0.00 ! X X X P X 1
+SM   CTL2 CEL1 CTL1     0.145   1     0.00 ! X X X P X 1
+SM   CTL2 CEL1 CTL1    -0.049   2     0.00 ! X X X P X 1
+SM   CTL2 CEL1 CTL1     0.048   3     0.00 ! X X X P X 1
+HAL2 CTL2 CEL1 CTL1    -0.029   1     0.00 ! X X X P X 1
+HAL2 CTL2 CEL1 CTL1     0.135   2     0.00 ! X X X P X 1
+HAL2 CTL2 CEL1 CTL1     0.000   3     0.00 ! X X X P X 1
+SM   SM   CTL2 CEL1     0.063   3     0.00 ! X X X P X 1
+
+SM   CT2  CT1  NH1     -0.066   1     0.00 ! X X X X A 1
+SM   CT2  CT1  NH1      0.053   2     0.00 ! X X X X A 1
+SM   CT2  CT1  NH1      0.237   3     0.00 ! X X X X A 1
+SM   CT2  CT1  C        0.233   1     0.00 ! X X X X A 1
+SM   CT2  CT1  C       -0.005   2     0.00 ! X X X X A 1
+SM   CT2  CT1  C        0.149   3     0.00 ! X X X X A 1
+
+SM   CTL2 CTL1 HAL1     0.064   3     0.00 ! X R X X A 2
+SM   CT2  CT1  HB       0.064   3     0.00 ! - - - - - 0
+
+!dih2-dih4
+!SM   SM   CT2  CT1      0.31    3     0.00 ! X R X X A 2
+!SM   SM   CTL2 CTL1     0.31    3     0.00 ! - - - - - 0
+! do not change
+!SM   SM   CT2  HA       0.1580  3     0.00 ! X X X X A 1
+!SM   SM   CTL2 HAL2     0.1580  3     0.00 ! - - - - - 0
+
+!uses
+!X    CTL1 CTL2 X        0.200   3     0.00 ! alkane, 3/92
+!HAL2 CTL2 CEL1 CTL1     0.000   3     0.00 ! X X X P 1 (OK to use cholesterol)
+!
+HAL2 CTL2 CTL1 CTL3     0.1200  3     0.00 ! lkr5 dih5
+!
+!THIS HAS TO BE DONE AND : HAL3 CTL3 CEL1 CTL1     0.0600  3  0.0 
+!LARGER THAN THE EXISTING: HAL2 CTL2 CEL1 CTL1     0.0300  3  0.0  
+!POTENTIAL PROBLEM!!!
+!
+!
+!take
+!CTL3 CEL1 CEL1 HEL1     1.0000  2   180.00 ! 2-butene, adm jr., 8/98 update
+CTL2 CEL1 CEL1 HEL1     1.0000  2   180.00 ! "  "
+CTL1 CEL1 CEL1 HEL1     1.0000  2   180.00 ! "  "
+!CTL2 CEL1 CTL1 CTL3     0.00    3   180.0  ! bR12
+!
+!compare
+!HEL1 CEL1 CTL2 CTL2     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+!HEL1 CEL1 CTL2 CTL3     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+HEL1 CEL1 CTL1 CTL3     0.1200  3     0.00 ! butene, yin,adm jr., 12/95
+!
+
+IMPROPER
+CTL1 CEL1 CEL1 CTL3     4.193   0   180.00 ! X X X P 2
+CTL1 CEL1 CEL1 CTL2     4.193   0   180.00 ! - - - - 0
+CTL1 CEL1 CEL1 HEL1     9.878   0   180.00 ! X X X P 1
+
+NONBONDED 
+!nitroxide
+NN       0.0       -0.20      1.85  ! as all other nitogens
+ON       0.0       -0.1521    1.77
+ONr      0.0       -0.1521    1.77
+
+END
+
+return

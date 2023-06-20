@@ -1,0 +1,429 @@
+
+
+  Grand Canonical Monte Carlo and Brownian Dynamics Simulation Program
+  --------------------------------------------------------------------
+
+
+  The GCMC/BD program allows one to generate a Brownian dynamics trajectory of 
+ions in a channel system. In particular, the Grand Canonical Monte Carlo method
+is used to maintain the desired electrochemical conditions in the boundaries 
+(buffer regions) of the simulation system which are in (equilibrium) contact 
+with the bulk.
+
+References;
+1. W. Im and S. Seefeld and B. Roux,  Biophys. J. 79:788-801 (2000).
+2. W. Im and B. Roux, J. Chem. Phys. 115:4850-4861 (2001). 
+3. W. Im and B. Roux, J. Mol. Biol. 322:851-869 (2002). 
+
+WARNING: The program has not been used in numerous situations and caution
+         should be the rule.  All problems should be reported to
+         . Benoit Roux  at Benoit.Roux@med.cornell.edu, phone (212) 746-6018
+         . Wonpil Im    at Wonpil.Im@cornell.edu
+         . Sergei Noskov at syn2001@med.cornell.edu
+
+
+In the following, the syntax and the function of the program are given.
+
+
+1. Particle definition
+   The properties of ions are defined for the rest of the simulation. 
+Different ions can be defined in a separate line.
+
+syntax:
+
+PARTICLES
+[ion-type] eps [real] sigma [real] charge [real] diffusion [real]
+END
+
+[ion-type]            : ion type (should be less than 4 characters)
+eps		[0.0] : Lennar-Jones potential parameter [kcal/mol]
+sigma      	[0.0] : Lennar-Jones potential parameter [Ang.]
+charge      	[0.0] : particle charge [e]
+diffusion 	[0.1] : diffusion constant [Ang.**2/ps]
+
+example:
+
+PARTICLES
+POT  eps 0.0870 sigma 3.142645  charge  1.0  diffusion 0.196
+CLA  eps 0.1500 sigma 4.044680  charge -1.0  diffusion 0.203
+END
+
+
+2. Buffer definition
+   The size of the system including the buffer regions as well as the
+electrochemical boundary conditions are defined here. Currently, one can
+use a spherical system or a orthorhombic system. It is assumed that the 
+system is centered at the origin (0,0,0). The electrochemical boundary 
+conditions should be defined for each ion for each buffer region. 
+An average number of ions in a buffer region can be defined by specifying 
+a concentration (conc) or an average number (aver).
+
+   The intrinsic chemical potential of ions in NaCl and KCl solutions is 
+provided for various concentrations in separate files (see, mu_nacl.table 
+and mu_kcl.table).  It should be noted that those values were obtained based 
+on the primitive model in a specific concentration by solving the HNC equation.
+
+   As shown in Ref. 2, it may be a bit difficult to maintain boundary 
+concentrations in the buffer regions when the reaction field is included in 
+a high concentration. To avoid the expected large deviation from an average 
+number of ions in the buffer regions, [bufferbias] keyword can be used.
+
+syntax:
+
+BUFFERS  LX [real]  LY [real]  LZ [real]  [sphere]  radi [real]
+[ion-type] conc [real] aver [real] mu [real] voltage [real] LZmin [real] LZmax [real] [bufferbias] kb [real]
+END
+
+LX 		[0.0] : orthorhombic box size along the X-axis [Ang.]
+LY 		[0.0] : orthorhombic box size along the Y-axis [Ang.]
+LZ 		[0.0] : orthorhombic box size along the Z-axis [Ang.]
+[sphere] radi 	[0.0] : the radius of a spherical system [Ang.]
+Rmin            [0.0] : a minimum position of buffer sphere
+Rmax            [0.0] : a maximum position of buffer sphere
+[ion-type]            : ion type (should be defined in Particle definition, see above)
+conc 		[0.0] : concentration for a specific ion in a buffer [Mol/L]
+aver  		[0.0] : average number for a specific ion in a buffer
+mu 		[0.0] : intrinsic chemical potential of a specific ion at 
+                        a specific concentration [kcal/mol]
+voltage 	[0.0] : an applied transmembrane potential for a buffer [V] 
+LZmin 	      [-LZ/2] : a minimum position of a buffer along the Z-axis [Ang.]
+LZmax 	       [LZ/2] : a maximum position of a buffer along the Z-axis [Ang.]
+[bufferbias] kb [0.0] : to avoid un expected large deviation from an average 
+                        number of ions in the buffer regions. (kb has no dimension)    
+
+example 1: an orthorhombic system 
+
+BUFFERS  LX 44.5   LY 44.5   LZ 86.5
+POT  conc 1.00  mu -0.43249  voltage -0.025  LZmin  41.0   LZmax  43.25  bufferbias  kb 1.0
+CLA  conc 1.00  mu -0.45704  voltage -0.025  LZmin  41.0   LZmax  43.25  bufferbias  kb 1.0
+POT  conc 0.10  mu -0.18243  voltage  0.00   LZmin -43.25  LZmax -41.0   !bufferbias  kb 1.0
+CLA  conc 0.10  mu -0.18435  voltage  0.00   LZmin -43.25  LZmax -41.0   !bufferbias  kb 1.0
+END
+
+example 2: a spherical system
+
+BUFFERS sphere radius 32.75
+POT conc 1.0  mu -0.43249  voltage  0.04  Rmin 30.25 Rmax 32.75 Lzmin 14.1 LZmax 32.75
+CLA conc 1.0  mu -0.45704  voltage  0.04  Rmin 30.25 Rmax 32.75 Lzmin 14.1 LZmax 32.75
+POT conc 1.0  mu -0.43249  voltage  0.00   Rmin 30.25 Rmax 32.75 Lzmin -32.75 LZmax -14.1
+CLA conc 1.0  mu -0.45704  voltage  0.00   Rmin 30.25 Rmax 32.75 Lzmin -32.75 Lzmax -14.1
+END
+
+
+3. GCMC/BD simulation
+   A variety of options can be setup to generate a trajectory of ions by 
+Brownian dynamics (BD) and Monte Carlo (MC) method. The total energy or 
+nonbond energy can be turned off by specifying [noenergy] or [nononbond].
+One cycle defined by [ncycle] can incorporate several cycles of BD, MC, GCMC.
+
+   One can create a trajectory (binary) file which is read by the visualization 
+program DINO (http://www.dino3d.org). (for the format, see SUBROUTINE wrttraj in 
+simul.f)
+
+   A simple analysis can be done on the fly for; 
+(1) average probability distribution of number of ions in the system and 
+    channel inside [prob],
+(2) average density profile along the Z-axis [rho] and
+(2) radial distribution of ions from a specific position [g(r)].
+ 
+syntax:
+
+SIMULATION ncycle [integer] ngrand [integer] nmove [integer] dmove [integer] iseed [integer] -
+           nsteps [integer] dt [real]        temp [integer]  nprint [integer] -
+           [noenergy] [nononbond] -    
+           iuntrj [integer] nsave [integer] -
+           zcont [real] -
+           [prob] czmin [real] czmax [real] [rho] [g(r)] xgr [real] ygr [real] zgr [real] 
+          
+ncycle 		[0] : number of steps for BD or MC simulations
+ngrand 		[0] : number of steps for GCMC 
+nmove 		[0] : number of steps for MC
+dmove 	      [1.0] : maximum displacement (dmove/2) for MC
+iseed	  [3141593] : random number seed
+nsteps 		[0] : number of steps for BD
+dt 	     [0.05] : time-step for BD [ps]
+temp          [300] : temperature [K]
+[noenergy]          : turn off total energy
+[nononbond]         : turn off nonbond energy
+nprint 		[0] : print frequency for energy and number of ions
+iuntrj         [-1] : unit number of a trajectory file
+nsave      [ncycle] : trajectory saving frequency
+zcont         [0.0] : Z-position where the number of ion crossing the channel is counted
+[prob]              : print various average probability distributions
+czmin         [0.0] : a minimum position of a channel along the Z-axis [Ang.] 
+                      (for [prob] if necessary)
+czmax         [0.0] : a maximum position of a channel along the Z-axis [Ang.] 
+                      (for [prob] if necessary)
+[rho]               : print an average density profile along the Z-axis
+[g(r)]              : print a radial distribution function centered at (xgr,ygr,zgr)
+xgr 	      [0.0] : x-reference for g(r)
+ygr 	      [0.0] : y-reference for g(r)
+zgr 	      [0.0] : z-reference for g(r)
+
+example 1: BD simulation
+
+SIMULATION ncycle 60000000 ngrand   1 nmove 0 dmove 0.0 nsteps 1 dt 0.015 temp 300.0 nprint 100000 -
+           rho prob czmin -21.5 czmax 10.5
+
+example 2: MC simulation
+
+SIMULATION ncycle    20000 ngrand 10 nmove 50 dmove 2.0 nsteps 0 dt 0.000 temp 300.0 g(r) nprint 1000
+
+
+4. Total energy and Interaction energy calculations
+   The program allows one to calculate the total energy and the 
+interaction energy separately. Various energy terms can be added or 
+removed for the calculations.
+
+syntax:
+
+ENERGY [noenergy] [nononbond] [nomembrane] [mmij] [phix] [phiv] [srpmf]
+
+INTERACTION [atom integer] [noenergy] [nononbond] [nomembrane] [mmij] [phix] [phiv] 
+
+[noenergy]       : turn off total energy
+[nononbond]      : turn off nonbond energy
+[nomembrane]     : turn off membrane repulsive energy
+[mmij]           : include the reaction field energy (see below)
+[phix]           : include the external static field energy (see below)
+[phiv]           : include the grid-based repulsive energy (see below)
+
+example:
+
+set 1  1
+label loop
+
+open read unit 15 name ../conf_111/crd@1
+coor read unit 15 CHARMM
+
+energy mmij nononbond
+
+incr 1 by 1
+if 1 .le. 50 goto loop
+
+
+5. Membrane setup
+   A membrane can be represented by an analytical (polynomial) repulsive 
+potential applied for a switch region [p1] between bulk and membrane 
+regions so that the defined membrane region has a potential [ampl1] to 
+represent an impermeable membrane. In addition, a cylindrical pore with 
+a radius of [radi] can also be setup for each ion type. A similar 
+analytical repulsive potential is applied for a switch region [p2] between 
+the pore bulk and membrane regions with a potential [ampl2]. By [volt],
+a simplified representation of the voltage can be included. (??? conc/temp)
+
+syntax:
+
+MEMBRANE thick [real] zmemb [real] volt [real]
+[ion-type] p1 [real] ampl1 [real] p2 [real] ampl2 [real] radi [real] 
+END
+
+thick 		[0.0] : thickness of a membrane [Ang.]
+zmemb 		[0.0] : position of the center of a membrane along the Z-axis [Ang.]
+volt		[0.0] : transmembrane potential [V]
+[ion-type]            : ion type (should be defined in Particle definition, see above)
+p1 		[1.0] : switching region between bulk and membrane regions [Ang.]
+ampl1 		[0.0] : repulsive membrane potential [kcal/mol]
+p2 		[1.0] : switching region between pore and membrane regions [Ang.]
+ampl2 		[0.0] : repulsive potential for a cylindrical pore [kcal/mol]
+radi 		[1.0] : radius of a cylindrical pore
+
+example:
+
+MEMBRANE thick 24.0 zmemb 0.0 volt 0.0
+POT  p1 2.0 ampl1 50.0 p2 1.0 ampl2 50.0 radi 4.0
+CLA  p1 2.0 ampl1 50.0 p2 1.0 ampl2 50.0 radi 4.0
+END
+
+7. User defined Diffusion constant profile.
+
+One can define scaling factor for diffusion constant along Z axis. 
+In this case effective diffusion constant will be evaluated as:
+D*= k*D
+You need to define scaling factor profile along Z. Possible way to roughly estimate such profile is 
+to use hydrodynamic correction for motion of spherical particle inside the tubes of different radii. 
+The channel is considered as a series of cylinders with different radius and you need to have a profile 
+such radii along Z . Scaling factor is defined according to a next formulation:
+
+k = 1/(0.64309+0.00044*exp(ri/(0.06894*Rc))+0.35647*exp(ri/(0.19409*Rc))
+
+,where k is scaling factor for diffusion constant, ri is an ionic radius and Rc is radius of 
+the channel.  You may specify one profile for both ion because minor differences in ionic radius 
+does not affect your results a lot or you may use average radius between 2 ions. Profile file 
+should contain 2 columns 1-st with Z value and 2-nd with scaling factor. Given profile will be 
+fitted to continuous function therefore it make sense to reduce number of insignificant 
+extrema to make your initial function smooth and improve quality of fitting.
+
+Syntax:
+open read unit [integer] name
+PROFILE
+Difunit unit
+END
+Example:
+open read unit 10 name dif.dat
+PROFILE
+difunit 10
+END
+
+7. Short-range ion-ion interactions
+   A water-mediated short-range ion-ion interaction w_sr with a form of 
+damped oscillations is incorporated into the primitive model 
+(LJ+scaled Coulomb) to take into account the hydration effect.
+
+                     (c1-r)           c3 * (c1-r)           
+w_sr (r) = c0 * exp[ ------ ] * cos[ ------------- ] + c4 * [c1/r]**6
+                      (c2)                pi                 
+
+where r is the interion distance, and c0-c4 are coefficients. Currently, 
+this function is applied only up to r = 8 Ang. Two ion types should be 
+listed explicitly. The various contributions to the total ion-ion 
+interaction energy can be written up to r = 8 Ang. in a separate file 
+using a [unit] number. The written four columns are;
+
+{distance}  {total(primitive+w_sr}  {primitive}  {w_sr}
+
+syntax:
+
+SRPMF
+[ion-type] [ion-type] c0 [real] c1 [real] c2 [real] c3 [real] c4 [real] unit [integer]
+END
+
+example;
+
+SRPMF
+POT POT c0 -0.60 c1 4.40 c2 0.90 c3 0.80 c4 0.25 unit 21
+CLA CLA c0 -0.50 c1 4.90 c2 0.90 c3 0.80 c4 0.25 unit 22
+POT CLA c0 -3.70 c1 2.90 c2 0.90 c3 0.75 c4 0.00 unit 23
+END
+
+SRPMF
+SOD SOD c0 -0.60 c1 4.40 c2 0.90 c3 0.50 c4 0.40 unit 21
+CLA CLA c0 -0.50 c1 4.90 c2 0.90 c3 0.80 c4 0.25 unit 22
+SOD CLA c0 -7.10 c1 2.30 c2 0.90 c3 0.70 c4 0.00 unit 23
+END
+
+
+8. GSBP
+   The influence of a low-dielectric charged channel protein on the movements 
+of ions can be incorporated in terms of the reaction field [mmij] arising from
+various dielectric boundary, the external static field [phix] arising from charge
+distribution of a channel protein and the transmembrane potential, and the 
+grid-base repulsive potential [phiv]. Those are dependent on the structure and 
+charge distribution of a channel. One can use the PB/PNP solver to calculate them 
+(see the PB/PNP solver).
+
+   If necessary, different (ion-accessible) grid-base repulsive potential [phiv]
+can be used for different ions with [nmcden]. The separate (binary) files for 
+ion-accessible space of each ion should be supplied sequentially.
+
+syntax:
+
+gsbp svdw [real]  vzmin [real]  vzmax [real]  [trilinear]  [nmcden] - 
+     accessunit [integer] phixunit [integer] mmijunit [integer] -
+     xmin [real]  ymin  [real]  zmin  [real]  -
+     xmax [real]  ymax  [real]  zmax  [real]  - 
+
+svdw		[0.0] : magnitude of grid-based repulsive potential
+vzmin	       [LZ/2] : maximum position of a grid for phiv along the Z-axis [Ang.]
+vzmax         [-LZ/2] : minimum position of a grid for phiv along the Z-axis [Ang.]
+[trilinear]           : trilinear interpolation is used for phiv
+                        (default is the 3rd-order B-spline interpolation)
+[nmcden]              : use different ion-accessible space for different ions  
+accessunit	 [-1] : unit for ion-accessible space.
+phixunit	 [-1] : unit for static external field
+mmijunit	 [-1] : unit for reaction field matrix (MMIJ)
+x,y,zmax	[0.0] : maximum positions in XYZ of a region where Legendre polynomial 
+                        basis functions are applied for the reaction field calculation
+x,y,zmin	[0.0] : minimum positions in XYZ of a region where Legendre polynomial 
+                        basis functions are applied for the reaction field calculation
+
+example:
+
+open read unit 11 file name phiv.bin
+open read unit 13 file name phix.bin
+open read unit 14 file name mmij.bin
+
+gsbp svdw   50.0  vzmin -35.0  vzmax  35.0 - 
+     accessunit 11  phixunit 13  mmijunit 14 -
+     xmin  -22.25 ymin  -22.25 zmin  -43.25 -
+     xmax   22.25 ymax   22.25 zmax   43.25
+
+OR
+
+open read unit 11 file name phiv_sod.bin  ! iontype [sod] should be defined first
+open read unit 12 file name phiv_cla.bin
+open read unit 13 file name phix.bin
+open read unit 14 file name mmij.bin
+
+gsbp svdw   50.0  vzmin -35.0  vzmax  35.0 nmcden - 
+     accessunit 11  phixunit 13  mmijunit 14  -
+     xmin  -22.25 ymin  -22.25 zmin  -43.25 -
+     xmax   22.25 ymax   22.25 zmax   43.25
+
+9. Miscellaneous commands
+  a. OPEN
+     One can open a file for reading/writing. A formatted file is the default.
+     [file] should be issued for a binary file.  
+
+     syntax: OPEN [read/write] unit [integer] [file] name [filename]
+
+
+  b. COOR
+     One can generate a coordinate or read a coordinate file. A CHARMM
+     format coordinate file can be read by specifying [CHARMM].
+
+     syntax: COOR [gener] iseed [integer]
+             COOR [read] unit [integer] [CHARMM]
+
+     example: coor generate iseed 1983746
+
+              open read unit 12 name ions.crd
+              coor read unit 12 CHARMM
+     
+  c. PRINT
+     One can print a coordinate file or system information. A CHARMM
+     format coordinate file can be written by specifying [CHARMM].
+
+     syntax: PRINT unit [integer] [syst/coor] [CHARMM]
+
+     example: print syst
+
+              open write unit 12 name ions.crd
+              print coor unit 12 CHARMM
+
+  d. COUNT 
+     Count all the particles and assign them to their appropriate buffer.
+
+     syntax: COUNT
+
+  c. TEST
+     Compare the analytical forces with the finite-difference forces
+
+     syntax: TEST [noenergy] [nononbond] [nomembrane] [mmij] [phix] [phiv] [srpmf]
+
+  f. GOTO .. LABEL .. IF .. INCR
+     Control an successive calculations.
+
+     example:
+             set 1  1
+             label loop
+
+             open read unit 15 name ../conf_111/crd@1
+             coor read unit 15 CHARMM
+
+             energy mmij nononbond
+
+             incr 1 by 1
+             if 1 .le. 50 goto loop
+
+  e. STOP
+     Stop the program.
+
+     syntax: STOP
+
+
+
+
+
+
+    

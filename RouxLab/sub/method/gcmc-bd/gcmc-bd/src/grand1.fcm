@@ -1,0 +1,69 @@
+C Fortran common block for Grand Canonical Monte Carlo
+c Dimension of arrays
+      integer   dtype, datom
+      parameter (dtype = 10, datom = 1000 )
+
+      real*8    random,seval,seval1
+      integer   iseed
+      real*8    bltz
+      real*8    temp,kbt,runtime
+      integer   type(datom), ntype
+      integer   ibfftyp(datom), nbuffer, ibuffer(datom)
+      integer   ntot, natom, nfix, nat(dtype), idtype(dtype)
+      integer   nremove(dtype), ninsert(dtype), ntotat(dtype) 
+      integer   nforward(-dtype:dtype), nbackward(-dtype:dtype)
+      integer   nprint,nanal
+      real*8    density(dtype),kb(dtype)
+      real*8    ener, eelec, evdw, ememb, esrpmf
+      real*8    x(datom),y(datom),z(datom)
+      real*8    fx(datom),fy(datom),fz(datom)
+      real*8    LX,LY,LZ
+      real*8    LZmin(dtype),LZmax(dtype)
+      real*8    Rmin(dtype),Rmax(dtype)
+      real*8    eps(dtype),sigma(dtype),cg(dtype)
+      real*8    diffusion(dtype), dt, dmove
+      real*8    volume(dtype),avnum(dtype), mu(dtype)
+      real*8    cdie,xgr,ygr,zgr
+      real*8    c0(10),c1(10),c2(10),c3(10),c4(10)
+      real*8    zcont
+
+
+      common / B1 / iseed, type, ntype, ibfftyp, nbuffer, ibuffer, 
+     ,              ntot, natom, nfix, nat, ntotat, idtype, nremove, 
+     ,              ninsert, nforward, nbackward, nprint, nanal
+
+      common / B2 / bltz, temp, kbt, runtime, x, y, z, ener, eelec, 
+     ,              evdw, ememb, fx, fy, fz, lx, ly, lz, LZmin, LZmax, 
+     ,              Rmin, Rmax, cg, eps, sigma, diffusion, dt, dmove,
+     ,              density, volume, avnum, mu, cdie, xgr,ygr,zgr,kb,
+     ,              esrpmf,c0,c1,c2,c3,c4,zcont
+
+      logical Qenergy, Qforces, Qnonbond, Qmemb, Qsphere, 
+     ,        Qgr, Qrho, Qprob, Qzperiodic,Qdiffuse,Qbufferbias(dtype),
+     ,        Qsrpmf,Qionpair,Qenerprofile
+
+      common / B3 / Qenergy, Qforces, Qnonbond, Qmemb, Qsphere, 
+     ,              Qgr, Qrho, Qprob, Qzperiodic,Qdiffuse,Qbufferbias,
+     ,              Qsrpmf,Qionpair,Qenerprofile
+
+c membrane parameters
+      real*8    voltage, thick2, zmemb, plength2, pcenter
+      real*8    ampl1(dtype),p1(dtype),ampl2(dtype),p2(dtype),
+     ,          rcylinder(dtype),ampl3(dtype,dtype),w(5000),deltaz,
+     $          ampl4(dtype),p3(dtype)
+      real*8    czmax,czmin
+
+      common / B4 / voltage,thick2,zmemb,plength2,pcenter,
+     $              ampl1,p1,ampl2,p2,rcylinder,ampl3,w,deltaz,ampl4,p3,
+     $              czmax,czmin
+
+      integer nmaxz
+      common / B5 / nmaxz
+
+      character*4 atnam(dtype)
+      common / B6 / atnam
+
+C23456789012345678901234567890123456789012345678901234567890123456789012
+
+
+

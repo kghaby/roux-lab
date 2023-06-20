@@ -1,0 +1,503 @@
+*stream file for SLP topology based on top_model.str
+*
+
+read rtf card append
+* ////////// \\\\\\\\\ July 4th 2006 /////////\\\\\\\\\
+*
+27 1
+
+MASS 200  ON   15.999400 O ! spin label O
+MASS 201  NN   14.007000 O ! spin label N
+MASS 202  ONr  15.999400 O ! doxyl oxigen 
+ 
+DEFA FIRS none LAST none
+AUTOGENERATE ANGLES DIHEDRALS
+
+RESI R1          0.00 ! Spin Label for Proteins       chi2(pot) = 0.03406
+GROUP                 !
+ATOM O    ON    -0.438!              H1A
+ATOM N    NN     0.220!      H1B\   /
+ATOM C1   CTL1   0.334!          C1A
+ATOM C2   CTL1   0.329!          |  \H1C         
+GROUP
+ATOM C1A  CTL3  -0.337!          |                    H2A
+ATOM H1A  HAL3   0.09 !          |            H2B\   / 
+ATOM H1B  HAL3   0.09 !          |                C2A      
+ATOM H1C  HAL3   0.09 !          |               /   \H2C
+GROUP                 !                 O
+ATOM C2A  CTL3  -0.335!          |      |      /
+ATOM H2A  HAL3   0.09 !           \     N     /
+ATOM H2B  HAL3   0.09 !            \  /   \  /
+ATOM H2C  HAL3   0.09 !             C1     C2 ---- 
+GROUP
+ATOM C1D  CTL3  -0.337!           /  |     |       \
+ATOM H1D  HAL3   0.09 !          /  C1R===C2R-H2R   \
+ATOM H1E  HAL3   0.09 !          |   |               |
+ATOM H1F  HAL3   0.09 !
+GROUP
+ATOM C2D  CTL3  -0.335!          |   |               | /H2D	      
+ATOM H2D  HAL3   0.09 !          |    \             C2D    	 
+ATOM H2E  HAL3   0.09 !          |     \       H2E/   \   	 
+ATOM H2F  HAL3   0.09 !          |      |               H2F	
+GROUP
+ATOM C1R  CEL1  -0.003!     H1D\ |      |	
+ATOM C2R  CEL1  -0.340!         C1D     |
+ATOM H2R  HEL1   0.162!        /  \H1E  |
+GROUP                 !      H1F        |
+ATOM C1L  CTL2  -0.10 !              - C1L -
+ATOM H1L  HAL2   0.09 !                 |
+ATOM H1M  HAL2   0.09 !                 |
+ATOM S1L  SM    -0.08 !                S1L            
+GROUP                 !                 |
+ATOM S2L  SM    -0.08 !                S2L
+ATOM C2L  CTL3  -0.19 !                 |
+ATOM H2L  HAL3   0.09 !                C2L
+ATOM H2M  HAL3   0.09 !               / | \
+ATOM H2N  HAL3   0.09 !            H2L H2M H2N
+DOUBLE  C1R  C2R 
+BOND  O    N
+BOND  N    C1        N    C2 
+BOND  C1A  C1        C1D  C1
+BOND  C2A  C2        C2D  C2
+BOND  H1A  C1A       H1B  C1A       H1C  C1A  
+BOND  H1D  C1D       H1E  C1D       H1F  C1D  
+BOND  H2A  C2A       H2B  C2A       H2C  C2A  
+BOND  H2D  C2D       H2E  C2D       H2F  C2D 
+BOND  C1   C1R       C2   C2R       H2R  C2R 
+BOND  C1L  C1R       
+BOND  H1L  C1L       H1M  C1L       C1L  S1L 
+BOND  S1L  S2L       S2L  C2L
+BOND  C2L  H2L       C2L  H2M       C2L  H2N
+IMPR  C2  C1R  C2R  H2R
+IMPR  C1  C2R  C1R  C1L
+CMAP  C2R  C1R  C1L  S1L    C1R  C1L  S1L  S2L 
+ACCEPTOR O N
+IC      C1R   C1    N     C2     1.5278   98.53   -1.45  116.77   1.4647
+IC      C1    N     C2    C2R    1.4662  116.77    1.60   99.75   1.5086
+IC      N     C2    C2R   C1R    1.4647   99.75   -1.06  112.12   1.3357
+IC      C2    C2R   C1R   C1     1.5086  112.12    0.26  112.81   1.5278
+IC      C2R   C1R   C1    N      1.3357  112.81    0.67   98.53   1.4662
+IC      C1R   C1    N     O      1.5278   98.53  178.95  121.79   1.2905
+IC      C2R   C1R   C1    C1A    1.3357  112.81 -115.07  114.52   1.5406
+IC      C2R   C1R   C1    C1D    1.3357  112.81  115.60  112.69   1.5415
+IC      C2A   C2    C2R   C1R    1.5369  111.79  115.05  112.12   1.3357
+IC      C2D   C2    C2R   C1R    1.5373  111.69 -117.01  112.12   1.3357
+IC      C1L   C1R   C1    N      1.5092  121.37 -178.90   98.53   1.4662
+IC      C1L   C1R   C2R   C2     1.5092  125.82  179.81  112.12   1.5086
+IC      C1    C1R   C1L   S1L    1.5088  116.75   79.83  108.84   1.8702
+IC      C2R   C1R   C1L   S1L    1.3382  120.56  -99.58  108.84   1.8702
+IC      C1R   C1L   S1L   S2L    1.5078  108.84 -164.49  103.76   2.0813
+IC      C1L   S1L   S2L   C2L    1.8702  103.76   88.88  103.36   1.8366
+
+RESI R5          0.00 ! Spin Label for Proteins       chi2(pot) = 0.04066
+GROUP                 !
+ATOM O    ON    -0.433!              H1A
+ATOM N    NN     0.249!      H1B\   /
+ATOM C1   CTL1   0.245!          C1A
+ATOM C2   CTL1   0.267!          |  \H1C         
+GROUP
+ATOM C1A  CTL3  -0.323!          |                    H2A
+ATOM H1A  HAL3   0.09 !          |            H2B\   / 
+ATOM H1B  HAL3   0.09 !          |                C2A      
+ATOM H1C  HAL3   0.09 !          |               /   \H2C
+GROUP                 !                 O
+ATOM C2A  CTL3  -0.338!          |      |      /
+ATOM H2A  HAL3   0.09 !           \     N     /
+ATOM H2B  HAL3   0.09 !            \  /   \  /
+ATOM H2C  HAL3   0.09 !             C1     C2 ---- 
+GROUP
+ATOM C1D  CTL3  -0.323!           /  |     |       \
+ATOM H1D  HAL3   0.09 !          /  C1R---C2R-H2R   \
+ATOM H1E  HAL3   0.09 !          |   | \H1R  \H2S    |
+ATOM H1F  HAL3   0.09 !
+GROUP
+ATOM C2D  CTL3  -0.338!          |   |               | /H2D	      
+ATOM H2D  HAL3   0.09 !          |    \             C2D    	 
+ATOM H2E  HAL3   0.09 !          |     \       H2E/   \   	 
+ATOM H2F  HAL3   0.09 !          |      |               H2F	
+GROUP
+ATOM C1R  CTL1  -0.127!     H1D\ |      |	
+ATOM H1R  HAL1   0.09!         C1D     | 
+ATOM C2R  CTL2  -0.229!        /  \H1E  |
+ATOM H2R  HAL2   0.09 !      H1F        |   
+ATOM H2S  HAL2   0.09 !              - C1L -
+GROUP                 !                 |   
+ATOM C1L  CTL2  -0.10 !                 |
+ATOM H1L  HAL2   0.09 !                 |
+ATOM H1M  HAL2   0.09 !                 |
+ATOM S1L  SM    -0.08 !                S1L            
+GROUP                 !                 |
+ATOM S2L  SM    -0.08 !                S2L
+ATOM C2L  CTL3  -0.19 !                 |
+ATOM H2L  HAL3   0.09 !                C2L
+ATOM H2M  HAL3   0.09 !               / | \
+ATOM H2N  HAL3   0.09 !            H2L H2M H2N
+BOND  O    N
+BOND  N    C1        N    C2 
+BOND  C1A  C1        C1D  C1
+BOND  C2A  C2        C2D  C2
+BOND  H1A  C1A       H1B  C1A       H1C  C1A  
+BOND  H1D  C1D       H1E  C1D       H1F  C1D  
+BOND  H2A  C2A       H2B  C2A       H2C  C2A  
+BOND  H2D  C2D       H2E  C2D       H2F  C2D 
+BOND  C1   C1R       C1R  C2R       H1R  C1R      
+BOND  C2   C2R       H2R  C2R       H2S  C2R 
+BOND  C1L  C1R       
+BOND  H1L  C1L       H1M  C1L       C1L  S1L 
+BOND  S1L  S2L       S2L  C2L
+BOND  C2L  H2L       C2L  H2M       C2L  H2N
+CMAP  C1   C1R  C1L  S1L    C1R  C1L  S1L  S2L 
+ACCEPTOR O N
+IC      C1R   C1    N     C2     1.5527  100.83   16.01  115.50   1.4903
+IC      C1    N     C2    C2R    1.4894  115.50    5.63  101.30   1.5438
+IC      N     C2    C2R   C1R    1.4903  101.30  -25.40  105.67   1.5454
+IC      C2    C2R   C1R   C1     1.5438  105.67   36.22  104.15   1.5527
+IC      C2R   C1R   C1    N      1.5454  104.15  -30.82  100.83   1.4894
+IC      C1R   C1    N     O      1.5527  100.83 -169.73  122.18   1.2765
+IC      C2R   C1R   C1    C1A    1.5454  104.15 -147.41  113.38   1.5328
+IC      C2R   C1R   C1    C1D    1.5454  104.15   85.33  114.36   1.5405
+IC      C2A   C2    C2R   C1R    1.5390  112.84   90.62  105.67   1.5454
+IC      C2D   C2    C2R   C1R    1.5337  113.70 -142.79  105.67   1.5454
+IC      C1L   C1R   C1    N      1.5292  116.21 -156.85  100.83   1.4894
+IC      C1L   C1R   C2R   C2     1.5292  113.82  163.75  105.67   1.5438
+IC      C1    C1R   C1L   S1L    1.5455  113.90  -62.01  112.69   1.8582
+IC      C2R   C1R   C1L   S1L    1.5432  116.20  176.13  112.69   1.8582
+IC      C1R   C1L   S1L   S2L    1.5334  112.69  175.10  102.34   2.0808
+IC      C1L   S1L   S2L   C2L    1.8582  102.34   87.11  103.39   1.8367
+
+RESI R5U         0.00 ! Spin Label for Proteins       chi2(pot) = 0.04066
+GROUP                 !
+ATOM O    ON    -0.433!              H1A
+ATOM N    NN     0.249!      H1B\   /
+ATOM C1   CTL1   0.245!          C1A
+ATOM C2   CTL1   0.267!          |  \H1C         
+GROUP
+ATOM C1A  CTL3  -0.323!          |                    H2A
+ATOM H1A  HAL3   0.09 !          |            H2B\   / 
+ATOM H1B  HAL3   0.09 !          |                C2A      
+ATOM H1C  HAL3   0.09 !          |               /   \H2C
+GROUP                 !                 O
+ATOM C2A  CTL3  -0.338!          |      |      /
+ATOM H2A  HAL3   0.09 !           \     N     /
+ATOM H2B  HAL3   0.09 !            \  /   \  /
+ATOM H2C  HAL3   0.09 !             C1     C2 ---- 
+GROUP
+ATOM C1D  CTL3  -0.323!           /  |     |       \
+ATOM H1D  HAL3   0.09 !          /  C1R---C2R-H2R   \
+ATOM H1E  HAL3   0.09 !          |   | \H1R  \H2S    |
+ATOM H1F  HAL3   0.09 !
+GROUP
+ATOM C2D  CTL3  -0.338!          |   |               | /H2D	      
+ATOM H2D  HAL3   0.09 !          |    \             C2D    	 
+ATOM H2E  HAL3   0.09 !          |     \       H2E/   \   	 
+ATOM H2F  HAL3   0.09 !          |      |               H2F	
+GROUP
+ATOM C1R  CTL1  -0.127!     H1D\ |      |	
+ATOM H1R  HAL1   0.09!         C1D     | 
+ATOM C2R  CTL2  -0.229!        /  \H1E  |
+ATOM H2R  HAL2   0.09 !      H1F        |   
+ATOM H2S  HAL2   0.09 !              - C1L -
+GROUP                 !                 |   
+ATOM C1L  CTL2  -0.10 !                 |
+ATOM H1L  HAL2   0.09 !                 |
+ATOM H1M  HAL2   0.09 !                 |
+ATOM S1L  SM    -0.08 !                S1L            
+GROUP                 !                 |
+ATOM S2L  SM    -0.08 !                S2L
+ATOM C2L  CTL3  -0.19 !                 |
+ATOM H2L  HAL3   0.09 !                C2L
+ATOM H2M  HAL3   0.09 !               / | \
+ATOM H2N  HAL3   0.09 !            H2L H2M H2N
+BOND  O    N
+BOND  N    C1        N    C2 
+BOND  C1A  C1        C1D  C1
+BOND  C2A  C2        C2D  C2
+BOND  H1A  C1A       H1B  C1A       H1C  C1A  
+BOND  H1D  C1D       H1E  C1D       H1F  C1D  
+BOND  H2A  C2A       H2B  C2A       H2C  C2A  
+BOND  H2D  C2D       H2E  C2D       H2F  C2D 
+BOND  C1   C1R       C1R  C2R       H1R  C1R      
+BOND  C2   C2R       H2R  C2R       H2S  C2R 
+BOND  C1L  C1R       
+BOND  H1L  C1L       H1M  C1L       C1L  S1L 
+BOND  S1L  S2L       S2L  C2L
+BOND  C2L  H2L       C2L  H2M       C2L  H2N
+CMAP  C1   C1R  C1L  S1L    C1R  C1L  S1L  S2L 
+ACCEPTOR O N
+IC      C1R   C1    N     C2     1.5527  100.83  -16.01  115.50   1.4903
+IC      C1    N     C2    C2R    1.4894  115.50   -5.63  101.30   1.5438
+IC      N     C2    C2R   C1R    1.4903  101.30   25.40  105.67   1.5454
+IC      C2    C2R   C1R   C1     1.5438  105.67  -36.22  104.15   1.5527
+IC      C2R   C1R   C1    N      1.5454  104.15   30.82  100.83   1.4894
+IC      C1R   C1    N     O      1.5527  100.83  169.73  122.18   1.2765
+IC      C2R   C1R   C1    C1A    1.5454  104.15  147.41  113.38   1.5328
+IC      C2R   C1R   C1    C1D    1.5454  104.15  -85.33  114.36   1.5405
+IC      C2A   C2    C2R   C1R    1.5390  112.84  -90.62  105.67   1.5454
+IC      C2D   C2    C2R   C1R    1.5337  113.70  142.79  105.67   1.5454
+IC      C1L   C1R   C1    N      1.5292  116.21  156.85  100.83   1.4894
+IC      C1L   C1R   C2R   C2     1.5292  113.82 -163.75  105.67   1.5438
+IC      C1    C1R   C1L   S1L    1.5455  113.90  180.01  112.69   1.8582
+IC      C2R   C1R   C1L   S1L    1.5432  116.20  -59.13  112.69   1.8582
+IC      C1R   C1L   S1L   S2L    1.5334  112.69  175.10  102.34   2.0808
+IC      C1L   S1L   S2L   C2L    1.8582  102.34   87.11  103.39   1.8367
+
+
+PRES LKR1        -0.36 ! Patch must be 1-CYS and 2-SLP.
+GROUP                  ! use in a patch statement
+ATOM 1CB   CT2   -0.10 !                   |
+ATOM 1SG   SM    -0.08 !           2S1L--2C1L--
+GROUP                  !   |      /        |
+ATOM 2S1L  SM    -0.08 ! -1CB--1SG
+ATOM 2C1L  CTL2  -0.10 !   |
+DELETE ATOM 1HG1   
+DELETE ATOM 2S2L
+DELETE ATOM 2C2L
+DELETE ATOM 2H2L
+DELETE ATOM 2H2M
+DELETE ATOM 2H2N
+BOND 1SG 2S1L   
+ANGLE 1CB  1SG   2S1L             1SG   2S1L  2C1L   
+DIHE 1HB1  1CB   1SG   2S1L       1HB2  1CB   1SG   2S1L   
+DIHE 2H1L  2C1L  2S1L  1SG        2H1M  2C1L  2S1L  1SG   
+DIHE 1CA   1CB   1SG   2S1L       1SG   2S1L  2C1L  2C1R       
+DIHE 1SG   2S1L  2C1L  2H1L       1SG   2S1L  2C1L  2H1M   
+DIHE 1CB   1SG   2S1L  2C1L    
+CMAP 2C2R  2C1R  2C1L  2S1L       2C1R  2C1L  2S1L  1SG 
+IC 1CA  1CB   1SG   2S1L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CB  1SG   2S1L  2C1L  0.0000  0.0000   90.0000  0.0000  0.0000
+IC 1SG  2S1L  2C1L  2C1R  0.0000  0.0000  180.0000  0.0000  0.0000
+
+PRES LKR5        -0.36 ! Patch must be 1-CYS and 2-SLP.
+GROUP                  ! use in a patch statement
+ATOM 1CB   CT2   -0.10 !                   |
+ATOM 1SG   SM    -0.08 !           2S1L--2C1L--
+GROUP                  !   |      /        |
+ATOM 2S1L  SM    -0.08 ! -1CB--1SG
+ATOM 2C1L  CTL2  -0.10 !   |
+DELETE ATOM 1HG1   
+DELETE ATOM 2S2L
+DELETE ATOM 2C2L
+DELETE ATOM 2H2L
+DELETE ATOM 2H2M
+DELETE ATOM 2H2N
+BOND 1SG 2S1L   
+ANGLE 1CB  1SG   2S1L             1SG   2S1L  2C1L   
+DIHE 1HB1  1CB   1SG   2S1L       1HB2  1CB   1SG   2S1L   
+DIHE 2H1L  2C1L  2S1L  1SG        2H1M  2C1L  2S1L  1SG   
+DIHE 1CA   1CB   1SG   2S1L       1SG   2S1L  2C1L  2C1R       
+DIHE 1SG   2S1L  2C1L  2H1L       1SG   2S1L  2C1L  2H1M   
+DIHE 1CB   1SG   2S1L  2C1L    
+CMAP 2C1   2C1R  2C1L  2S1L       2C1R  2C1L  2S1L  1SG 
+IC 1CA  1CB   1SG   2S1L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CB  1SG   2S1L  2C1L  0.0000  0.0000   90.0000  0.0000  0.0000
+IC 1SG  2S1L  2C1L  2C1R  0.0000  0.0000  180.0000  0.0000  0.0000
+
+
+PRES LARG        -0.36 ! Patch must be 1-CYS and 2-SLP.
+GROUP                  ! use in a patch statement
+ATOM 1CB   CT2   -0.10 !                   |
+ATOM 2S2L  SM    -0.08 !           2S1L--2C1L--
+GROUP                  !   |      /        |
+ATOM 2S1L  SM    -0.08 ! -1CB--2S2L
+ATOM 2C1L  CTL2  -0.10 !   |
+DELETE ATOM  1CG
+DELETE ATOM  1HG1 
+DELETE ATOM  1HG2 
+DELETE ATOM  1CD  
+DELETE ATOM  1HD1 
+DELETE ATOM  1HD2 
+DELETE ATOM  1NE  
+DELETE ATOM  1HE  
+DELETE ATOM  1CZ  
+DELETE ATOM  1NH1 
+DELETE ATOM  1HH11 
+DELETE ATOM  1HH12 
+DELETE ATOM  1NH2 
+DELETE ATOM  1HH21 
+DELETE ATOM  1HH22
+DELETE ATOM 2C2L
+DELETE ATOM 2H2L
+DELETE ATOM 2H2M
+DELETE ATOM 2H2N
+BOND 2S2L 1CB
+ANGLE 1CB   2S2L  2S1L
+ANGLE 1CA   1CB   2S2L   
+ANGLE 1HB1  1CB   2S2L    1HB2   1CB   2S2L
+DIHE  1CB   2S2L  2S1L  2C1L
+DIHE  1CA   1CB   2S2L  2S1L  
+DIHE  1HB1  1CB   2S2L  2S1L    1HB2   1CB   2S2L  2S1L
+DIHE  1N    1CA   1CB   2S2L    1C    1CA   1CB   2S2L 
+DIHE  1HA   1CA   1CB   2S2L
+IC 1N   1CA   1CB   2S2L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CA  1CB   2S2L  2S1L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CB  2S2L  2S1L  2C1L  0.0000  0.0000   90.0000  0.0000  0.0000
+
+
+PRES LKCB        -0.36 ! Patch must be 1-CB and 2-SLP.
+GROUP                  ! use in a patch statement
+ATOM 1CB   CT2   -0.10 !                   |
+ATOM 2S2L  SM    -0.08 !           2S1L--2C1L--
+GROUP                  !   |      /        |
+ATOM 2S1L  SM    -0.08 ! -1CB--2S2L
+ATOM 2C1L  CTL2  -0.10 !   |
+DELETE ATOM 2C2L
+DELETE ATOM 2H2L
+DELETE ATOM 2H2M
+DELETE ATOM 2H2N
+BOND 2S2L 1CB
+ANGLE 1CB   2S2L  2S1L
+ANGLE 1CA   1CB   2S2L   
+ANGLE 1HB1  1CB   2S2L    1HB2   1CB   2S2L
+DIHE  1CB   2S2L  2S1L  2C1L
+DIHE  1CA   1CB   2S2L  2S1L  
+DIHE  1HB1  1CB   2S2L  2S1L    1HB2   1CB   2S2L  2S1L
+DIHE  1N    1CA   1CB   2S2L    1C    1CA   1CB   2S2L 
+DIHE  1HA   1CA   1CB   2S2L
+IC 1N   1CA   1CB   2S2L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CA  1CB   2S2L  2S1L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CB  2S2L  2S1L  2C1L  0.0000  0.0000   90.0000  0.0000  0.0000
+
+PRES LKAD        -0.36 ! Patch must be 1-CB and 2-SLP.
+GROUP                  ! use in a patch statement
+ATOM 1CB   CT2   -0.10 !                   |
+ATOM 2S2L  SM    -0.08 !           2S1L--2C1L--
+GROUP                  !   |      /        |
+ATOM 2S1L  SM    -0.08 ! -1CB--2S2L
+ATOM 2C1L  CTL2  -0.10 !   |
+DELETE ATOM 2C2L
+DELETE ATOM 2H2L
+DELETE ATOM 2H2M
+DELETE ATOM 2H2N
+BOND 2S2L 1CB
+ANGLE 1CB   2S2L  2S1L
+ANGLE 1CA   1CB   2S2L   
+ANGLE 1HB1  1CB   2S2L    1HB2   1CB   2S2L
+DIHE  1CB   2S2L  2S1L  2C1L
+DIHE  1CA   1CB   2S2L  2S1L  
+DIHE  1HB1  1CB   2S2L  2S1L    1HB2   1CB   2S2L  2S1L
+DIHE  1NL   1CA   1CB   2S2L    1CRP  1CA   1CB   2S2L 
+DIHE  1HA   1CA   1CB   2S2L
+IC 1NL  1CA   1CB   2S2L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CA  1CB   2S2L  2S1L  0.0000  0.0000  180.0000  0.0000  0.0000
+IC 1CB  2S2L  2S1L  2C1L  0.0000  0.0000   90.0000  0.0000  0.0000
+
+
+
+RESI SLT         0.00 !  Spin Label for lipid Tails   chi2(pot) = 0.04376
+GROUP                 !
+ATOM O    ON    -0.403!              H1A
+ATOM N    NN     0.147!      H1B\   /
+ATOM C1   CTL1   0.406!          C1A
+ATOM C2   CTL1   0.326!          |  \H1C         
+GROUP
+ATOM C1A  CTL3  -0.312!          |                    H2A
+ATOM H1A  HAL3   0.09 !          |            H2B\   / 
+ATOM H1B  HAL3   0.09 !          |                C2A      
+ATOM H1C  HAL3   0.09 !          |               /   \H2C
+GROUP                 !                 O
+ATOM C2A  CTL3  -0.324!          |      |      /
+ATOM H2A  HAL3   0.09 !           \     N     /
+ATOM H2B  HAL3   0.09 !            \  /   \  /
+ATOM H2C  HAL3   0.09 !             C1     C2 ---- 
+GROUP
+ATOM C1D  CTL3  -0.312!           /  |     |       \
+ATOM H1D  HAL3   0.09 !          /  O1R----C2R-H2R   \
+ATOM H1E  HAL3   0.09 !          |           \H2S    |
+ATOM H1F  HAL3   0.09 !
+GROUP
+ATOM C2D  CTL3  -0.324!     H1D\ |                   | /H2D	      
+ATOM H2D  HAL3   0.09 !         C1D                 C2D    	 
+ATOM H2E  HAL3   0.09 !        /  \H1E         H2E/   \   	 
+ATOM H2F  HAL3   0.09 !      H1F                       H2F	
+GROUP                 !       	
+ATOM O1R  ONr   -0.336!       
+ATOM C2R  CTL2  -0.128!       
+ATOM H2R  HAL2   0.09!       
+ATOM H2S  HAL2   0.09!  
+BOND  O    N
+BOND  N    C1        N    C2 
+BOND  C1A  C1        C1D  C1
+BOND  C2A  C2        C2D  C2
+BOND  H1A  C1A       H1B  C1A       H1C  C1A  
+BOND  H1D  C1D       H1E  C1D       H1F  C1D  
+BOND  H2A  C2A       H2B  C2A       H2C  C2A  
+BOND  H2D  C2D       H2E  C2D       H2F  C2D 
+BOND  C1   O1R       C2   C2R       O1R  C2R
+BOND  H2R  C2R       H2S  C2R       
+ACCEPTOR O N
+IC       O1R   C1    N    C2     1.4251  102.45    3.48  112.41   1.4855
+IC       C1    N     C2   C2R    1.4888  112.41   16.93   98.37   1.5387
+IC       N     C2    C2R  O1R    1.4855   98.37  -31.38  105.42   1.4315
+IC       C1    O1R   C2R  C2     1.4251  108.70   37.16  105.42   1.5387
+IC       C2R   O1R   C1   N      1.4315  108.70  -24.96  102.45   1.4888
+IC       O     N     C2   C2R    1.2745  123.75 -173.60   98.37   1.5387
+IC       O1R   C2R   C2   C2A    1.4315  105.42   83.87  112.61   1.5374
+IC       O1R   C2R   C2   C2D    1.4315  105.42 -147.58  114.32   1.5287
+IC       C2R   O1R   C1   C1A    1.4315  108.70 -120.00  102.45   1.4888
+IC       C2R   O1R   C1   C1D    1.4315  108.70  120.00  102.45   1.4888
+
+RESI SLH         0.00 !   Spin Label for lipid Headgroup  chi2(pot) = 0.04202
+GROUP                 !
+ATOM O    ON    -0.379!              H1A
+ATOM N    NN     0.167!      H1B\   /
+ATOM C1   CTL1   0.284!          C1A
+ATOM C2   CTL1   0.284!          |  \H1C         
+GROUP
+ATOM C1A  CTL3  -0.349!          |                    H2A
+ATOM H1A  HAL3   0.09 !          |            H2B\   / 
+ATOM H1B  HAL3   0.09 !          |                C2A      
+ATOM H1C  HAL3   0.09 !          |               /   \H2C
+GROUP                 !                 O
+ATOM C2A  CTL3  -0.349!          |      |      /
+ATOM H2A  HAL3   0.09 !           \     N     /
+ATOM H2B  HAL3   0.09 !            \  /   \  /
+ATOM H2C  HAL3   0.09 !             C1     C2 ---- 
+GROUP
+ATOM C1D  CTL3  -0.312!           /  |     |       \
+ATOM H1D  HAL3   0.09 !          /  
+ATOM H1E  HAL3   0.09 !          |  
+ATOM H1F  HAL3   0.09 !             
+GROUP
+ATOM C2D  CTL3  -0.312!     H1D\ |                   | /H2D	      
+ATOM H2D  HAL3   0.09 !         C1D                 C2D    	 
+ATOM H2E  HAL3   0.09 !        /  \H1E         H2E/   \   	 
+ATOM H2F  HAL3   0.09 !      H1F                       H2F	
+GROUP
+ATOM C1R  CTL2  -0.237!          /  H1R\  |     |        |
+ATOM H1R  HAL2   0.09 !         |       C1R     |        |   
+ATOM H1S  HAL2   0.09 !             H1S/  |     |        |
+GROUP
+ATOM C2R  CTL2  -0.237!         |         |     |  /H2R  |  
+ATOM H2R  HAL2   0.09 !         |         |     C2R      |
+ATOM H2S  HAL2   0.09 !         |         \    /   \H2S  |     
+GROUP
+ATOM C3R  CTL2  -0.18 !         |           C3R          | 
+ATOM H3R  HAL2   0.09 !         |           |  \H3R      |
+ATOM H3S  HAL2   0.09 !         |          H3S           |
+BOND  O    N
+BOND  N    C1        N    C2 
+BOND  C1A  C1        C1D  C1
+BOND  C2A  C2        C2D  C2
+BOND  H1A  C1A       H1B  C1A       H1C  C1A  
+BOND  H1D  C1D       H1E  C1D       H1F  C1D  
+BOND  H2A  C2A       H2B  C2A       H2C  C2A  
+BOND  H2D  C2D       H2E  C2D       H2F  C2D 
+BOND  C1   C1R       C2   C2R       
+BOND  C3R  C1R       C3R  C2R
+BOND  H1R  C1R       H1S  C1R
+BOND  H2R  C2R       H2S  C2R 
+BOND  H3R  C3R       H3S  C3R
+IC       C2R   C2    N     C1     1.5430  110.16  -33.91  124.82   1.5031 
+IC       C2    N     C1    C1R    1.5028  124.82   33.93  110.16   1.5424 
+IC       N     C1    C1R   C3R    1.5031  110.16  -44.95  113.60   1.5295 
+IC       C1    C1R   C3R   C2R    1.5424  113.60   59.34  109.19   1.5296 
+IC       C1R   C3R   C2R   C2     1.5295  109.19  -59.32  113.58   1.5430 
+IC       C3R   C2R   C2    N      1.5296  113.58   44.93  110.16   1.5028 
+IC       O     N     C1    C1R    1.2853  115.55 -169.93  110.16   1.5424 
+IC       C2    N     C1    C1A    1.5028  124.82  152.99  107.04   1.5377 
+IC       C2    N     C1    C1D    1.5028  124.82  -88.91  109.09   1.5433 
+IC       C1    N     C2    C2A    1.5031  124.82 -152.98  107.06   1.5381 
+IC       C1    N     C2    C2D    1.5031  124.82   88.92  109.13   1.5433 
+
+END
+

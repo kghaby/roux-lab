@@ -1,0 +1,6 @@
+c-------------------------------------------------------------------
+c           Character Library Manipulation (command parser)
+c--------------------------------------------------------------------
+      logical check,trim
+      external check,trim
+

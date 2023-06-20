@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>The Roux Group</title>
+	<link href="../../css/bootstrap.min.css"   rel="stylesheet">
+	<link href="../../css/overwrite.css"       rel="stylesheet">
+	<link href="../../img/icon.png"     rel="icon">
+</head>
+<header>
+	<div class="header-left">
+		<a href="../../index.html">
+		<img src="../../img/Group_Logo.png" class="img-responsive" /></a>	
+	</div>
+	<div class="header-right">
+		<a href="http://www.uchicago.edu/">
+		<img src="../../img/Chicago_Logo.png" class="img-responsive" /></a>
+	</div>
+</header>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="well bs-sidebar affix" id="sidebar">
+			<ul class="nav nav-pills nav-stacked">
+				<li><a href="../../index.html">Home</a></li>
+				<li><a href="http://bmb.bsd.uchicago.edu/faculty/benoit-roux">About PI</a></li>
+				<li><a href="../../research.html">Research Projects</a></li>
+				<li><a href="../../method.html">Methods</a></li>
+				<li><a href="../../publication.html">Publications</a></li>
+				<li><a href="../../opening.html">Openings</a></li>
+				<li><a href="../../members.html">Group Members</a></li>
+				<li><a href="../../gallery.html">Gallery</a></li>
+				<li><a href="../../contact.html">Contacts</a></li>
+				<li><a href="../../ulinks.html">Useful Links</a></li>
+			</ul>
+		</div> <!--well bs-sidebar affix-->
+	</div> <!--col-sm-3-->
+</div> <!--row-->
+<!--#####################################Common#####################################-->
+<body>
+	<div class="main">
+		<h3><b>PBEQ</b></h3></b><br>
+			<p> Continuum electrostatics, in which thesolvent is represented 
+				as a featureless dielectric medium, is an increasingly popular 
+				approach to describe solvation of polar molecules. The approximation 
+				goes back to Born (1920), Kirkwood (1934), and Onsager 
+				(1936). Continuum electrostatic approximations are based upon 
+				the Poisson Boltzmann equation for macroscopic media. The 
+				approach is of particular interest for incorporating solvent 
+				effects implicitly in atomic models of biomolecules. Numerical 
+				solutions of the PB equation based on finite-difference can 
+				be obtained routinely in the case of molecules of arbitrary 
+				irregular shapes. <br><br>  
+				One of the most important aspect of PB calculations is the atomic 
+				radii used to define the location of the solvent-protein dielectric 
+				boundary. We have determine a set of atomic Born radii for 
+				all 20 amino acids using MD/FES simulations with explicit 
+				water molecules (Nina et al, 1997). <br><br>
+				In most practical applications, the PB equation is solved numerically 
+				for a fixed conformation of the biomolecular to obtain the 
+				electrostatic solvation free energy, shifts in pKa for specific 
+				residues, and protein-protein interactions in solution. The 
+				electrostatic solvation forces (i.e., the first derivatives 
+				of the solvation free energy with respect to the atomic coordinates 
+				of the solute), can also be calculated to implement energy 
+				minimization and dynamical algorithms. Lastly, the influence 
+				of the transmembrane potential can be incorporated into the 
+				theory easily using a modified form of the PB equation. 
+				<br><br><b>Download:</b><br>
+			</p> 
+			<ul><b>
+				<li><a href="pbeq/radius.str"> Set of atomic Born radii for the 20 standard amino acids </a></li>
+				<li><a href="pbeq/radii_prot_na.str"> Complete set of atomic Born radii for proteins and nucleic acids </a></li>
+				<li><a href="pbeq/solvation.tar.gz"> Calculate the electrostatic solvation free energy  </a></li>
+				<li><a href="pbeq/pka.tar.gz"> Calculate a pKa shift </a></li>
+				<li><a href="pbeq/binding.tar.gz">Calculate protein-protein binding </a></li>
+				<li><a href="pbeq/voltage.tar.gz">Calculate the transmembrane potential across the KcsA K+ channel </a></li>
+				<li><a href="pbeq/pbforce.tar.gz">Simulation with analytical electrostatic solvation forces </a></li>
+			</b></ul>
+    </div>
+</body>
