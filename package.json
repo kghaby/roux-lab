@@ -1,5 +1,5 @@
 {
-  "name": "roux-lab.github.io",
+  "name": "roux-lab",
   "private": true,
   "description": "Website for the Roux Lab",
   "version": "0.1.0",
@@ -31,9 +31,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kghaby/roux-lab.github.io"
+    "url": "https://github.com/kghaby/roux-lab"
   },
   "bugs": {
-    "url": "https://github.com/kghaby/roux-lab.github.io/issues"
+    "url": "https://github.com/kghaby/roux-lab/issues"
   }
 }
