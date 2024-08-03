@@ -40,4 +40,5 @@ module.exports = {
       },
     },
   ],
+  pathPrefix: "/roux-lab",
 }
