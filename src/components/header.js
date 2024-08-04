@@ -5,17 +5,22 @@ import "./header.css";
 const Header = ({ siteTitle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      setMenuOpen(!menuOpen);
+    }
+  };
+
   return (
     <header className="header">
       <div className="container">
         <div className="logo">
-          <Link to="/" style={{ fontSize: `var(--font-sm)`, textDecoration: `none` }}>
+          <Link to="/" className="site-title">
             {siteTitle}
           </Link>
         </div>
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
           <ul className="nav-list">
-            <li><Link to="/">Home</Link></li>
             <li><Link to="/members">Members</Link></li>
             <li><Link to="/research">Research</Link></li>
             <li><Link to="/methods">Methods</Link></li>
@@ -26,7 +31,15 @@ const Header = ({ siteTitle }) => {
             <li><Link to="/useful-links">Useful Links</Link></li>
             <li><Link to="/contacts">Contacts</Link></li>
           </ul>
-          <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          <div
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
             <span></span>
             <span></span>
             <span></span>
