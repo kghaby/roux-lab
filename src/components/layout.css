@@ -8,8 +8,8 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  --font-hg: 2rem;
-  --font-lg: 1.5rem;
+  --font-hg: 1.5rem;
+  --font-lg: 1.25rem;
   --font-md: 1rem;
   --font-sm: 0.75rem;
   --font-sx: 0.5rem;
@@ -25,6 +25,9 @@
   --size-content: 54rem;
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
+  --sidebar-width: 10rem; /* Default value if not calculated */
+  --header-height: 4.25rem; /* Default value if not calculated */
+  --max-navheader-width: 70rem;
 }
 html {
   -webkit-text-size-adjust: 100%;
@@ -47,8 +50,8 @@ a {
   color: var(--color-primary);
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.125rem;
 }
 a:active,
 a:hover {
@@ -56,7 +59,7 @@ a:hover {
   text-decoration: none;
 }
 abbr[title] {
-  border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+  border-bottom: 0.0625rem dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
   text-decoration: none;
 }
@@ -73,7 +76,7 @@ h1 {
   margin-bottom: 3rem;
   padding: 0;
   line-height: var(--line-height-dense);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.01rem;
 }
 h1 > b {
   color: var(--color-primary);
@@ -87,7 +90,7 @@ kbd,
 pre,
 samp {
   font-family: var(--font-mono);
-  font-size: 1em;
+  font-size: 1rem;
   line-height: inherit;
 }
 hr {
@@ -97,10 +100,10 @@ hr {
   margin-right: 0;
   margin-top: 0;
   padding: 0;
-  margin-bottom: calc(var(--space-4) - 1px);
+  margin-bottom: calc(var(--space-4) - 0.0625rem);
   background: hsla(0, 0%, 0%, 0.2);
   border: none;
-  height: 1px;
+  height: 0.0625rem;
 }
 * {
   box-sizing: inherit;
@@ -150,6 +153,7 @@ th {
   font-weight: bold;
 }
 li {
+  margin-top:  calc(var(--space-4) / 2);
   margin-bottom: calc(var(--space-4) / 2);
 }
 ol li,
@@ -187,11 +191,11 @@ samp {
   font-size: 0.875rem;
 }
 abbr {
-  border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+  border-bottom: 0.0625rem dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
 acronym {
-  border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+  border-bottom: 0.0625rem dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
 tt,
@@ -200,8 +204,8 @@ code {
   border-radius: var(--border-radius);
   color: var(--color-code);
   font-family: var(--font-mono);
-  padding-bottom: 0.25em;
-  padding-top: 0.25em;
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
   word-break: normal;
 }
 pre code {
@@ -212,7 +216,7 @@ code:after,
 tt:before,
 tt:after {
   content: "\00a0";
-  letter-spacing: -0.2em;
+  letter-spacing: -0.2rem;
 }
 pre code:before,
 pre code:after,
@@ -222,16 +226,16 @@ pre tt:after {
 }
 
 .main-content {
-  margin-top: 70px; /* Ensure content is not hidden behind header */
-  padding: 20px;
-  max-width: 1200px;
+  margin-top: 4rem; /* Ensure content is not hidden behind header */
+  padding: 1.25rem;
+  max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
   transition: margin-right 0.3s ease;
 }
 
 body.menu-open .main-content {
-  margin-right: 300px; /* Adjust width as needed */
+  margin-right: var(--sidebar-width); /* Adjust width as needed */
 }
 
 .footer {
@@ -246,12 +250,11 @@ body.menu-open .main-content {
 }
 
 body.menu-open .footer {
-  margin-right: 300px; /* Adjust width as needed */
+  margin-right: var(--sidebar-width); /* Adjust width as needed */
 }
-
-
 
 .footer p {
   margin: 0;
   color: #555;
 }
+

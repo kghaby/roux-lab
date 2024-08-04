@@ -1,9 +1,9 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Link } from "gatsby";
 import "./nav.css";
 
-const Nav = ({ menuOpen }) => (
-  <nav className={`nav ${menuOpen ? 'open' : ''}`}>
+const Nav = forwardRef(({ className }, ref) => (
+  <nav className={className} ref={ref}>
     <ul className="nav-list">
       <li><Link to="/">Home</Link></li>
       <li><Link to="/members">Members</Link></li>
@@ -17,6 +17,7 @@ const Nav = ({ menuOpen }) => (
       <li><Link to="/contacts">Contacts</Link></li>
     </ul>
   </nav>
-);
+));
 
 export default Nav;
+

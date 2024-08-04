@@ -22,14 +22,6 @@ const Layout = ({ children }) => {
     }
   `);
 
-  useEffect(() => {
-    const body = document.querySelector('body');
-    const menuToggle = document.querySelector('.menu-toggle');
-    menuToggle.addEventListener('click', () => {
-      body.classList.toggle('menu-open');
-    });
-  }, []);
-
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
