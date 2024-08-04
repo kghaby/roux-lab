@@ -21,6 +21,9 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+        },
       },
     },
     {

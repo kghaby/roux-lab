@@ -5,11 +5,11 @@
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
 
-import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { useEffect } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import Header from "./header"
-import "./layout.css"
+import Header from "./header";
+import "./layout.css";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,7 +20,15 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    const menuToggle = document.querySelector('.menu-toggle');
+    menuToggle.addEventListener('click', () => {
+      body.classList.toggle('menu-open');
+    });
+  }, []);
 
   return (
     <>
@@ -43,7 +51,8 @@ const Layout = ({ children }) => {
         </footer>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
+
