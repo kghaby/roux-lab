@@ -8,6 +8,7 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
+  --font-roman: Times, "Times New Roman", serif;
   --font-hg: 1.5rem;
   --font-lg: 1.25rem;
   --font-md: 1rem;
@@ -26,7 +27,7 @@
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
   --sidebar-width: 10.5rem; /* max width of the sidebar + 3 * rootFontSize */
-  --header-height: 4.850625rem; 
+  --header-height: 4.850625rem;
   --max-navheader-width: 76.875rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
 }
 
@@ -38,6 +39,10 @@ html {
   overflow: auto;
 }
 
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -46,6 +51,34 @@ body {
   font-weight: normal;
   margin: 0;
   word-wrap: break-word;
+}
+
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 3rem;
+  max-width: var(--size-content);
+  width: 100%;
+  margin: auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  font-size: var(--font-sm);
+}
+
+.footer p {
+  margin: 0;
+  color: #555;
 }
 
 a {
@@ -116,18 +149,6 @@ hr {
   background: hsla(0, 0%, 0%, 0.2);
   border: none;
   height: 0.0625rem;
-}
-
-* {
-  box-sizing: inherit;
-}
-
-*:before {
-  box-sizing: inherit;
-}
-
-*:after {
-  box-sizing: inherit;
 }
 
 hgroup,
@@ -259,34 +280,4 @@ pre code:after,
 pre tt:before,
 pre tt:after {
   content: none;
-}
-
-.main-content {
-  margin-top: auto;
-  padding: 3rem;
-  max-width: var(--size-content);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* body.menu-open .main-content {
-  margin-right: var(--sidebar-width); 
-} */
-
-.footer {
-  display: flex;
-  justify-content: center;
-  padding: 0.75rem;
-  background-color: #f8f8f8;
-  border-top: 1px solid #e7e7e7;
-  font-size: var(--font-sm);
-}
-
-/* body.menu-open .footer {
-  margin-right: var(--sidebar-width);
-} */
-
-.footer p {
-  margin: 0;
-  color: #555;
 }

@@ -23,13 +23,13 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <>
+    <div className="site-wrapper">
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main className="main-content">{children}</main>
       <footer className="footer">
         <p>&copy; {new Date().getFullYear()} Roux Lab | University of Chicago</p>
       </footer>
-    </>
+    </div>
   );
 };
 
