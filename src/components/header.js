@@ -29,38 +29,6 @@ const Header = ({ siteTitle }) => {
   }, [menuOpen, hasSmallWidth]);
 
   useEffect(() => {
-    const calculateWidths = () => {
-      const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-
-      // Set CSS variables for sidebar width and header height
-      if (navSideRef.current) {
-        const navItems = navSideRef.current.querySelectorAll('.nav-list li a');
-        let maxWidth = 0;
-        navItems.forEach((item) => {
-          const width = item.offsetWidth;
-          if (width > maxWidth) {
-            maxWidth = width;
-          }
-        });
-        
-        const maxWidthInRem = maxWidth / rootFontSize;
-        const headerHeightInRem = headerRef.current.offsetHeight / rootFontSize;
-        console.log(maxWidthInRem, headerHeightInRem);
-        document.documentElement.style.setProperty('--sidebar-width', `${maxWidthInRem + 3}rem`);
-        document.documentElement.style.setProperty('--header-height', `${headerHeightInRem}rem`);
-      }
-
-      // Set CSS variables for max nav-header width
-      if (navHeaderRef.current && headerRef.current) {
-        const siteTitle = headerRef.current.querySelector('.site-title');
-        let maxWidth = navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize;
-        const maxWidthInRem = maxWidth / rootFontSize;
-        document.documentElement.style.setProperty('--max-navheader-width', `${maxWidthInRem}rem`);
-      }
-    };
-
-    calculateWidths();
-
     const handleResize = () => {
       const maxNavHeaderWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-navheader-width'));
       setSmallWidth(window.innerWidth <= (maxNavHeaderWidth * parseFloat(getComputedStyle(document.documentElement).fontSize)));
