@@ -18,7 +18,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 75rem;
+  max-width: 100rem;
   margin: 0 auto;
 }
 
@@ -27,6 +27,7 @@
 }
 
 .site-title {
+  margin-bottom: auto;
   font-size: 2.4rem;
   color: #ffffff;
   text-decoration: none;
@@ -38,6 +39,7 @@
   transition: all 0.1s ease;
   text-transform: uppercase;
   display: inline-block;
+  padding-right: 0.5rem;
 }
 
 .site-title:hover {
@@ -52,7 +54,7 @@
   cursor: pointer;
   font-size: var(--font-hg);
   user-select: none;
-  font-family: monospace;
+  font-family: var(--font-mono);
   transition: all 0.1s ease;
 }
 
