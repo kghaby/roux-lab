@@ -3,64 +3,62 @@
   }
   
 .nav-header .nav-list {
-display: flex;
-list-style: none;
-margin: 0;
-padding: 0;
-white-space: nowrap;
-overflow: auto;
-text-overflow: ellipsis;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: ellipsis;
 }
 
 .nav-header .nav-list li {
-margin-left: 0.5rem;
-margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .nav-header .nav-list li a {
-text-decoration: none;
-color: #ffffff;
-font-size: var(--font-lg, 1.25rem);
+  text-decoration: none;
+  color: #ffffff;
+  font-size: var(--font-lg, 1.25rem);
 }
 
 .nav-side {
-position: fixed;
-margin-top: var(--header-height,4.25rem);
-top: 0;
-right: calc(var(--sidebar-width, 10rem) * -1); /* Hidden by default */
-height: 100%;
-width: var(--sidebar-width, 10rem);
-background-color: rgb(92, 0, 0);
-backdrop-filter: blur(0.625rem);
-flex-direction: column;
-justify-content: flex-start;
-padding-top: 0.5rem;
-padding-right: 1.25rem;
-padding-bottom: 1.25rem;
-padding-left: 1.25rem;
-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-overflow-y: auto;
-transition: right 0.3s ease;
-z-index: 999;
+  position: fixed;
+  top: var(--header-height, 4.25rem);
+  right: calc(var(--sidebar-width, 10rem) * -1); /* Hidden by default */
+  height: 100%;
+  width: var(--sidebar-width, 10rem);
+  background-color: rgb(92, 0, 0);
+  backdrop-filter: blur(0.625rem);
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+  padding-right: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: right 0.3s ease;
+  z-index: 999;
 }
 
 .nav-side.open {
-right: 0;
+  right: 0;
 }
 
 .nav-side .nav-list {
-list-style: none;
-margin: 0;
-padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-side .nav-list li {
-margin: 0.625rem 0;
+  margin: 0.625rem 0;
 }
 
 .nav-side .nav-list li a {
-text-decoration: none;
-color: #ffffff;
-font-size: var(--font-lg, 1.25rem);
+  text-decoration: none;
+  color: #ffffff;
+  font-size: var(--font-lg, 1.25rem);
 }
-  

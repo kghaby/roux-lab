@@ -41,6 +41,7 @@ const Header = ({ siteTitle }) => {
         
         const maxWidthInRem = maxWidth / rootFontSize;
         const headerHeightInRem = headerRef.current.offsetHeight / rootFontSize;
+        // console.log(headerHeightInRem);
     
         document.documentElement.style.setProperty('--sidebar-width', `${maxWidthInRem + 3}rem`);
         document.documentElement.style.setProperty('--header-height', `${headerHeightInRem}rem`);

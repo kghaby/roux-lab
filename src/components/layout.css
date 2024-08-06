@@ -29,6 +29,7 @@
   --header-height: 4.25rem; /* Default value if not calculated */
   --max-navheader-width: 70rem;
 }
+
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
@@ -36,6 +37,7 @@ html {
   line-height: var(--line-height-normal);
   overflow: auto;
 }
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -45,6 +47,7 @@ body {
   margin: 0;
   word-wrap: break-word;
 }
+
 a {
   background-color: transparent;
   color: var(--color-primary);
@@ -53,24 +56,29 @@ a {
   text-decoration-thickness: 0.1rem;
   text-underline-offset: 0.125rem;
 }
+
 a:active,
 a:hover {
   outline-width: 0;
   text-decoration: none;
 }
+
 abbr[title] {
   border-bottom: 0.0625rem dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
   text-decoration: none;
 }
+
 b,
 strong {
   font-weight: inherit;
   font-weight: bolder;
 }
+
 dfn {
   font-style: italic;
 }
+
 h1 {
   margin: 0;
   margin-bottom: 3rem;
@@ -78,13 +86,16 @@ h1 {
   line-height: var(--line-height-dense);
   letter-spacing: -0.01rem;
 }
+
 h1 > b {
   color: var(--color-primary);
 }
+
 img {
   border-style: none;
   max-width: 100%;
 }
+
 code,
 kbd,
 pre,
@@ -93,6 +104,7 @@ samp {
   font-size: 1rem;
   line-height: inherit;
 }
+
 hr {
   box-sizing: content-box;
   overflow: visible;
@@ -105,15 +117,19 @@ hr {
   border: none;
   height: 0.0625rem;
 }
+
 * {
   box-sizing: inherit;
 }
+
 *:before {
   box-sizing: inherit;
 }
+
 *:after {
   box-sizing: inherit;
 }
+
 hgroup,
 img,
 figure,
@@ -127,12 +143,14 @@ p {
   padding: 0;
   margin-bottom: var(--space-4);
 }
+
 ul,
 ol {
   margin-left: var(--space-4);
   list-style-position: outside;
   list-style-image: none;
 }
+
 pre {
   margin-left: 0;
   margin-right: 0;
@@ -146,58 +164,73 @@ pre {
   word-wrap: normal;
   padding: var(--space-4);
 }
+
 b,
 strong,
 dt,
 th {
   font-weight: bold;
 }
+
 li {
-  margin-top:  calc(var(--space-4) / 2);
+  margin-top: calc(var(--space-4) / 2);
   margin-bottom: calc(var(--space-4) / 2);
 }
+
 ol li,
 ul li {
   padding-left: 0;
 }
+
 li > ol,
 li > ul {
   margin-bottom: calc(var(--space-4) / 2);
   margin-left: var(--space-4);
   margin-top: calc(var(--space-4) / 2);
 }
+
 blockquote *:last-child {
   margin-bottom: 0;
 }
+
 li *:last-child {
   margin-bottom: 0;
 }
+
 p *:last-child {
   margin-bottom: 0;
 }
+
 li > p {
   margin-bottom: calc(var(--space-4) / 2);
 }
+
 p {
   max-width: 680px;
 }
+
 code {
   font-size: 0.875rem;
 }
+
 kbd {
   font-size: 0.875rem;
 }
+
 samp {
   font-size: 0.875rem;
 }
+
 abbr {
   border-bottom: 0.0625rem dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
+
 acronym {
   border-bottom: 0.0625rem dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
+
 tt,
 code {
   background-color: var(--color-code-bg);
@@ -208,9 +241,11 @@ code {
   padding-top: 0.25rem;
   word-break: normal;
 }
+
 pre code {
   background: none;
 }
+
 code:before,
 code:after,
 tt:before,
@@ -218,6 +253,7 @@ tt:after {
   content: "\00a0";
   letter-spacing: -0.2rem;
 }
+
 pre code:before,
 pre code:after,
 pre tt:before,
@@ -238,18 +274,14 @@ body.menu-open .main-content {
   margin-right: var(--sidebar-width); /* Adjust width as needed */
 }
 
-/* TODO: footer needs to be at the bottom of page even when scrolling, and it should move the same as the sidebar width, insetad of a little amount. also fix transition */
 .footer {
-  display: flex; 
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
   padding: 10px 0;
   background-color: #f8f8f8;
   border-top: 1px solid #e7e7e7;
-  position: fixed;
-  left: 0;
-  width: 100%;
-  bottom: 0;
-  /* transition: margin-right 0.3s ease; */
+  margin-top: auto;
+  transition: margin-right 0.3s ease;
 }
 
 body.menu-open .footer {
@@ -260,4 +292,3 @@ body.menu-open .footer {
   margin: 0;
   color: #555;
 }
-

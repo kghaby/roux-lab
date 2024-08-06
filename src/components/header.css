@@ -38,9 +38,10 @@
 
 .menu-toggle {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   color: #ffffff;
   cursor: pointer;
   font-size: var(--font-hg);
+  user-select: none; /* Prevent text selection */
 }
 
