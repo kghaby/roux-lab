@@ -25,8 +25,8 @@
   --size-content: 54rem;
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
-  --sidebar-width: 10rem; /* max width of the sidebar + 3 * rootFontSize */
-  --header-height: 5.75rem; 
+  --sidebar-width: 10.5rem; /* max width of the sidebar + 3 * rootFontSize */
+  --header-height: 4.850625rem; 
   --max-navheader-width: 76.875rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
 }
 
@@ -262,7 +262,7 @@ pre tt:after {
 }
 
 .main-content {
-  margin-top: var(--header-height);
+  margin-top: auto;
   padding: 3rem;
   max-width: var(--size-content);
   margin-left: auto;

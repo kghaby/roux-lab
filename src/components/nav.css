@@ -10,6 +10,7 @@
   white-space: nowrap;
   overflow: auto;
   text-overflow: ellipsis;
+  
 }
 
 .nav-header .nav-list li {
@@ -20,14 +21,16 @@
 .nav-header .nav-list li a {
   text-decoration: none;
   color: #ffffff;
-  font-size: var(--font-lg, 1.25rem);
-  transition: color 0.3s ease, border-bottom 0.3s ease;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transition: all 0.05s ease;
   border-bottom: 2px solid transparent;
+  display: inline-block;
 }
 
 .nav-header .nav-list li a:hover {
   color: #ffdddd;
-  border-bottom: 2px solid #ffffff;
+  transform: translateY(-0.1rem);
 }
 
 .nav-side {
@@ -62,17 +65,20 @@
 
 .nav-side .nav-list li {
   margin: 0.625rem 0;
+  font-size: 1.1rem;
 }
 
 .nav-side .nav-list li a {
   text-decoration: none;
   color: #ffffff;
-  font-size: var(--font-lg, 1.25rem);
-  transition: color 0.3s ease;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  display: inline-block;
 }
 
 .nav-side .nav-list li a:hover {
   color: #ffdddd;
+  transform: translateX(-0.2rem);
 }
 
 .nav-side a[tabindex="-1"] {
