@@ -29,8 +29,8 @@
   right: calc(var(--sidebar-width, 10rem) * -1); /* Hidden by default */
   height: 100%;
   width: var(--sidebar-width, 10rem);
-  background-color: rgb(92, 0, 0);
-  backdrop-filter: blur(0.625rem);
+  background-color: rgba(82, 4, 4, 0.572);
+  backdrop-filter: blur(0.2rem);
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 0.5rem;
@@ -61,4 +61,8 @@
   text-decoration: none;
   color: #ffffff;
   font-size: var(--font-lg, 1.25rem);
+}
+
+.nav-side a[tabindex="-1"] {
+  pointer-events: none;
 }

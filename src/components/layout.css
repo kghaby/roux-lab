@@ -263,30 +263,28 @@ pre tt:after {
 
 .main-content {
   margin-top: var(--header-height);
-  padding: 1.25rem;
-  max-width: 75rem;
+  padding: 3rem;
+  max-width: var(--size-content);
   margin-left: auto;
   margin-right: auto;
-  transition: margin-right 0.3s ease;
 }
 
-body.menu-open .main-content {
+/* body.menu-open .main-content {
   margin-right: var(--sidebar-width); 
-}
+} */
 
 .footer {
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  padding: 0.75rem;
   background-color: #f8f8f8;
   border-top: 1px solid #e7e7e7;
-  margin-top: auto;
-  transition: margin-right 0.3s ease;
+  font-size: var(--font-sm);
 }
 
-body.menu-open .footer {
+/* body.menu-open .footer {
   margin-right: var(--sidebar-width);
-}
+} */
 
 .footer p {
   margin: 0;

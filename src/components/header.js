@@ -19,8 +19,12 @@ const Header = ({ siteTitle }) => {
   useEffect(() => {
     if (menuOpen && hasSmallWidth) {
       document.body.classList.add("menu-open");
+      navSideRef.current.querySelectorAll('a').forEach((item) => item.setAttribute('tabindex', '0'));
     } else {
       document.body.classList.remove("menu-open");
+      if (navSideRef.current) {
+        navSideRef.current.querySelectorAll('a').forEach((item) => item.setAttribute('tabindex', '-1'));
+      }
     }
   }, [menuOpen, hasSmallWidth]);
 
@@ -41,8 +45,7 @@ const Header = ({ siteTitle }) => {
         
         const maxWidthInRem = maxWidth / rootFontSize;
         const headerHeightInRem = headerRef.current.offsetHeight / rootFontSize;
-        // console.log(headerHeightInRem);
-    
+        console.log(maxWidthInRem, headerHeightInRem);
         document.documentElement.style.setProperty('--sidebar-width', `${maxWidthInRem + 3}rem`);
         document.documentElement.style.setProperty('--header-height', `${headerHeightInRem}rem`);
       }
@@ -101,3 +104,4 @@ const Header = ({ siteTitle }) => {
 };
 
 export default Header;
+

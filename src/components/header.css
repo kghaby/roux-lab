@@ -22,7 +22,7 @@
 }
 
 .logo {
-  margin-right: auto; /* Ensures logo is aligned to the left */
+  margin-right: auto; 
 }
 
 .site-title {
@@ -42,6 +42,7 @@
   color: #ffffff;
   cursor: pointer;
   font-size: var(--font-hg);
-  user-select: none; /* Prevent text selection */
+  user-select: none;
+  font-family: monospace;
 }
 
