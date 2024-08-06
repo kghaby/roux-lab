@@ -35,13 +35,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: transform 0.1s ease;
+  transition: all 0.1s ease;
   text-transform: uppercase;
   display: inline-block;
 }
 
 .site-title:hover {
   transform: scale(1.02);
+  color: #ffdddd;
 }
 
 .menu-toggle {

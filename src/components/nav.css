@@ -30,7 +30,7 @@
 
 .nav-header .nav-list li a:hover {
   color: #ffdddd;
-  transform: translateY(-0.1rem);
+  transform: scale(1.02);
 }
 
 .nav-side {
@@ -39,7 +39,7 @@
   right: calc(var(--sidebar-width, 10rem) * -1); /* Hidden by default */
   height: 100%;
   width: var(--sidebar-width, 10rem);
-  background-color: rgba(82, 4, 4, 0.572);
+  background-color: rgba(82, 4, 4, 0.727);
   backdrop-filter: blur(0.2rem);
   flex-direction: column;
   justify-content: flex-start;
