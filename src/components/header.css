@@ -1,5 +1,5 @@
 .header {
-  background-color: rgb(118, 0, 0);
+  background-color: rgba(118, 0, 0, 0.9);
   backdrop-filter: blur(0.625rem);
   position: fixed;
   width: 100%;
@@ -10,6 +10,7 @@
   padding: 0.625rem 1.25rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .container {
@@ -34,6 +35,12 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: transform 0.3s ease;
+}
+
+.site-title:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.8);
 }
 
 .menu-toggle {
@@ -44,5 +51,10 @@
   font-size: var(--font-hg);
   user-select: none;
   font-family: monospace;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: rotate(90deg);
 }
 

@@ -1,7 +1,7 @@
 .nav-header {
-    display: flex;
-  }
-  
+  display: flex;
+}
+
 .nav-header .nav-list {
   display: flex;
   list-style: none;
@@ -21,6 +21,13 @@
   text-decoration: none;
   color: #ffffff;
   font-size: var(--font-lg, 1.25rem);
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-header .nav-list li a:hover {
+  color: #ffdddd;
+  border-bottom: 2px solid #ffffff;
 }
 
 .nav-side {
@@ -61,6 +68,11 @@
   text-decoration: none;
   color: #ffffff;
   font-size: var(--font-lg, 1.25rem);
+  transition: color 0.3s ease;
+}
+
+.nav-side .nav-list li a:hover {
+  color: #ffdddd;
 }
 
 .nav-side a[tabindex="-1"] {
