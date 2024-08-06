@@ -262,7 +262,7 @@ pre tt:after {
 }
 
 .main-content {
-  margin-top: 4rem; /* Ensure content is not hidden behind header */
+  margin-top: var(--header-height);
   padding: 1.25rem;
   max-width: 75rem;
   margin-left: auto;
@@ -271,7 +271,7 @@ pre tt:after {
 }
 
 body.menu-open .main-content {
-  margin-right: var(--sidebar-width); /* Adjust width as needed */
+  margin-right: var(--sidebar-width); 
 }
 
 .footer {
@@ -285,7 +285,7 @@ body.menu-open .main-content {
 }
 
 body.menu-open .footer {
-  margin-right: var(--sidebar-width); /* Adjust width as needed */
+  margin-right: var(--sidebar-width);
 }
 
 .footer p {
