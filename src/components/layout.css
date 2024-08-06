@@ -238,15 +238,18 @@ body.menu-open .main-content {
   margin-right: var(--sidebar-width); /* Adjust width as needed */
 }
 
+/* TODO: footer needs to be at the bottom of page even when scrolling, and it should move the same as the sidebar width, insetad of a little amount. also fix transition */
 .footer {
-  text-align: center;
+  display: flex; 
+  justify-content: center; 
   padding: 10px 0;
   background-color: #f8f8f8;
   border-top: 1px solid #e7e7e7;
   position: fixed;
+  left: 0;
   width: 100%;
   bottom: 0;
-  transition: margin-right 0.3s ease;
+  /* transition: margin-right 0.3s ease; */
 }
 
 body.menu-open .footer {
