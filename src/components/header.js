@@ -29,23 +29,9 @@ const Header = ({ siteTitle }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const maxNavHeaderWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-navheader-width'));
-      setSmallWidth(window.innerWidth <= (maxNavHeaderWidth * parseFloat(getComputedStyle(document.documentElement).fontSize)));
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Set initial state
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const isHomePage = location.pathname === "/";
-
   return (
     <>
-      <header className={`header ${isHomePage ? "animate-header" : ""}`} ref={headerRef}>
+      <header className="header" ref={headerRef}>
         <div className="container">
           <div className="logo">
             <Link to="/" className={`site-title`}>

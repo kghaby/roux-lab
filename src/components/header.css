@@ -14,8 +14,8 @@
 }
 
 .header.animate-header {
-  transform: translateY(calc(var(--header-height) * -2)) scale(1.4);
-  animation: descend 2s ease-out 0s forwards;
+  transform: translateY(calc(var(--header-height) * -2));
+  animation: descend 1s ease-out 0s forwards;
 }
 
 .container {
@@ -80,13 +80,13 @@
 @keyframes descend {
   from {
     /* transform: scale(1.1) */
-    transform: translateY(calc(var(--header-height) * -2)) scale(1.4);
+    transform: translateY(calc(var(--header-height) * -2));
     box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.2);
     
   }
   to {
     /* transform: scale(1) */
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     box-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.3);
     
   }
