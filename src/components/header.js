@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "gatsby";
-import { useLocation } from "@reach/router";
+// import { useLocation } from "@reach/router";
 import Nav from "./nav.js";
 import "./header.css";
 
@@ -8,7 +8,7 @@ const Header = ({ siteTitle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasSmallWidth, setSmallWidth] = useState(false);
   const headerRef = useRef(null);
-  const location = useLocation();
+  // const location = useLocation();
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {
