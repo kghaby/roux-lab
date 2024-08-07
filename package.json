@@ -6,6 +6,11 @@
   "license": "MIT",
   "author": "Kyle Ghaby <kyleghaby@gmail.com>",
   "dependencies": {
+    "@fontsource-variable/crimson-pro": "^5.0.19",
+    "@fontsource-variable/fira-code": "^5.0.18",
+    "@fontsource/crimson-pro": "^5.0.18",
+    "@fontsource/ibm-plex-mono": "^5.0.13",
+    "@fontsource/ibm-plex-sans": "^5.0.20",
     "gatsby": "^5.13.5",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",

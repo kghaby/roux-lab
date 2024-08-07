@@ -1,4 +1,33 @@
-@import url(../fonts/cm-web-fonts-master/fonts.css);
+/* crimson-pro-latin-wght-normal */
+@font-face {
+  font-family: 'Crimson Pro Variable';
+  font-style: normal;
+  font-display: auto;
+  font-weight: 200 900;
+  src: url(@fontsource-variable/crimson-pro/files/crimson-pro-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* crimson-pro-latin-wght-italic */
+@font-face {
+  font-family: 'Crimson Pro Variable';
+  font-style: italic;
+  font-display: auto;
+  font-weight: 200 900;
+  src: url(@fontsource-variable/crimson-pro/files/crimson-pro-latin-wght-italic.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+
+/* fira-code-latin-wght-normal */
+@font-face {
+  font-family: 'Fira Code Variable';
+  font-style: normal;
+  font-display: auto;
+  font-weight: 300 700;
+  src: url(@fontsource-variable/fira-code/files/fira-code-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
 :root {
   --border-radius: 0.25rem;
@@ -6,13 +35,14 @@
   --color-primary: #760000;
   --color-code-bg: #e0e0e0;
   --color-code: #525252;
-  --font-sans: "Computer Modern Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  --font-mono: "Computer Modern Typewriter", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+  --font-mono: "Fira Code Variable", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  --font-serif: "Computer Modern Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-serif: "Crimson Pro Variable", serif;
   --font-hg: 1.5rem;
   --font-lg: 1.25rem;
+  --font-mdlg: 1.1rem;
   --font-md: 1rem;
   --font-sm: 0.8rem;
   --font-sx: 0.6rem;
@@ -29,8 +59,8 @@
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
   --sidebar-width: 10.5rem; /* max width of the sidebar + 3 * rootFontSize */
-  --header-height: 4.850625rem;
-  --max-navheader-width: 79.375rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
+  --header-height: 4.4375rem;
+  --max-navheader-width: 76.875rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
 }
 
 html {
@@ -50,7 +80,7 @@ body {
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
   font-family: var(--font-serif);
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
   word-wrap: break-word;
 }

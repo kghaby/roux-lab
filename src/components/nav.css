@@ -20,11 +20,11 @@
 .nav-header .nav-list li a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.1rem;
-  text-transform: uppercase;
+  font-size: 1.5rem;
   transition: all 0.05s ease;
   border-bottom: 2px solid transparent;
   display: inline-block;
+  font-variant: small-caps;
 }
 
 .nav-header .nav-list li a:hover {
@@ -64,15 +64,15 @@
 
 .nav-side .nav-list li {
   margin: 0.625rem 0;
-  font-size: 1.1rem;
 }
 
 .nav-side .nav-list li a {
   text-decoration: none;
   color: #ffffff;
-  text-transform: uppercase;
   transition: all 0.1s ease;
   display: inline-block;
+  font-variant: small-caps;
+  font-size: 1.5rem;
 }
 
 .nav-side .nav-list li a:hover {

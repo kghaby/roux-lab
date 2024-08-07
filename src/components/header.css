@@ -7,7 +7,7 @@
   left: 0;
   display: flex;
   align-items: center;
-  padding: 0.625rem 1.25rem;
+  padding: 0;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   z-index: 1000;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
@@ -20,6 +20,8 @@
   width: 100%;
   max-width: 100rem;
   margin: 0 auto;
+  padding-right:0.5rem;
+  padding-left: 1rem;
 }
 
 .logo {
@@ -27,25 +29,27 @@
 }
 
 .site-title {
-  margin-bottom: auto;
-  font-size: 2.4rem;
+  /* margin-bottom: auto; */
+  font-size: 4rem;
   color: #ffffff;
   text-decoration: none;
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.1s ease;
-  text-transform: uppercase;
+  font-variant: small-caps;
   display: inline-block;
   padding-right: 0.5rem;
+  margin-bottom:-1rem;
+  margin-top:-1rem;
 }
 
 .site-title:hover {
   transform: scale(1.02);
-  color: #ffdddd;
 }
+
 
 .menu-toggle {
   display: inline-block;
