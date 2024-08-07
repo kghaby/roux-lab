@@ -5,11 +5,10 @@
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-
 import Header from "./header";
-import "./layout.css";
+import "./layout.css"; // Import the global styles
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -21,6 +20,25 @@ const Layout = ({ children }) => {
       }
     }
   `);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    });
+  
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach(element => observer.observe(element));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <div className="site-wrapper">

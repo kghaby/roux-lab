@@ -55,12 +55,12 @@
   --space-4: 1.5rem;
   --space-5: 2rem;
   --space-6: 4rem;
-  --size-content: 54rem;
+  --size-content: 74rem;
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
   --sidebar-width: 10.5rem; /* max width of the sidebar + 3 * rootFontSize */
-  --header-height: 4.4375rem;
-  --max-navheader-width: 59rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
+  --header-height: 3.9rem;
+  --max-navheader-width: 55rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
 }
 
 html {
@@ -73,6 +73,47 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+.hidden {
+  opacity: 0.9;
+  transition: all 1s;
+  transform: scale(0.9)
+}
+
+.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.centeredContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fadeIn1 {
+  animation: fadeIn 1s ease-in-out 0s forwards;
+}
+.fadeIn2 {
+  animation: fadeIn 0.75s ease-in-out 0.25s forwards;
+}
+.fadeIn3 {
+  animation: fadeIn 0.5s linear 0.5s forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 body {
@@ -93,9 +134,9 @@ body {
 
 .main-content {
   /* flex: 1; */
-  padding: 3rem;
+  padding: 2rem;
   max-width: var(--size-content);
-  width: 100%;
+  /* width: 100%; */
   margin: auto;
 }
 
@@ -259,7 +300,7 @@ li > p {
 }
 
 p {
-  max-width: 680px;
+  max-width: var(--size-content);
 }
 
 code {
@@ -313,3 +354,4 @@ pre tt:before,
 pre tt:after {
   content: none;
 }
+

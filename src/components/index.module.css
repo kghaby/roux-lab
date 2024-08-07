@@ -2,7 +2,7 @@
   display: grid;
   margin: 0;
   /* https://css-tricks.com/responsive-layouts-fewer-media-queries/ */
-  --w: 280px;
+  --w: 17.5rem;
   --n: 2;
   gap: var(--size-gap);
   grid-template-columns: repeat(
@@ -44,8 +44,13 @@
   margin-top: var(--space-1);
 }
 
-.textCenter {
-  text-align: center;
+
+
+.firstScreen {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .introContainer {
@@ -53,14 +58,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: auto;
   padding: 2rem;
   text-align: center;
+  max-width: calc(var(--size-content) * 0.9);
 }
 
 .intro {
   font-size: 1.5rem;
   line-height: 1.6;
+  opacity: 0;
 }
 
 .link {
@@ -72,23 +78,39 @@
   text-decoration: underline;
 }
 
+.mainImageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 0;
+  opacity: 0;
+  border: 0.3rem solid var(--color-primary);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
+  max-width: calc(var(--size-content) * 0.7);
+}
+
 .imageScrollContainer {
   display: flex;
-  overflow-x: auto;
-  padding: 1rem 0;
-  scroll-behavior: smooth; 
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  max-width: calc(var(--size-content) * 0.6);
+  padding: 1rem;
+  gap: 5rem;
 }
 
 .imageWrapper {
   position: relative;
-  flex: 0 0 auto;
-  margin: 0 0.5rem;
+  margin: 1rem 0;
+  scroll-snap-align: center;
+  border: 0.3rem solid var(--color-primary);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.2);
 }
 
 .groupPhoto {
-  height: 100%;
+  height: fit-content;
   width: auto;
-
 }
 
 .imageOverlay {
@@ -104,8 +126,10 @@
 
 .imageText {
   color: white;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-left: 1.5rem;
   margin-bottom: 0;
 }
+
+
