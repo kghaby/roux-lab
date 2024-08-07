@@ -92,7 +92,7 @@ body {
 }
 
 .main-content {
-  flex: 1;
+  /* flex: 1; */
   padding: 3rem;
   max-width: var(--size-content);
   width: 100%;

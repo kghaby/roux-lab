@@ -48,11 +48,19 @@
   text-align: center;
 }
 
+.introContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
 .intro {
-  max-width: none;
-  line-height: var(--line-height-loose);
-  margin: 1rem 0;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
 }
 
 .link {
@@ -64,8 +72,40 @@
   text-decoration: underline;
 }
 
+.imageScrollContainer {
+  display: flex;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-behavior: smooth; 
+}
+
+.imageWrapper {
+  position: relative;
+  flex: 0 0 auto;
+  margin: 0 0.5rem;
+}
+
 .groupPhoto {
-  width: 100%;
-  max-width: 600px;
-  margin: 2rem auto;
+  height: 100%;
+  width: auto;
+
+}
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
+  display: flex;
+  align-items: flex-end;
+}
+
+.imageText {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-left: 1.5rem;
+  margin-bottom: 0;
 }

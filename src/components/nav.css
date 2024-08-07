@@ -15,8 +15,8 @@
 .nav-header .nav-list li {
   margin-left: calc(0.2rem + 0.4vw);
   margin-right: calc(0.2rem + 0.4vw);
-  margin-bottom:-0.5rem;
-  margin-top:-0.5rem;
+  margin-bottom:-0.3rem;
+  margin-top:-0.3rem;
 }
 
 .nav-header .nav-list li a {
