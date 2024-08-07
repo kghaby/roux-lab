@@ -63,6 +63,15 @@
   --max-navheader-width: 55rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
 }
 
+@keyframes hideLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;

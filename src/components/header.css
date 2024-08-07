@@ -57,10 +57,10 @@
   animation: textEntry 0.7s ease-out 1s forwards;
 }
 
-.site-title:hover {
+/* .site-title:hover {
   transform: scale(1.02);
   text-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.3);
-}
+} */
 
 .menu-toggle {
   display: inline-block;

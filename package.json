@@ -2,7 +2,7 @@
   "name": "roux-lab",
   "private": true,
   "description": "Website for the Roux Lab",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "license": "MIT",
   "author": "Kyle Ghaby <kyleghaby@gmail.com>",
   "dependencies": {
