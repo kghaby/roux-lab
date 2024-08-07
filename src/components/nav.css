@@ -8,19 +8,21 @@
   margin: 0;
   padding: 0;
   white-space: nowrap;
-  overflow: auto;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .nav-header .nav-list li {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-left: calc(0.2rem + 0.4vw);
+  margin-right: calc(0.2rem + 0.4vw);
+  margin-bottom:-0.5rem;
+  margin-top:-0.5rem;
 }
 
 .nav-header .nav-list li a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: min(2rem, calc(0.22rem + 3 * 0.5vw));
   transition: all 0.05s ease;
   border-bottom: 2px solid transparent;
   display: inline-block;

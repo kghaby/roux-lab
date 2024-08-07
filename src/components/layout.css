@@ -60,7 +60,7 @@
   --size-gap: var(--space-6);
   --sidebar-width: 10.5rem; /* max width of the sidebar + 3 * rootFontSize */
   --header-height: 4.4375rem;
-  --max-navheader-width: 76.875rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
+  --max-navheader-width: 59rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
 }
 
 html {
