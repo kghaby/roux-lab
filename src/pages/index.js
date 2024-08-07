@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Link } from "gatsby";
+import { withPrefix } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image"
+
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import * as styles from "../components/index.module.css";
@@ -15,7 +17,14 @@ const IndexPage = () => (
       <p className={styles.intro}>
         Here, you will find information on our research, our publications, current and past group members, and various computational tools for theoretical biophysics.
       </p>
-      <img src="/images/group/group_2016.jpg" alt="Group Photo" className={styles.groupPhoto} />
+      <StaticImage
+        src="../images/group/group_2016.jpg"
+        className={styles.groupPhoto}
+        loading="eager"
+        quality={95}
+        formats={["auto", "webp", "avif"]}
+        alt="Group 2016"
+      />
     </div>
   </Layout>
 );
