@@ -54,7 +54,7 @@
 }
 
 .site-title.animate-header {
-  animation: textEntry 0.7s ease-out 1s forwards;
+  animation: textEntry 0.7s ease-out 2s forwards;
 }
 
 /* .site-title:hover {

@@ -106,13 +106,13 @@ html {
 }
 
 .fadeIn1 {
-  animation: fadeIn 1s ease-in-out 0s forwards;
+  animation: fadeIn 1s ease-in-out 0.75s forwards;
 }
 .fadeIn2 {
-  animation: fadeIn 0.75s ease-in-out 0.25s forwards;
+  animation: fadeIn 1s ease-in-out 1s forwards;
 }
 .fadeIn3 {
-  animation: fadeIn 0.5s linear 0.5s forwards;
+  animation: fadeIn 1s linear 1.25s forwards;
 }
 @keyframes fadeIn {
   from {
