@@ -10,7 +10,7 @@
   padding: 0;
   box-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  /* transition: background-color 0.3s ease, backdrop-filter 0.3s ease; */
 }
 
 .header.animate-header {
@@ -42,10 +42,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: all 0.1s ease;
+  /* transition: all 0.1s ease; */
   font-variant: small-caps;
   display: inline-block;
-  padding-right: 0.9rem;
+  padding-right: 0.5rem;
   padding-left: 0.9rem;
   margin-bottom:-0.5rem;
   margin-left: -0.9rem;
@@ -70,11 +70,13 @@
   font-size: var(--font-hg);
   user-select: none;
   font-family: var(--font-mono);
-  transition: all 0.1s ease;
+  transition: transform 0.1s ease, text-shadow 0.1s ease;
+  text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.6);
 }
 
 .menu-toggle:hover {
   transform: scale(1.5);
+  text-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.5);
 }
 
 @keyframes descend {

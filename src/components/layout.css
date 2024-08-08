@@ -86,7 +86,7 @@ html {
 
 .hidden {
   opacity: 0.9;
-  transition: all 1s;
+  transition: transform 1s ease, opacity 1s ease;
   transform: scale(0.9)
 }
 
@@ -106,13 +106,13 @@ html {
 }
 
 .fadeIn1 {
-  animation: fadeIn 1s ease-in-out 0.75s forwards;
+  animation: fadeIn 1s ease-in-out 0s forwards;
 }
 .fadeIn2 {
-  animation: fadeIn 1s ease-in-out 1s forwards;
+  animation: fadeIn 0.75s ease-in-out 0.25s forwards;
 }
 .fadeIn3 {
-  animation: fadeIn 1s linear 1.25s forwards;
+  animation: fadeIn 0.5s linear 0.5s forwards;
 }
 @keyframes fadeIn {
   from {

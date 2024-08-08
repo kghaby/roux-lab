@@ -23,7 +23,7 @@
   text-decoration: none;
   color: #ffffff;
   font-size: min(2rem, calc(0.22rem + 3 * 0.5vw));
-  transition: all 0.05s ease;
+  transition: transform 0.05s ease, text-shadow 0.05s ease;
   border-bottom: 2px solid transparent;
   display: inline-block;
   font-variant: small-caps;
@@ -39,7 +39,8 @@
 .nav-side {
   position: fixed;
   top: var(--header-height, 4.25rem);
-  right: calc(var(--sidebar-width, 10rem) * -1); /* Hidden by default */
+  right: 0;
+  transform: translateX(calc(var(--sidebar-width, 10rem) * 1)); /* Hidden by default */
   height: 100%;
   width: var(--sidebar-width, 10rem);
   background-color: rgba(82, 4, 4, 0.727);
@@ -52,12 +53,12 @@
   padding-left: 1.25rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  transition: right 0.3s ease;
+  transition: transform 0.3s ease;
   z-index: 999;
 }
 
 .nav-side.open {
-  right: 0;
+  transform: translateX(0)
 }
 
 .nav-side .nav-list {
@@ -73,7 +74,7 @@
 .nav-side .nav-list li a {
   text-decoration: none;
   color: #ffffff;
-  transition: all 0.1s ease;
+  transition: transform 0.1s ease, text-shadow 0.1s ease;
   display: inline-block;
   font-variant: small-caps;
   font-size: 1.5rem;
