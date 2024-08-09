@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "../components/layout.css"; // global styles
 
+//TODO: weird edge issue. particles are getting stuck on the edge of the screen like they cant wrap but want to if the mouse is up againt the opp edge. 
+//TODO: potential function needs tweaking
+
 const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
   const canvasRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: -1, y: -1 }); 
-  const [particles, setParticles] = useState([]); 
-  const animationFrameIdRef = useRef(null); 
+  const [mousePos, setMousePos] = useState({ x: -1, y: -1 });
+  const [particles, setParticles] = useState([]);
+  const animationFrameIdRef = useRef(null);
 
   // Ensure canvas dimensions are set before initializing particles
   useEffect(() => {
@@ -19,14 +22,26 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
     const canvas = canvasRef.current;
     const numParticles = Math.ceil(Math.sqrt(Math.floor((canvas.width * canvas.height)) / 10000) * particleDensity);
     console.log("numParticles:", numParticles);
-    const initParticles = Array.from({ length: numParticles }, (_, i) => ({
+    const initParticles = Array.from({ length: numParticles }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       opacity: Math.random() * 0.2 + 0.3,
     }));
-    
+
     setParticles(initParticles);
   }, [particleDensity]);
+
+  const applyPeriodicBoundaryConditions = (dx, dy, canvasWidth, canvasHeight) => {
+    if (dx > canvasWidth / 2) dx -= canvasWidth;
+    if (dx < -canvasWidth / 2) dx += canvasWidth;
+    if (dy > canvasHeight / 2) dy -= canvasHeight;
+    if (dy < -canvasHeight / 2) dy += canvasHeight;
+    return { dx, dy };
+  };
+
+  const potentialFunction = (distanceSquared) => {
+    return Math.exp(-distanceSquared / 20000); // Example of a Gaussian-like potential
+  };
 
   // Main animation loop
   useEffect(() => {
@@ -38,21 +53,26 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach(particle => {
+      particles.forEach((particle) => {
         if (!isPaused) {
-          // Calculate the potential well force if near the mouse
-          const dx = mousePos.x - particle.x;
-          const dy = mousePos.y - particle.y;
-          const distanceSquared = dx * dx + dy * dy;
-
           let forceX = 0;
           let forceY = 0;
 
-          if (distanceSquared < 100000 && mousePos.x >= 0 && mousePos.y >= 0) {
-            const distance = Math.sqrt(distanceSquared);
-            forceX = (dx / distance) * F;
-            forceY = (dy / distance) * F;
+          if (mousePos.x >= 0 && mousePos.y >= 0) {
+            const { dx, dy } = applyPeriodicBoundaryConditions(
+              mousePos.x - particle.x,
+              mousePos.y - particle.y,
+              canvas.width,
+              canvas.height
+            );
+
+            const distanceSquared = dx * dx + dy * dy;
+            const forceMagnitude = potentialFunction(distanceSquared) * F;
+
+            forceX = (dx / Math.sqrt(distanceSquared)) * forceMagnitude;
+            forceY = (dy / Math.sqrt(distanceSquared)) * forceMagnitude;
           }
+
           particle.x += (Math.random() - 0.5) * 2 * Math.sqrt(2 * D * dt) + forceX * dt;
           particle.y += (Math.random() - 0.5) * 2 * Math.sqrt(2 * D * dt) + forceY * dt;
 
@@ -141,7 +161,7 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
         zIndex: 0.1,
         width: '100%',
         height: '100%',
-        opacity: 0, 
+        opacity: 0,
       }}
       className="brownian"
     />
