@@ -1,12 +1,7 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Tilt from 'react-parallax-tilt';
-// import { MathComponent } from 'mathjax-react';
-
-//TODO: mathjax static 
-//TODO: fix curved corners for mobile
-//TODO: fix flickering of gradient on mobile
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -14,13 +9,20 @@ import BrownianMotion from "../components/BrownianMotion";
 import * as indexStyles from "../components/index.module.css";
 import "../components/layout.css"; // global styles
 
-const IndexPage = ({ data }) => {
-  const [D, setD] = React.useState(10.0);
-  const [F, setF] = React.useState(3);
-  const [T, setT] = React.useState(300);
-  const [dt, setDt] = React.useState(0.1);
-  const [particleDensity, setParticleDensity] = React.useState(4);
+//TODO: mathjax static 
+//TODO: fix curved corners for mobile
+//TODO: fix flickering of gradient on mobile
 
+const IndexPage = ({ data }) => {
+
+  // Brownian dynamics
+  const [D, setD] = useState(10.0);
+  const [F, setF] = useState(3);
+  const [T, setT] = useState(300);
+  const [dt, setDt] = useState(0.1);
+  const [particleDensity, setParticleDensity] = useState(4);
+
+  // Images
   const images = data.allFile.nodes
     .map(node => ({
       ...node,
@@ -30,6 +32,25 @@ const IndexPage = ({ data }) => {
 
   const mainImage = images.find(image => image.name.includes('_main')) || images[0];
   const otherImages = images.filter(image => image.name !== mainImage.name);
+
+  // Math
+  const [mathjaxFailed, setMathjaxFailed] = useState(false);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+    script.async = true;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      setMathjaxFailed(false);
+      window.MathJax.typeset();
+    };
+
+    script.onerror = () => {
+      setMathjaxFailed(true);
+    };
+  }, []);
 
   return (
     <Layout>
@@ -103,8 +124,11 @@ const IndexPage = ({ data }) => {
         <div className="blankPage">
           <div className="glass enableClick">
             <div className={indexStyles.equation}>
-              <span>x(t + dt) = x(t) + (DF(x(t))k_B T)dt + g</span>
-              {/* <MathComponent tex={String.raw`x(t + \Delta t) = x(t) + \left(\frac{DF(x(t))}{k_B T}\right)\Delta t + g`} /> */}
+              {mathjaxFailed ? (
+                <span>x(t + dt) = x(t) + (DF(x(t))k_B T)dt + g</span>
+              ) : (
+                <span>{`$$x(t + \\Delta t) = x(t) + \\left(\\frac{DF(x(t))}{k_B T}\\right)\\Delta t + g$$`}</span>
+              )}
             </div>
             <div className={indexStyles.slidersContainer}>
               <label htmlFor="diffusion">D</label>
@@ -171,3 +195,4 @@ export const query = graphql`
 `;
 
 export default IndexPage;
+

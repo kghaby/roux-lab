@@ -232,9 +232,11 @@
 
 .slidersContainer label {
   font-size: 2.5rem;
-  color: rgba(0, 0, 0, 0.51); /* Light text color for labels */
-  text-shadow: inset 0 0 0.2rem rgba(0, 0, 0, 0.604);
+  color: rgba(0, 0, 0, 0.512); /* Light text color for labels */
+  /* text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.604); */
   font-style: italic;
   padding-top:1rem;
   font-weight: bold;
+  display: block;
+  position: relative;
 }
