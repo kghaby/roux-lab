@@ -44,18 +44,15 @@
   margin-top: var(--space-1);
 }
 
-
-
-
-
 .introContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
-  max-width: calc(var(--size-content) * 0.9);
+  max-width: calc(var(--size-content) * 0.7);
+  margin: 1rem;
 }
 
 .intro {
@@ -83,6 +80,8 @@
   padding-right: 2rem;
   padding-left: 2rem;
   transform-style: preserve-3d;
+  scroll-snap-type: y proximity;
+  scroll-snap-align: center;
 }
 
 /* TODO: make this scale the image through height, not just width */
@@ -120,6 +119,8 @@
   padding: 2rem;
   padding-top: 8rem;
   gap: 4rem;
+  /* scroll-snap-type: y proximity;
+  scroll-snap-align: center; */
 }
 
 .imageWrapper {
@@ -127,10 +128,10 @@
   justify-content: center;
   align-items: stretch;
   margin: 1rem 0;
-  scroll-snap-align: center;
   /* border: 0.3rem solid var(--color-primary);
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.2); */
   box-sizing: border-box;
+
 }
 
 
@@ -159,4 +160,80 @@
   padding: min(1.2rem,2vw);
 }
 
+.equation {
+  font-size: min(max(1rem, 4vw), 2rem);
+  width: 100%;
+  padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 
+.slidersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  padding-top: 0rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.slidersContainer input[type="range"] {
+  appearance: auto;
+  width: 100%;
+  height: 0.5rem;
+  background: rgba(0, 0, 0, 0.17);
+  outline: none;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  margin-bottom: 2rem;
+}
+
+
+
+/* .slidersContainer input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  background: rgba(230, 230, 230, 0.665); 
+  border-radius: 50%;
+  border: 0.0625rem solid rgba(106, 106, 106, 0.235);
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2rem);
+}
+
+.slidersContainer input[type="range"]::-moz-range-thumb {
+  width: 2rem;
+  height: 2rem;
+  background: rgba(230, 230, 230, 0.665); 
+  border-radius: 50%;
+  border: 0.0625rem solid rgba(106, 106, 106, 0.235);
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2rem);
+}
+
+.slidersContainer input[type="range"]::-ms-thumb {
+  width: 2rem;
+  height: 2rem;
+  background: rgba(230, 230, 230, 0.665); 
+  border-radius: 50%;
+  border: 0.0625rem solid rgba(106, 106, 106, 0.235);
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2rem);
+} */
+
+.slidersContainer label {
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.51); /* Light text color for labels */
+  font-style: italic;
+  padding-top:1rem;
+  font-weight: bold;
+}

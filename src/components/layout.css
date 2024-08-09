@@ -78,7 +78,7 @@ html {
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
   overflow: auto;
-  scroll-snap-type: y proximity;
+  /* scroll-snap-type: y proximity; */
 }
 
 *, *:before, *:after {
@@ -106,25 +106,6 @@ html {
   align-items: center;
 }
 
-.fadeIn1 {
-  animation: fadeIn 1s ease-in-out 0s forwards;
-}
-.fadeIn2 {
-  animation: fadeIn 0.75s ease-in-out 0.25s forwards;
-}
-.fadeIn3 {
-  animation: fadeIn 0.5s linear 0.5s forwards;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(1.05);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -155,8 +136,9 @@ body {
   justify-content: center;
   padding: 0.75rem;
   background-color: #f8f8f8;
-  border-top: 1px solid #e7e7e7;
+  border-top: 0.0625rem solid #e7e7e7;
   font-size: var(--font-sm);
+  z-index: 1000
 }
 
 .footer p {
@@ -365,6 +347,79 @@ pre tt:after {
   content: none;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInBG {
+  from {
+    opacity: 0;
+    /* transform: scale(0.95); */
+  }
+  to {
+    opacity: 1;
+    /* transform: scale(1); */
+  }
+}
+
+
+.fadeInBG {
+  animation: fadeInBG 1s ease-in-out 0s forwards;
+}
+
+.fadeIn1 {
+  animation: fadeIn 1s ease-in-out 0s forwards;
+}
+.fadeIn2 {
+  animation: fadeIn 0.75s ease-in-out 0.25s forwards;
+}
+.fadeIn3 {
+  animation: fadeIn 0.5s linear 0.5s forwards;
+}
+
+
 .parallaxTilt {
   transform-style: preserve-3d;
 }
+
+.brownian {
+  animation: fadeIn 1s ease-in-out 1s forwards;
+  transform: translateZ(-100%),
+}
+
+.disableClick {
+  pointer-events: none;
+}
+
+.enableClick {
+  pointer-events: auto; 
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.blankPage {
+  height: 98vh;
+  width: 98vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-type: y proximity;
+  scroll-snap-align: center;
+}
+
+
