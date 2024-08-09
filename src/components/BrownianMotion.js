@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "../components/layout.css"; // global styles
 
+//TODO: fix potential. should be continuous and non linear
+
 const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
   const canvasRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
