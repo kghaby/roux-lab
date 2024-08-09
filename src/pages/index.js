@@ -6,6 +6,7 @@ import Tilt from 'react-parallax-tilt';
 
 //TODO: mathjax static 
 //TODO: fix curved corners for mobile
+//TODO: fix flickering of gradient on mobile
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
