@@ -5,7 +5,7 @@ import Tilt from 'react-parallax-tilt';
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import BrownianMotion from "../components/BrownianMotion";
+import BrownianDyn from "../components/BrownianDyn";
 import * as indexStyles from "../components/index.module.css";
 import "../components/layout.css"; // global styles
 
@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
 
   // Brownian dynamics
   const [D, setD] = useState(10.0);
-  const [F, setF] = useState(3);
+  const [F, setF] = useState(5);
   const [T, setT] = useState(300);
   const [dt, setDt] = useState(0.1);
   const [particleDensity, setParticleDensity] = useState(4);
@@ -53,7 +53,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <BrownianMotion
+      <BrownianDyn
         D={D}
         F={F}
         T={T}

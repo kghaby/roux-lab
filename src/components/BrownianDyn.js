@@ -4,7 +4,7 @@ import "../components/layout.css"; // global styles
 //TODO: weird edge issue. particles are getting stuck on the edge of the screen like they cant wrap but want to if the mouse is up againt the opp edge. 
 //TODO: potential function needs tweaking
 
-const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
+const BrownianDyn = ({ D, F, T, dt, particleDensity }) => {
   const canvasRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [mousePos, setMousePos] = useState({ x: -1, y: -1 });
@@ -168,4 +168,4 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
   );
 };
 
-export default BrownianMotion;
+export default BrownianDyn;
