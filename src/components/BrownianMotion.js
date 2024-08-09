@@ -10,26 +10,31 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
 
   // Ensure canvas dimensions are set before initializing particles
   useEffect(() => {
-    const canvas = canvasRef.current;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    if (typeof window !== "undefined") {
+      const canvas = canvasRef.current;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
   }, []);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const numParticles = Math.ceil(Math.sqrt(Math.floor((canvas.width * canvas.height)) / 10000) * particleDensity);
-    console.log("numParticles:", numParticles);
-    const initParticles = Array.from({ length: numParticles }, (_, i) => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      opacity: Math.random() * 0.2 + 0.3,
-    }));
-    
-    setParticles(initParticles);
+    if (typeof window !== "undefined") {
+      const canvas = canvasRef.current;
+      const numParticles = Math.ceil(Math.sqrt(Math.floor((canvas.width * canvas.height)) / 10000) * particleDensity);
+      console.log("numParticles:", numParticles);
+      const initParticles = Array.from({ length: numParticles }, (_, i) => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        opacity: Math.random() * 0.2 + 0.3,
+      }));
+      
+      setParticles(initParticles);
+    }
   }, [particleDensity]);
 
   // Main animation loop
   useEffect(() => {
+    if (typeof window !== "undefined") {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -78,10 +83,12 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
     return () => {
       cancelAnimationFrame(animationFrameIdRef.current);
     };
-  }, [isPaused, D, F, T, dt, particles, mousePos]);
+  }
+}, [isPaused, D, F, T, dt, particles, mousePos]);
 
-  // Handle mouse movement with throttling
-  useEffect(() => {
+// Handle mouse movement with throttling
+useEffect(() => {
+  if (typeof window !== "undefined") {
     const canvas = canvasRef.current;
 
     let lastMoveTime = 0;
@@ -108,10 +115,12 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, []);
+  }
+}, []);
 
-  // Handle canvas resizing without reinitializing particles
-  useEffect(() => {
+// Handle canvas resizing without reinitializing particles
+useEffect(() => {
+  if (typeof window !== "undefined") {
     const resizeCanvas = () => {
       const canvas = canvasRef.current;
       canvas.width = window.innerWidth;
@@ -124,7 +133,8 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, []);
+  }
+}, []);
 
   const handlePause = () => {
     setIsPaused(!isPaused);

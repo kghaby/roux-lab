@@ -2,7 +2,9 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Tilt from 'react-parallax-tilt';
-import { MathComponent } from 'mathjax-react';
+// import { MathComponent } from 'mathjax-react';
+
+//TODO: mathjax static 
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -99,7 +101,8 @@ const IndexPage = ({ data }) => {
         <div className="blankPage">
           <div className="glass enableClick">
             <div className={indexStyles.equation}>
-              <MathComponent tex={String.raw`x(t + \Delta t) = x(t) + \left(\frac{DF(x(t))}{k_B T}\right)\Delta t + g`} />
+              <span>x(t + dt) = x(t) + (DF(x(t))k_B T)dt + g</span>
+              {/* <MathComponent tex={String.raw`x(t + \Delta t) = x(t) + \left(\frac{DF(x(t))}{k_B T}\right)\Delta t + g`} /> */}
             </div>
             <div className={indexStyles.slidersContainer}>
               <label htmlFor="diffusion">D</label>
