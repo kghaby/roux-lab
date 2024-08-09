@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "../components/layout.css"; // global styles
 
-//TODO: fix potential. should be continuous and non linear
+//TODO: fix potential. should be continuous and non linear. and go through PBCs?
 
 const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
   const canvasRef = useRef(null);
