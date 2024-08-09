@@ -143,7 +143,7 @@ body {
 
 .main-content {
   /* flex: 1; */
-  padding: 2rem;
+  /* padding: 2rem; */
   max-width: var(--size-content);
   /* width: 100%; */
   margin: auto;

@@ -1,31 +1,37 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Tilt from 'react-parallax-tilt';
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import * as indexStyles from "../components/index.module.css";
 import "../components/layout.css"; // global styles
 
+// TODO: make sure tilt doesnt clip. opt tilt options. add timed protein in background. add collage or brownian dyn in background
+
 const IndexPage = ({ data }) => {
-  // Extract images and sort by year
   const images = data.allFile.nodes
     .map(node => ({
       ...node,
-      year: parseInt(node.name.split('_')[1], 10)
+      year: parseInt(node.name.split('_')[1], 10),
     }))
-    .sort((a, b) => b.year - a.year );
+    .sort((a, b) => b.year - a.year);
 
-  // Function to get the most recent main image
-  const getMainImage = () => {
-    const mainImages = images.filter(image => image.name.includes('_main'));
-    return mainImages.length ? mainImages[0] : images[0];
-  };
-
-  const mainImage = getMainImage();
-
-  // Filter out the main image from the rest of the images
+  const mainImage = images.find(image => image.name.includes('_main')) || images[0];
   const otherImages = images.filter(image => image.name !== mainImage.name);
+
+  const tiltOptions = {
+    reverse: false,
+    max: 8,
+    perspective: 650,
+    scale: 1,
+    speed: 100,
+    transition: true,
+    axis: null,
+    reset: true,
+    easing: 'cubic-bezier(.03,.98,.52,.99)',
+  };
 
   return (
     <Layout>
@@ -41,24 +47,29 @@ const IndexPage = ({ data }) => {
             </p>
           </div>
           <div className={`${indexStyles.mainImageWrapper} fadeIn3`}>
-            <GatsbyImage
-              image={getImage(mainImage)}
-              className={indexStyles.groupPhoto}
-              alt={`Main Group Photo (${mainImage.year})`}
-            />
+          <Tilt options={tiltOptions}>
+              <GatsbyImage
+                image={getImage(mainImage)}
+                className={indexStyles.groupPhoto}
+                alt={`Main Group Photo (${mainImage.year})`}
+              />
+            </Tilt>
           </div>
         </div>
         <div className={indexStyles.imageScrollContainer}>
           {otherImages.map((image, index) => (
             <div key={index} className={`${indexStyles.imageWrapper} hidden`}>
-              <GatsbyImage
-                image={getImage(image)}
-                className={indexStyles.groupPhoto}
-                alt={`Group Photo ${image.year}`}
-              />
+              <Tilt options={tiltOptions}>
+                <GatsbyImage
+                  image={getImage(image)}
+                  className={indexStyles.groupPhoto}
+                  alt={`Group Photo ${image.year}`}
+                />
+              
               <div className={indexStyles.imageOverlay}>
                 <span className={indexStyles.imageText}>{image.year}</span>
               </div>
+              </Tilt>
             </div>
           ))}
         </div>

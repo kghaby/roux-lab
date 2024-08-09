@@ -46,12 +46,7 @@
 
 
 
-.firstScreen {
-  min-height: calc(100vh - var(--header-height));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 .introContainer {
   display: flex;
@@ -78,6 +73,17 @@
   text-decoration: underline;
 }
 
+.firstScreen {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  min-height: calc(100vh - var(--header-height));
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+/* TODO: make this scale the image through height, not just width */
 .mainImageWrapper {
   display: flex;
   justify-content: center;
@@ -85,10 +91,22 @@
   position: relative;
   margin-top: 0;
   opacity: 0;
-  border: 0.3rem solid var(--color-primary);
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
-  max-width: calc(var(--size-content) * 0.7);
+  /* border: 0.3rem solid var(--color-primary); */
+  /* box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3); */
+  max-width: calc(var(--size-content) * 0.6); 
+  height: auto;
+  margin-bottom: 2rem;
 }
+
+.groupPhoto {
+  width: auto;
+  /* height: 80%; */
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
+}
+
 
 .imageScrollContainer {
   display: flex;
@@ -96,22 +114,23 @@
   align-items: center;
   overflow-y: auto;
   max-width: calc(var(--size-content) * 0.6);
-  padding: 1rem;
-  gap: 5rem;
+  padding: 3rem;
+  padding-top: 8rem;
+  gap: 4rem;
 }
 
 .imageWrapper {
   position: relative;
+  justify-content: center;
+  align-items: stretch;
   margin: 1rem 0;
   scroll-snap-align: center;
-  border: 0.3rem solid var(--color-primary);
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.2);
+  /* border: 0.3rem solid var(--color-primary);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.2); */
+  box-sizing: border-box;
 }
 
-.groupPhoto {
-  height: fit-content;
-  width: auto;
-}
+
 
 .imageOverlay {
   position: absolute;
@@ -122,6 +141,7 @@
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
   display: flex;
   align-items: flex-end;
+  border-radius: 0.75rem;
 }
 
 .imageText {
