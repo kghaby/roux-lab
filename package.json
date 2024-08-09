@@ -2,7 +2,7 @@
   "name": "roux-lab",
   "private": true,
   "description": "Website for the Roux Lab",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "license": "MIT",
   "author": "Kyle Ghaby <kyleghaby@gmail.com>",
   "dependencies": {
@@ -37,7 +37,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public ${NPM_CONFIG_DEPLOYMSG}"
   },
   "repository": {
     "type": "git",

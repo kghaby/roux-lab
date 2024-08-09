@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "../components/layout.css"; // global styles
 
-//TODO: fix potential. should be continuous and non linear. and go through PBCs?
-
 const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
   const canvasRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -12,31 +10,26 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
 
   // Ensure canvas dimensions are set before initializing particles
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const canvas = canvasRef.current;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    const canvas = canvasRef.current;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const canvas = canvasRef.current;
-      const numParticles = Math.ceil(Math.sqrt(Math.floor((canvas.width * canvas.height)) / 10000) * particleDensity);
-      console.log("numParticles:", numParticles);
-      const initParticles = Array.from({ length: numParticles }, (_, i) => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        opacity: Math.random() * 0.2 + 0.3,
-      }));
-      
-      setParticles(initParticles);
-    }
+    const canvas = canvasRef.current;
+    const numParticles = Math.ceil(Math.sqrt(Math.floor((canvas.width * canvas.height)) / 10000) * particleDensity);
+    console.log("numParticles:", numParticles);
+    const initParticles = Array.from({ length: numParticles }, (_, i) => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      opacity: Math.random() * 0.2 + 0.3,
+    }));
+    
+    setParticles(initParticles);
   }, [particleDensity]);
 
   // Main animation loop
   useEffect(() => {
-    if (typeof window !== "undefined") {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -85,12 +78,10 @@ const BrownianMotion = ({ D, F, T, dt, particleDensity }) => {
     return () => {
       cancelAnimationFrame(animationFrameIdRef.current);
     };
-  }
-}, [isPaused, D, F, T, dt, particles, mousePos]);
+  }, [isPaused, D, F, T, dt, particles, mousePos]);
 
-// Handle mouse movement with throttling
-useEffect(() => {
-  if (typeof window !== "undefined") {
+  // Handle mouse movement with throttling
+  useEffect(() => {
     const canvas = canvasRef.current;
 
     let lastMoveTime = 0;
@@ -117,12 +108,10 @@ useEffect(() => {
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }
-}, []);
+  }, []);
 
-// Handle canvas resizing without reinitializing particles
-useEffect(() => {
-  if (typeof window !== "undefined") {
+  // Handle canvas resizing without reinitializing particles
+  useEffect(() => {
     const resizeCanvas = () => {
       const canvas = canvasRef.current;
       canvas.width = window.innerWidth;
@@ -135,8 +124,7 @@ useEffect(() => {
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
-  }
-}, []);
+  }, []);
 
   const handlePause = () => {
     setIsPaused(!isPaused);
@@ -161,4 +149,3 @@ useEffect(() => {
 };
 
 export default BrownianMotion;
-
