@@ -9,9 +9,8 @@ import BrownianMotion from "../components/BrownianMotion";
 import * as indexStyles from "../components/index.module.css";
 import "../components/layout.css"; // global styles
 
-//TODO: mathjax static 
 //TODO: fix curved corners for mobile
-//TODO: fix flickering of gradient on mobile
+//TODO: fix flickering of gradient on mobile. i think its from the gradient clipping through photo from parallax
 
 const IndexPage = ({ data }) => {
 
@@ -79,19 +78,19 @@ const IndexPage = ({ data }) => {
                 tiltMaxAngleY={4}
                 perspective={900}
                 scale={1.0}
-                transitionSpeed={1000}
+                transitionSpeed={500}
                 reset={true}
                 gyroscope={true}
-                className="parallaxTilt"
+                className="parallaxTilt curvedCorners"
               >
               <GatsbyImage
                 image={getImage(mainImage)}
                 className={indexStyles.groupPhoto}
                 alt={`Main Group Photo (${mainImage.year})`}
+                style={{ borderRadius: "0.75rem" }}
               />
-              <div className={indexStyles.imageOverlay}>
-                <span className={indexStyles.imageText}>{mainImage.year}</span>
-              </div>
+              <div className={indexStyles.imageOverlay}></div>
+              <div className={indexStyles.imageText}>{mainImage.year}</div>
             </Tilt>
           </div>
         </div>
@@ -106,17 +105,17 @@ const IndexPage = ({ data }) => {
                 scale={1.0}
                 transitionSpeed={1000}
                 reset={true}
-                gyroscope={true}
-                className="parallaxTilt"
+                // gyroscope={true}
+                className="parallaxTilt curvedCorners"
               >
                 <GatsbyImage
                   image={getImage(image)}
                   className={indexStyles.groupPhoto}
                   alt={`Group Photo ${image.year}`}
+                  style={{ borderRadius: "0.75rem" }}
                 />
-              <div className={indexStyles.imageOverlay}>
+                <div className={indexStyles.imageOverlay}></div>
                 <div className={indexStyles.imageText}>{image.year}</div>
-              </div>
               </Tilt>
             </div>
           ))}
