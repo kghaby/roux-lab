@@ -78,6 +78,7 @@ html {
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
   overflow: auto;
+  scroll-snap-type: y proximity;
 }
 
 *, *:before, *:after {
@@ -364,3 +365,6 @@ pre tt:after {
   content: none;
 }
 
+.parallaxTilt {
+  transform-style: preserve-3d;
+}
