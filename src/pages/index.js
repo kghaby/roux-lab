@@ -5,6 +5,7 @@ import Tilt from 'react-parallax-tilt';
 // import { MathComponent } from 'mathjax-react';
 
 //TODO: mathjax static 
+//TODO: fix curved corners for mobile
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
