@@ -37,7 +37,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public ${NPM_CONFIG_DEPLOYMSG}"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -m \"${DEPLOYMSG}\""
   },
   "repository": {
     "type": "git",

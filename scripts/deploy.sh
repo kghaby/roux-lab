@@ -9,9 +9,9 @@ gatsby clean
 
 # Check if a commit message is provided
 if [ -n "$1" ]; then
-  npm run deploy --DEPLOYMSG="-m \"$1\""
+    DEPLOYMSG="$1" npm run deploy
 else
-  npm run deploy
+    npm run deploy
 fi
 
 
