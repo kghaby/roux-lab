@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage as StaticImage, getImage } from "gatsby-plugin-image";
 import Tilt from 'react-parallax-tilt';
 
 import Layout from "../components/layout";
@@ -51,6 +51,18 @@ const IndexPage = ({ data }) => {
     };
   }, []);
 
+  const tiltOptions = {
+    tiltReverse: false,
+    tiltMaxAngleX: 4,
+    tiltMaxAngleY: 4,
+    perspective: 900,
+    scale: 1.0,
+    transitionSpeed: 500,
+    reset: true,
+    gyroscope: true,
+    className: "parallaxTilt curvedCorners",
+  };  
+
   return (
     <Layout>
       <BrownianDyn
@@ -72,24 +84,16 @@ const IndexPage = ({ data }) => {
             </p>
           </li>
           <div className={`${indexStyles.mainImageWrapper} fadeIn3 enableClick`}>
-            <Tilt
-                tiltReverse={false}
-                tiltMaxAngleX={4}
-                tiltMaxAngleY={4}
-                perspective={900}
-                scale={1.0}
-                transitionSpeed={500}
-                reset={true}
-                gyroscope={true}
-                className="parallaxTilt curvedCorners"
-              >
-              <GatsbyImage
-                image={getImage(mainImage)}
-                className={indexStyles.groupPhoto}
-                alt={`Main Group Photo (${mainImage.year})`}
-                style={{ borderRadius: "0.75rem" }}
-              />
-              <div className={indexStyles.imageOverlay}></div>
+            <Tilt {...tiltOptions}>
+              <div style={{ willChange: "transform" }}>
+                <StaticImage
+                  image={getImage(mainImage)}
+                  className={indexStyles.groupPhoto}
+                  alt={`Main Group Photo (${mainImage.year})`}
+                  imgStyle={{ borderRadius: "0.75rem" }}
+                />
+                <div className={indexStyles.imageOverlay}></div>
+              </div>
               <div className={indexStyles.imageText}>{mainImage.year}</div>
             </Tilt>
           </div>
@@ -97,24 +101,16 @@ const IndexPage = ({ data }) => {
         <div className={indexStyles.imageScrollContainer}>
           {otherImages.map((image, index) => (
             <div key={index} className={`${indexStyles.imageWrapper} hidden enableClick`}>
-              <Tilt
-                tiltReverse={false}
-                tiltMaxAngleX={4}
-                tiltMaxAngleY={4}
-                perspective={900}
-                scale={1.0}
-                transitionSpeed={1000}
-                reset={true}
-                // gyroscope={true}
-                className="parallaxTilt curvedCorners"
-              >
-                <GatsbyImage
-                  image={getImage(image)}
-                  className={indexStyles.groupPhoto}
-                  alt={`Group Photo ${image.year}`}
-                  style={{ borderRadius: "0.75rem" }}
-                />
-                <div className={indexStyles.imageOverlay}></div>
+              <Tilt {...tiltOptions}>
+                <div style={{ willChange: "transform" }}>
+                  <StaticImage
+                    image={getImage(image)}
+                    className={indexStyles.groupPhoto}
+                    alt={`Group Photo ${image.year}`}
+                    imgStyle={{ borderRadius: "0.75rem" }}
+                  />
+                  <div className={indexStyles.imageOverlay}></div>
+                </div>
                 <div className={indexStyles.imageText}>{image.year}</div>
               </Tilt>
             </div>
