@@ -77,7 +77,8 @@ html {
   box-sizing: border-box;
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   /* scroll-snap-type: y proximity; */
 }
 

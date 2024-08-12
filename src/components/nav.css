@@ -32,7 +32,7 @@
 
 .nav-header .nav-list li a:hover {
   /* color: #ffdddd; */
-  transform: scale(1.04);
+  transform: scale(1.06);
   text-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.3);
 }
 
@@ -83,7 +83,7 @@
 
 .nav-side .nav-list li a:hover {
   /* color: #ffdddd; */
-  transform: translateX(-0.2rem);
+  transform: translateX(-0.4rem);
   text-shadow: 0.2rem 0 0.8rem rgba(0, 0, 0, 0.3);
 }
 
