@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "../components/layout.css"; // global styles
 
-//TODO: weird edge issue. particles are getting stuck on the edge of the screen like they cant wrap but want to if the mouse is up againt the opp edge. 
 //TODO: potential function needs tweaking
 
 const BrownianDyn = ({ D, F, T, dt, particleDensity }) => {
@@ -31,11 +30,13 @@ const BrownianDyn = ({ D, F, T, dt, particleDensity }) => {
     setParticles(initParticles);
   }, [particleDensity]);
 
-  const applyPeriodicBoundaryConditions = (dx, dy, canvasWidth, canvasHeight) => {
-    if (dx > canvasWidth / 2) dx -= canvasWidth;
-    if (dx < -canvasWidth / 2) dx += canvasWidth;
-    if (dy > canvasHeight / 2) dy -= canvasHeight;
-    if (dy < -canvasHeight / 2) dy += canvasHeight;
+  const applyPeriodicBoundaryConditions = (dx, dy, canvasWidth, canvasHeight, offset) => {
+    const w = canvasWidth + offset * 2;
+    const h = canvasHeight + offset * 2;
+    if (dx > w / 2) dx -= w;
+    if (dx < -w / 2) dx += w;
+    if (dy > h / 2) dy -= h;
+    if (dy < -h / 2) dy += h;
     return { dx, dy };
   };
 
@@ -63,7 +64,8 @@ const BrownianDyn = ({ D, F, T, dt, particleDensity }) => {
               mousePos.x - particle.x,
               mousePos.y - particle.y,
               canvas.width,
-              canvas.height
+              canvas.height,
+              offset
             );
 
             const distanceSquared = dx * dx + dy * dy;
