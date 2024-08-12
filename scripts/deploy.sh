@@ -11,7 +11,7 @@ gatsby clean
 if [ -n "$1" ]; then
     DEPLOYMSG="$1" npm run deploy
 else
-    npm run deploy
+    DEPLOYMSG="Updates" npm run deploy
 fi
 
 
