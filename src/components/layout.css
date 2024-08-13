@@ -127,7 +127,6 @@ body {
   /* flex: 1; */
   /* padding: 2rem; */
   max-width: min(var(--size-content), 100%);
-  /* width: 100%; */
   margin: auto;
 }
 
