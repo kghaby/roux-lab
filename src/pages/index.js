@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage as StaticImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Tilt from 'react-parallax-tilt';
 
 import Layout from "../components/layout";
@@ -11,12 +11,14 @@ import "../components/layout.css"; // global styles
 
 const IndexPage = ({ data }) => {
 
-  // Brownian dynamics
-  const [D, setD] = useState(10.0);
-  const [F, setF] = useState(5);
-  const [T, setT] = useState(300);
-  const [dt, setDt] = useState(0.1);
-  const [particleDensity, setParticleDensity] = useState(4);
+  // Scroll to top on initial load
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  useEffect(() => {
+    if (isInitialLoad) {
+      window.scrollTo(0, 0); // Scroll to top on the first load
+      setIsInitialLoad(false); // Mark as not the initial load
+    }
+  }, [isInitialLoad]);
 
   // Images
   const images = data.allFile.nodes
@@ -28,6 +30,25 @@ const IndexPage = ({ data }) => {
 
   const mainImage = images.find(image => image.name.includes('_main')) || images[0];
   const otherImages = images.filter(image => image.name !== mainImage.name);
+
+  const tiltOptions = {
+    tiltReverse: false,
+    tiltMaxAngleX: 4,
+    tiltMaxAngleY: 4,
+    perspective: 900,
+    scale: 1.0,
+    transitionSpeed: 500,
+    reset: true,
+    gyroscope: true,
+    className: "parallaxTilt curvedCorners",
+  };  
+
+  // Brownian dynamics
+  const [D, setD] = useState(10.0);
+  const [F, setF] = useState(5);
+  const [T, setT] = useState(300);
+  const [dt, setDt] = useState(0.1);
+  const [particleDensity, setParticleDensity] = useState(4);
 
   // Math
   const [mathjaxFailed, setMathjaxFailed] = useState(false);
@@ -47,18 +68,6 @@ const IndexPage = ({ data }) => {
       setMathjaxFailed(true);
     };
   }, []);
-
-  const tiltOptions = {
-    tiltReverse: false,
-    tiltMaxAngleX: 4,
-    tiltMaxAngleY: 4,
-    perspective: 900,
-    scale: 1.0,
-    transitionSpeed: 500,
-    reset: true,
-    gyroscope: true,
-    className: "parallaxTilt curvedCorners",
-  };  
 
   return (
     <Layout>
@@ -83,7 +92,7 @@ const IndexPage = ({ data }) => {
           <div className={`${indexStyles.mainImageWrapper} fadeIn3 enableClick`}>
             <Tilt {...tiltOptions}>
               <div style={{ willChange: "transform" }}>
-                <StaticImage
+                <GatsbyImage
                   image={getImage(mainImage)}
                   className={indexStyles.groupPhoto}
                   alt={`Main Group Photo (${mainImage.year})`}
@@ -100,7 +109,7 @@ const IndexPage = ({ data }) => {
             <div key={index} className={`${indexStyles.imageWrapper} hidden enableClick`}>
               <Tilt {...tiltOptions}>
                 <div style={{ willChange: "transform" }}>
-                  <StaticImage
+                  <GatsbyImage
                     image={getImage(image)}
                     className={indexStyles.groupPhoto}
                     alt={`Group Photo ${image.year}`}
