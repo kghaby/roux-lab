@@ -9,9 +9,6 @@ import BrownianDyn from "../components/BrownianDyn";
 import * as indexStyles from "../components/index.module.css";
 import "../components/layout.css"; // global styles
 
-//TODO: fix curved corners for mobile
-//TODO: fix flickering of gradient on mobile. i think its from the gradient clipping through photo from parallax
-
 const IndexPage = ({ data }) => {
 
   // Brownian dynamics
