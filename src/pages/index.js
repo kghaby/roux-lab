@@ -82,7 +82,7 @@ const IndexPage = ({ data }) => {
       />
       <div className="centeredContent disableClick">
         <div className={indexStyles.firstScreen}>
-          <li className={`${indexStyles.introContainer} fadeInBG enableClick glass`}>
+          <div className={`${indexStyles.introContainer} fadeInBG enableClick glass`}>
             <p className={`${indexStyles.intro} fadeIn1`}>
               Welcome to the laboratory of Benoît Roux, in the
               <a href="https://biochem.uchicago.edu" className={indexStyles.link}> Department of Biochemistry and Molecular Biology</a> at <a href="http://www.uchicago.edu" className={indexStyles.link}> The University of Chicago</a>.
@@ -90,7 +90,7 @@ const IndexPage = ({ data }) => {
             <p className={`${indexStyles.intro} fadeIn2`}>
               Here, you will find information on our research, our publications, current and past group members, and various computational tools for theoretical biophysics.
             </p>
-          </li>
+          </div>
           <div className={`${indexStyles.mainImageWrapper} fadeIn3 enableClick`}>
             <Tilt {...tiltOptions}>
               <div style={{ willChange: "transform" }}>

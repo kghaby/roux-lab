@@ -3,6 +3,8 @@ import { Link } from "gatsby";
 import Nav from "./nav.js";
 import "./header.css";
 
+//TODO: selection and current page like windows taskbar
+
 const Header = ({ siteTitle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasSmallWidth, setSmallWidth] = useState(false);

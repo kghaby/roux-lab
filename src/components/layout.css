@@ -153,6 +153,8 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 0.1rem;
   text-underline-offset: 0.125rem;
+  transition: all 0.05s ease-in-out;
+  will-change: transform;
 }
 
 a:active,
@@ -411,7 +413,7 @@ pre tt:after {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0.6rem rgba(142, 142, 142, 0.1);
   backdrop-filter: blur(0.5rem);
   -webkit-backdrop-filter: blur(0.5rem);
   border: 0.0625rem solid rgba(255, 255, 255, 0.3);
@@ -427,5 +429,4 @@ pre tt:after {
   scroll-snap-align: center;
   max-width: min(var(--size-content), 100%);
 }
-
 
