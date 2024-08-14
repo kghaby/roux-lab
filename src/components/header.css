@@ -3,7 +3,6 @@
   backdrop-filter: blur(0.625rem);
   position: sticky;
   width: 100%;
-  top: 0;
   left: 0;
   display: flex;
   align-items: center;
@@ -11,6 +10,9 @@
   box-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
   /* transition: background-color 0.3s ease, backdrop-filter 0.3s ease; */
+  top: -30rem;
+  padding-top: 30rem;
+  margin-top: -30rem;
 }
 
 .header.animate-header {
