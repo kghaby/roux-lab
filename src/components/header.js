@@ -3,8 +3,6 @@ import { Link } from "gatsby";
 import Nav from "./nav.js";
 import "./header.css";
 
-// TODO: extend header vertically so that pulling down on mobile doesn't show white space
-
 const Header = ({ siteTitle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasSmallWidth, setSmallWidth] = useState(false);

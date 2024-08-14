@@ -9,6 +9,8 @@ import BrownianDyn from "../components/BrownianDyn";
 import * as indexStyles from "../components/index.module.css";
 import "../components/layout.css"; // global styles
 
+// Is the scroll issue bc of the fixed nav side bar?
+
 const IndexPage = ({ data }) => {
 
   // Scroll to top on initial load
