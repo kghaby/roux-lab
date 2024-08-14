@@ -79,9 +79,6 @@
   /* align-content: space-around; */
   padding-right: 2rem;
   padding-left: 2rem;
-  transform-style: preserve-3d;
-  scroll-snap-type: y proximity;
-  scroll-snap-align: center;
 }
 
 /* TODO: make this scale the image through height, not just width */

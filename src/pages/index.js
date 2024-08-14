@@ -19,7 +19,7 @@ const IndexPage = ({ data }) => {
       setIsInitialLoad(false); // Mark as not the initial load
     }
   }, [isInitialLoad]);
-
+  
   // Images
   const images = data.allFile.nodes
     .map(node => ({

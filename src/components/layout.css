@@ -79,6 +79,7 @@ html {
   line-height: var(--line-height-normal);
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
   /* scroll-snap-type: y proximity; */
 }
 
