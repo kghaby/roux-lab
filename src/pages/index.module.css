@@ -61,15 +61,6 @@
   opacity: 0;
 }
 
-.link {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
 .firstScreen {
   min-height: calc(100vh - var(--header-height));
   display: flex;

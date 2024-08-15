@@ -5,8 +5,8 @@ import Tilt from 'react-parallax-tilt';
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import BrownianDyn from "../components/BrownianDyn";
-import * as indexStyles from "../components/index.module.css";
+import BrownianDyn from "../components/brownian_dyn";
+import * as pageStyles from "./index.module.css";
 import "../components/layout.css"; // global styles
 
 // Is the scroll issue bc of the fixed nav side bar?
@@ -81,59 +81,59 @@ const IndexPage = ({ data }) => {
         particleDensity={particleDensity}
       />
       <div className="centeredContent disableClick">
-        <div className={indexStyles.firstScreen}>
-          <div className={`${indexStyles.introContainer} fadeInBG enableClick glass`}>
-            <p className={`${indexStyles.intro} fadeIn1`}>
+        <div className={pageStyles.firstScreen}>
+          <div className={`${pageStyles.introContainer} fadeInBG enableClick glass`}>
+            <p className={`${pageStyles.intro} fadeIn1`}>
               Welcome to the laboratory of Benoît Roux, in the
-              <a href="https://biochem.uchicago.edu" className={indexStyles.link}> Department of Biochemistry and Molecular Biology</a> at <a href="http://www.uchicago.edu" className={indexStyles.link}> The University of Chicago</a>.
+              <a href="https://biochem.uchicago.edu"> Department of Biochemistry and Molecular Biology</a> at <a href="http://www.uchicago.edu"> The University of Chicago</a>.
             </p>
-            <p className={`${indexStyles.intro} fadeIn2`}>
+            <p className={`${pageStyles.intro} fadeIn2`}>
               Here, you will find information on our research, our publications, current and past group members, and various computational tools for theoretical biophysics.
             </p>
           </div>
-          <div className={`${indexStyles.mainImageWrapper} fadeIn3 enableClick`}>
+          <div className={`${pageStyles.mainImageWrapper} fadeIn3 enableClick`}>
             <Tilt {...tiltOptions}>
               <div style={{ willChange: "transform" }}>
                 <GatsbyImage
                   image={getImage(mainImage)}
-                  className={indexStyles.groupPhoto}
+                  className={pageStyles.groupPhoto}
                   alt={`Main Group Photo (${mainImage.year})`}
                   imgStyle={{ borderRadius: "0.75rem" }}
                 />
-                <div className={indexStyles.imageOverlay}></div>
+                <div className={pageStyles.imageOverlay}></div>
               </div>
-              <div className={indexStyles.imageText}>{mainImage.year}</div>
+              <div className={pageStyles.imageText}>{mainImage.year}</div>
             </Tilt>
           </div>
         </div>
-        <div className={indexStyles.imageScrollContainer}>
+        <div className={pageStyles.imageScrollContainer}>
           {otherImages.map((image, index) => (
-            <div key={index} className={`${indexStyles.imageWrapper} hidden enableClick`}>
+            <div key={index} className={`${pageStyles.imageWrapper} hidden enableClick`}>
               <Tilt {...tiltOptions}>
                 <div style={{ willChange: "transform" }}>
                   <GatsbyImage
                     image={getImage(image)}
-                    className={indexStyles.groupPhoto}
+                    className={pageStyles.groupPhoto}
                     alt={`Group Photo ${image.year}`}
                     imgStyle={{ borderRadius: "0.75rem" }}
                   />
-                  <div className={indexStyles.imageOverlay}></div>
+                  <div className={pageStyles.imageOverlay}></div>
                 </div>
-                <div className={indexStyles.imageText}>{image.year}</div>
+                <div className={pageStyles.imageText}>{image.year}</div>
               </Tilt>
             </div>
           ))}
         </div>
         <div className="blankPage">
           <div className="glass enableClick">
-            <div className={indexStyles.equation}>
+            <div className={pageStyles.equation}>
               {mathjaxFailed ? (
                 <span>x(t + dt) = x(t) + (DF(x(t))k_B T)dt + g</span>
               ) : (
                 <span>{`$$x(t + \\Delta t) = x(t) + \\left(\\frac{DF(x(t))}{k_B T}\\right)\\Delta t + g$$`}</span>
               )}
             </div>
-            <div className={indexStyles.slidersContainer}>
+            <div className={pageStyles.slidersContainer}>
               <label htmlFor="diffusion">D</label>
               <input
                 id="diffusion"

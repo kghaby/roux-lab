@@ -1,0 +1,30 @@
+.memberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 1rem;
+  /* box-shadow: 0 0 0.6rem rgba(142, 142, 142, 0.1); */
+  border: 0.0625rem solid rgba(203, 203, 203, 0.3);
+  border-radius: var(--border-radius);
+  background-color: rgb(252, 251, 248);
+  min-width: 50vw;
+}
+
+.memberPhoto {
+  width: 9rem;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+.memberInfo {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.memberInfo p {
+  margin: 0.5rem 0;
+}
