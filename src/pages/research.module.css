@@ -3,3 +3,32 @@
   display: flex;
   flex-direction: column;
 }
+
+.researchSection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sectionInfo {
+  flex-basis: 65%;
+}
+
+.sectionImage {
+  flex-basis: 34%;
+  padding: 1rem;
+  align-content: center;
+}
+
+@media (max-width: 48rem) {
+  .researchSection {
+    flex-direction: column;
+    align-items:center;
+  }
+
+  .sectionInfo,
+  .sectionImage {
+    max-width: 100%;
+  }
+}
