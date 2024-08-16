@@ -4,8 +4,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import "./member_card.css";
 
-// TODO: put image on side unless small width 
-
 const MemberCard = ({ name, role, email, imgName, topics, hobbies, moreLink }) => {
   const data = useStaticQuery(graphql`
     query {

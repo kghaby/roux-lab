@@ -75,7 +75,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
-  font-size: var(--font-md);
+  font-size: var(--font-mdlg);
   line-height: var(--line-height-normal);
   overflow-x: hidden;
   overflow-y: auto;
@@ -176,7 +176,7 @@ dfn {
 
 h1 {
   margin: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   padding: 0;
   line-height: var(--line-height-dense);
   letter-spacing: -0.01rem;
