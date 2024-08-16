@@ -6,6 +6,8 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as pageStyles from "./research.module.css";
 
+//TODO: do sections in own folder and import them here. sort alphabetically. collapsible sections?
+
 const ResearchPage = () => (
   <Layout>
     <div className={pageStyles.researchPage}>
