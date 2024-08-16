@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import "./member_card.css";
 
-const MemberCard = ({ name, role, email, imgName, bio, hobbies, topics, moreLink }) => {
+// TODO: put image on side unless small width 
+
+const MemberCard = ({ name, role, email, imgName, topics, hobbies, moreLink }) => {
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: {relativeDirectory: {eq: "group/members"}}) {
@@ -31,22 +33,21 @@ const MemberCard = ({ name, role, email, imgName, bio, hobbies, topics, moreLink
 
   return (
     <div className="memberCard">
-      {imageData ? (
+      {imgName && 
         <GatsbyImage 
           image={imageData} 
           alt={name} 
           className="memberPhoto" 
-          imgStyle={{ borderRadius: "0.25rem" }}
+          imgStyle={{ 
+            // borderRadius: "0.5rem",
+          }}
+          style={{
+            maxWidth: "max-content",
+            borderRadius: "0.5rem",
+          }}
         />
-      ) : (
-        <StaticImage
-          src="../images/group/members/unknown.png"
-          alt="No Photo Available"
-          className="memberPhoto"
-          imgStyle={{ borderRadius: "0.25rem" }}
-        />
-      )}
-      <div className="memberInfo">
+      }
+      <hgroup className="memberInfo">
         <h3>{name}</h3>
         {role && <p><i>{role}</i></p>}
         <p>
@@ -57,22 +58,19 @@ const MemberCard = ({ name, role, email, imgName, bio, hobbies, topics, moreLink
             <a href={moreLink}>More...</a>
           </p>
         )}
-        {topics && (
-          <p>
-            <b>Project Topics:</b> {topics}
-          </p>
-        )}
-        {hobbies && (
-          <p>
-            <b>Hobbies:</b> {hobbies}
-          </p>
-        )}
-        {bio && (
-          <p>
-            <b>Bio:</b> {bio}
-          </p>
-        )}
-      </div>
+        <div className="moreInfo">
+          {topics && (
+            <p>
+              <b>Topics:</b> {topics}
+            </p>
+          )}
+          {hobbies && (
+            <p>
+              <b>Hobbies:</b> {hobbies}
+            </p>
+          )}
+        </div>
+      </hgroup>
     </div>
   );
 };

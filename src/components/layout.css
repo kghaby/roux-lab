@@ -47,7 +47,7 @@
   --font-sm: 0.8rem;
   --font-sx: 0.6rem;
   --line-height-loose: 1.75;
-  --line-height-normal: 1.5;
+  --line-height-normal: 1.4;
   --line-height-dense: 1.1;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -59,7 +59,7 @@
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
   --sidebar-width: 10.5rem; /* max width of the sidebar + 3 * rootFontSize */
-  --header-height: 3.9rem;
+  --header-height: 3.59875rem;
   --max-navheader-width: 55rem; /*  navHeaderRef.current.offsetWidth + siteTitle.offsetWidth + 4 * rootFontSize   */
 }
 
@@ -118,13 +118,13 @@ body {
   word-wrap: break-word;
 }
 
-.site-wrapper {
+.siteWrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.main-content {
+.mainContent {
   /* flex: 1; */
   /* padding: 2rem; */
   max-width: min(var(--size-content), 100%);
@@ -184,6 +184,10 @@ h1 {
 
 h1 > b {
   color: var(--color-primary);
+}
+
+h3 {
+  margin:0;
 }
 
 img {

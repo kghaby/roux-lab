@@ -1,30 +1,38 @@
 .memberCard {
+  flex: 1 1 calc(50% - 2rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0;
   /* box-shadow: 0 0 0.6rem rgba(142, 142, 142, 0.1); */
-  border: 0.0625rem solid rgba(203, 203, 203, 0.3);
-  border-radius: var(--border-radius);
-  background-color: rgb(252, 251, 248);
-  min-width: 50vw;
+  /* border: 0.0625rem solid rgba(203, 203, 203, 0.3);
+  border-radius: var(--border-radius);*/
+  /* background-color: rgb(252, 251, 248);  */
+  /* max-width: 40vw; */
+  min-width: 20rem;
 }
 
 .memberPhoto {
-  width: 9rem;
+  width: 11rem;
   height: auto;
-  object-fit: cover;
-  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
 }
 
 .memberInfo {
-  margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  margin: 0;
 }
 
 .memberInfo p {
   margin: 0.5rem 0;
+}
+
+.moreInfo {
+  font-size: 1rem;
+  padding: 0 1rem;
 }

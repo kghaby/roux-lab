@@ -59,10 +59,9 @@
   animation: textEntry 0.7s ease-out 2s forwards;
 }
 
-/* .site-title:hover {
-  transform: scale(1.02);
-  text-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.3);
-} */
+.site-title:hover {
+  text-decoration: none;
+}
 
 .menu-toggle {
   display: inline-block;
