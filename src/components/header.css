@@ -71,7 +71,7 @@
   font-size: var(--font-hg);
   user-select: none;
   font-family: var(--font-mono);
-  transition: transform 0.1s ease, text-shadow 0.1s ease;
+  transition: transform 0.1s ease-in-out, text-shadow 0.1s ease-in-out;
   text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.6);
 }
 

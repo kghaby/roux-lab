@@ -59,6 +59,9 @@ const Header = ({ siteTitle }) => {
               tabIndex={0}
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
+              // style={{ transform: menuOpen ? "rotate(-180deg)" : "rotate(0)" }}
+              // >
+              //   {'<'}
             >
               {menuOpen ? '>' : '<'}
             </div>
