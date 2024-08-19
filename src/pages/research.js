@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import summary from "../data/research/summary";
 import * as pageStyles from "./research.module.css";
 
-// Function to dynamically import all section files from the sections directory
+// Import all section files from the sections directory
 const importAllSections = () => {
   const sectionsContext = require.context('../data/research/sections', false, /\.js$/);
   const sections = sectionsContext.keys().map((key) => {
@@ -69,12 +70,33 @@ const ResearchPage = () => {
         </section>
         {sections.map((section) => (
           <section key={section.key} id={section.key}>
-            <h2 onClick={() => toggleSection(section.title)} style={{ cursor: "pointer" }}>
-              <span style={{ fontFamily: "var(--font-mono)", marginRight: "0.5rem" }}>
-                {openSections.includes(section.title) ? "-" : "+"}
-              </span>
-              {section.title}
-            </h2>
+            <button 
+              onClick={() => toggleSection(section.title)} 
+              style={{ 
+                textAlign: "left", 
+                width: "100%", 
+                background: "none", 
+                border: "none", 
+                padding: 0, 
+                cursor: "pointer" 
+              }}
+              aria-expanded={openSections.includes(section.title)}
+            >
+              <h2 style={{ display: "flex" }}>
+                <span style={{ fontFamily: "var(--font-mono)", marginRight: "0.5rem" }}>
+                  {openSections.includes(section.title) ? "-" : "+"}
+                </span>
+                <span 
+                  style={{ 
+                    display: "inline-block", 
+                    whiteSpace: "pre-wrap", 
+                    marginLeft: "0.5rem" 
+                  }}
+                >
+                  {section.title}
+                </span>
+              </h2>
+            </button>
             {openSections.includes(section.title) && (
               <div className={pageStyles.researchSection}>
                 <div className={pageStyles.sectionInfo}>

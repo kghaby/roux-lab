@@ -16,8 +16,10 @@
   max-width: 48rem;
 }
 
-.sectionInfo p{
+.sectionInfo p {
   margin: 0;
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
 }
 
 @media (max-width: 48rem) {
@@ -26,5 +28,8 @@
   .sectionImage {
     max-width: 100%;
   }
-
+  .sectionInfo p {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }

@@ -211,6 +211,14 @@ samp {
   line-height: inherit;
 }
 
+button {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 hr {
   box-sizing: content-box;
   overflow: visible;

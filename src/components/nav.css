@@ -28,7 +28,7 @@
   font-variant: small-caps;
   text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
   padding-bottom: 0.15rem;
-  padding-top: -0.1rem;
+  padding-top: 0rem;
   padding-left: calc(0.18rem + 0.2vw);
   padding-right: calc(0.18rem + 0.2vw);
   border-radius: 0.35rem;
@@ -106,7 +106,7 @@
   font-size: 1.5rem;
   text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
   padding-bottom: 0.15rem;
-  padding-top: -0.1rem;
+  padding-top: 0rem;
   padding-left: calc(0.18rem + 0.2vw);
   padding-right: calc(0.18rem + 0.2vw);
   border-radius: 0.35rem;
