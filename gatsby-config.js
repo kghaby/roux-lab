@@ -14,6 +14,7 @@ module.exports = {
     author: `@kghaby`,
     siteUrl: `https://kghaby.github.io/roux-lab/`,
   },
+  pathPrefix: "/roux-lab",
   plugins: [
     `gatsby-plugin-image`,
     {
@@ -41,5 +42,4 @@ module.exports = {
       },
     },
   ],
-  pathPrefix: "/roux-lab",
 }

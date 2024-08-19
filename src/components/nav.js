@@ -17,36 +17,36 @@ const Nav = forwardRef(({ className }, ref) => {
 
   return (
     <nav className={className} ref={ref}>
-      <ul className="nav-list">
-        <li className={pathWithoutPrefix === "/" ? "active-link" : ""}>
-          <Link to="/"><span className="text-content">Home</span></Link>
+      <ul className="navList">
+        <li className={pathWithoutPrefix === "/" ? "activeLink" : ""}>
+          <Link to="/"><span className="textContent">Home</span></Link>
         </li>
-        <li className={isActive("/members/") ? "active-link" : ""}>
-          <Link to="/members"><span className="text-content">Members</span></Link>
+        <li className={isActive("/members/") ? "activeLink" : ""}>
+          <Link to="/members"><span className="textContent">Members</span></Link>
         </li>
-        <li className={isActive("/research/") ? "active-link" : ""}>
-          <Link to="/research"><span className="text-content">Research</span></Link>
+        <li className={isActive("/research/") ? "activeLink" : ""}>
+          <Link to="/research"><span className="textContent">Research</span></Link>
         </li>
-        <li className={isActive("/methods/") ? "active-link" : ""}>
-          <Link to="/methods"><span className="text-content">Methods</span></Link>
+        <li className={isActive("/methods/") ? "activeLink" : ""}>
+          <Link to="/methods"><span className="textContent">Methods</span></Link>
         </li>
-        <li className={isActive("/publications/") ? "active-link" : ""}>
-          <Link to="/publications"><span className="text-content">Publications</span></Link>
+        <li className={isActive("/publications/") ? "activeLink" : ""}>
+          <Link to="/publications"><span className="textContent">Publications</span></Link>
         </li>
-        <li className={isActive("/openings/") ? "active-link" : ""}>
-          <Link to="/openings"><span className="text-content">Openings</span></Link>
+        <li className={isActive("/openings/") ? "activeLink" : ""}>
+          <Link to="/openings"><span className="textContent">Openings</span></Link>
         </li>
-        <li className={isActive("/gallery/") ? "active-link" : ""}>
-          <Link to="/gallery"><span className="text-content">Gallery</span></Link>
+        <li className={isActive("/gallery/") ? "activeLink" : ""}>
+          <Link to="/gallery"><span className="textContent">Gallery</span></Link>
         </li>
-        <li className={isActive("/tools/") ? "active-link" : ""}>
-          <Link to="/tools"><span className="text-content">Tools</span></Link>
+        <li className={isActive("/tools/") ? "activeLink" : ""}>
+          <Link to="/tools"><span className="textContent">Tools</span></Link>
         </li>
-        <li className={isActive("/useful-links/") ? "active-link" : ""}>
-          <Link to="/useful-links"><span className="text-content">Useful Links</span></Link>
+        <li className={isActive("/useful-links/") ? "activeLink" : ""}>
+          <Link to="/useful-links"><span className="textContent">Useful Links</span></Link>
         </li>
-        <li className={isActive("/contacts/") ? "active-link" : ""}>
-          <Link to="/contacts"><span className="text-content">Contacts</span></Link>
+        <li className={isActive("/contacts/") ? "activeLink" : ""}>
+          <Link to="/contacts"><span className="textContent">Contacts</span></Link>
         </li>
       </ul>
     </nav>

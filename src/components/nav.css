@@ -1,8 +1,8 @@
-.nav-header {
+.navHeader {
   display: flex;
 }
 
-.nav-header .nav-list {
+.navHeader .navList {
   display: flex;
   list-style: none;
   margin: 0;
@@ -12,14 +12,14 @@
   text-overflow: ellipsis;
 }
 
-.nav-header .nav-list li {
+.navHeader .navList li {
   margin-left: calc(0.15vw - 0.05rem);
   margin-right: calc(0.15vw - 0.05rem);
   margin-bottom: 0;
   margin-top: 0;
 }
 
-.nav-header .nav-list li a {
+.navHeader .navList li a {
   text-decoration: none;
   color: #ffffff;
   font-size: min(2rem, calc(0.22rem + 3 * 0.5vw));
@@ -35,34 +35,34 @@
   position: relative;
 }
 
-.nav-list li a:hover,
-.nav-list li.active-link a {
+.navList li a:hover,
+.navList li.activeLink a {
   background-color: rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0.05rem 0.1rem rgba(255, 255, 255, 0.1);
 }
 
-.nav-list li.active-link a:hover {
+.navList li.activeLink a:hover {
   background-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 
-.nav-list li a .text-content {
+.navList li a .textContent {
   display: inline-block;
   transition: transform 0.05s ease-in-out;
 }
 
-.nav-list li a:active .text-content {
+.navList li a:active .textContent {
   transform: scale(0.8);
 }
 
-.nav-list li a:active,
-.nav-list li.active-link a:active {
+.navList li a:active,
+.navList li.activeLink a:active {
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 0.05rem 0.1rem rgba(0, 0, 0, 0.1);
 }
 
-.nav-side {
+.navSide {
   position: fixed;
   top: var(--header-height, 4.25rem);
   right: 0;
@@ -83,21 +83,21 @@
   z-index: 999;
 }
 
-.nav-side.open {
+.navSide.open {
   transform: translateX(0)
 }
 
-.nav-side .nav-list {
+.navSide .navList {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.nav-side .nav-list li {
+.navSide .navList li {
   margin: 0.625rem 0;
 }
 
-.nav-side .nav-list li a {
+.navSide .navList li a {
   text-decoration: none;
   color: #ffffff;
   transition: all 0.05 ease-in-out;
@@ -117,7 +117,7 @@
   text-shadow: 0.2rem 0 0.8rem rgba(0, 0, 0, 0.3);
 } */
 
-.nav-side a[tabindex="-1"] {
+.navSide a[tabindex="-1"] {
   pointer-events: none;
 }
 

@@ -15,7 +15,7 @@
   margin-top: -30rem;
 }
 
-.header.animate-header {
+.header.animateHeader {
   transform: translateY(calc(var(--header-height) * -2));
   animation: descend 1s ease-out 0s forwards;
 }
@@ -35,7 +35,7 @@
   margin-right: auto; 
 }
 
-.site-title {
+.siteTitle {
   font-size: 3rem;
   color: #ffffff;
   text-decoration: none;
@@ -55,15 +55,15 @@
   text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
 }
 
-.site-title.animate-header {
+.siteTitle.animateHeader {
   animation: textEntry 0.7s ease-out 2s forwards;
 }
 
-.site-title:hover {
+.siteTitle:hover {
   text-decoration: none;
 }
 
-.menu-toggle {
+.menuToggle {
   display: inline-block;
   align-items: center;
   color: #ffffff;
@@ -75,7 +75,7 @@
   text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.6);
 }
 
-.menu-toggle:hover {
+.menuToggle:hover {
   transform: scale(1.5);
   text-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.5);
 }

@@ -46,13 +46,13 @@ const Header = ({ siteTitle }) => {
       <header className={`header`} ref={headerRef}>
         <div className="container">
           <div className="logo">
-            <Link to="/" className={`site-title`}>
+            <Link to="/" className={`siteTitle`}>
               {siteTitle}
             </Link>
           </div>
           {hasSmallWidth ? (
             <div
-              className="menu-toggle"
+              className="menuToggle"
               onClick={() => setMenuOpen(!menuOpen)}
               onKeyDown={handleKeyDown}
               role="button"
@@ -66,11 +66,11 @@ const Header = ({ siteTitle }) => {
               {menuOpen ? '>' : '<'}
             </div>
           ) : (
-            <Nav className={`nav-header`} />
+            <Nav className={`navHeader`} />
           )}
         </div>
       </header>
-      {hasSmallWidth && <Nav className={`nav-side ${menuOpen ? 'open' : ''}`} />}
+      {hasSmallWidth && <Nav className={`navSide ${menuOpen ? 'open' : ''}`} />}
     </>
   );
 };
