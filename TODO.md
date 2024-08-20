@@ -6,3 +6,4 @@
 - make sections reader-compatible
 - header font should be smaller on mobile
 - fix button styling on mobile
+- fix url for downloads on pages. missing prefix
