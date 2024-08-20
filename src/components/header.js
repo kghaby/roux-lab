@@ -9,19 +9,18 @@ const Header = ({ siteTitle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasSmallWidth, setSmallWidth] = useState(false);
   const headerRef = useRef(null);
-  const maxNavHeaderWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-navheader-width'));
-  const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
   useEffect(() => {
     const handleResize = () => {
-      setSmallWidth(window.innerWidth <= (maxNavHeaderWidth * fontSize));
+      const maxNavHeaderWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-navheader-width'));
+      setSmallWidth(window.innerWidth <= (maxNavHeaderWidth * parseFloat(getComputedStyle(document.documentElement).fontSize)));
     };
 
     handleResize(); // Set initial state
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [fontSize, maxNavHeaderWidth]);
+  }, []);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {

@@ -9,8 +9,8 @@ const NotFoundPage = () => (
       textAlign: "center",
       padding: "2rem",
     }}>
-    <h1>404: Not Found</h1>
-    <p>Path unable to converge.</p>
+      <h1>404: Not Found</h1>
+      <p>Path unable to converge.</p>
     </div>
   </Layout>
 )
