@@ -129,6 +129,10 @@ body {
   /* padding: 2rem; */
   max-width: min(var(--size-content), 100%);
   margin: auto;
+  align-content: start;
+  width:100%;
+  margin-top:0;
+  overflow: auto;
 }
 
 .footer {
@@ -188,8 +192,8 @@ h1 > b {
 
 h2 {
   font-size: 2rem;
-  margin: 0;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
+
   padding: 0;
 }
 

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "@reach/router";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -9,12 +8,15 @@ import * as pageStyles from "./research.module.css";
 
 // Import all section files from the sections directory
 const importAllSections = () => {
-  const sectionsContext = require.context('../data/research/sections', false, /\.js$/);
+  const sectionsContext = require.context('../data/research/sections', true, /\.js$/);
   const sections = sectionsContext.keys().map((key) => {
     const section = sectionsContext(key).default;
+    const folderName = key.split('/')[1]; // Assuming the structure is './folderName/index.js'
+
     return {
       ...section,
-      key: key.replace('./', '').replace('.js', '')
+      key: folderName,
+      id: folderName.replace(/\s+/g, '_').replace(/[^\w-]+/g, ''), // Sanitized for valid HTML ID
     };
   });
   return sections.sort((a, b) => a.title.localeCompare(b.title));
@@ -23,42 +25,56 @@ const importAllSections = () => {
 const ResearchPage = () => {
   const [sections, setSections] = useState([]);
   const [openSections, setOpenSections] = useState([]);
+  const sectionRefs = useRef({}); 
+
+  const location = useLocation();
 
   useEffect(() => {
     const loadedSections = importAllSections();
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height'));
+  
     setSections(loadedSections);
-  }, []);
-
-  const toggleSection = (title) => {
-    setOpenSections((prevOpenSections) =>
-      prevOpenSections.includes(title)
-        ? prevOpenSections.filter((section) => section !== title)
-        : [...prevOpenSections, title]
-    );
-  };
-
-  // Query all images in the src/images directory using GraphQL
-  const data = useStaticQuery(graphql`
-    query {
-      allFile(filter: { sourceInstanceName: { eq: "images" } }) {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              gatsbyImageData(
-                quality: 95
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
+  
+    const hash = location.hash.replace("#", "");
+    if (hash) {
+      const ids = hash.split('||');
+      setOpenSections(ids);
+      setTimeout(() => {
+        if (ids.length > 0) {
+          const element = sectionRefs.current[ids[0]];
+          if (element) {
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+            const offset = headerHeight * fontSize;
+            window.scrollTo({
+              top: elementPosition - offset,
+              behavior: "instant"
+            });
           }
         }
-      }
+      }, 1);
     }
-  `);
-
-  const getImageForSection = (relativeImagePath) => {
-    const imageNode = data.allFile.edges.find(edge => edge.node.relativePath === relativeImagePath);
-    return imageNode ? getImage(imageNode.node.childImageSharp) : null;
+  }, [location.hash]);
+ 
+  const toggleSection = (id) => {
+    setOpenSections((prevOpenSections) => {
+      let newOpenSections;
+  
+      if (prevOpenSections.includes(id)) {
+        newOpenSections = prevOpenSections.filter((section) => section !== id);
+      } else {
+        newOpenSections = [...prevOpenSections, id];
+      }
+  
+      if (newOpenSections.length === 0) {
+        window.history.replaceState({}, '', window.location.pathname); 
+      } else {
+        const hash = newOpenSections.join('||');
+        window.history.replaceState({}, '', `#${hash}`);
+      }
+  
+      return newOpenSections;
+    });
   };
 
   return (
@@ -69,22 +85,27 @@ const ResearchPage = () => {
           {summary}
         </section>
         {sections.map((section) => (
-          <section key={section.key} id={section.key}>
+          <section 
+            key={section.key} 
+            id={section.id} 
+            ref={(el) => (sectionRefs.current[section.id] = el)}
+          >
             <button 
-              onClick={() => toggleSection(section.title)} 
+              onClick={() => toggleSection(section.id)} 
               style={{ 
                 textAlign: "left", 
                 width: "100%", 
                 background: "none", 
                 border: "none", 
                 padding: 0, 
-                cursor: "pointer" 
+                cursor: "pointer", 
+                marginTop: "1rem",
               }}
-              aria-expanded={openSections.includes(section.title)}
+              aria-expanded={openSections.includes(section.id)}
             >
               <h2 style={{ display: "flex" }}>
                 <span style={{ fontFamily: "var(--font-mono)", marginRight: "0.5rem" }}>
-                  {openSections.includes(section.title) ? "-" : "+"}
+                  {openSections.includes(section.id) ? "-" : "+"}
                 </span>
                 <span 
                   style={{ 
@@ -97,20 +118,11 @@ const ResearchPage = () => {
                 </span>
               </h2>
             </button>
-            {openSections.includes(section.title) && (
+            {openSections.includes(section.id) && (
               <div className={pageStyles.researchSection}>
                 <div className={pageStyles.sectionInfo}>
                   {section.content}
                 </div>
-                {section.image && (
-                  <div className={pageStyles.sectionImage}>
-                    <GatsbyImage
-                      image={getImageForSection(section.image)}
-                      alt={section.title}
-                      style={{ borderRadius: `0.5rem` }}
-                    />
-                  </div>
-                )}
               </div>
             )}
           </section>
@@ -123,3 +135,4 @@ const ResearchPage = () => {
 export const Head = () => <Seo title="Research" />
 
 export default ResearchPage;
+

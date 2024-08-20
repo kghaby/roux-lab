@@ -1,1 +1,5 @@
 - gatsby github action/workflow?
+- graphql queries taking up lots of mem? query more specific paths?
+- spell check methods sections
+- default open links in new tab
+- optimize memory

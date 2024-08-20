@@ -42,17 +42,16 @@ export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPo
     // window.history.scrollRestoration = 'manual';
     const htmlElement = document.documentElement;
     const currentPosition = getSavedScrollPosition(location, location.key);
-
-    if (!currentPosition) {
-        window.scrollTo(0, 0);
-    } else {
-        setTimeout(() => {
-        window.requestAnimationFrame(() => {
-            htmlElement.style.scrollBehavior = 'auto'; // Don't scroll on refresh
-            window.scrollTo(...currentPosition);
-            htmlElement.style.scrollBehavior = 'smooth';
-        });
-        }, 0);
-    }
+    setTimeout(() => {
+        if (!currentPosition) {
+            window.scrollTo(0, 0);
+        } else {
+            window.requestAnimationFrame(() => {
+                htmlElement.style.scrollBehavior = 'auto'; // Dont be smooth on recovery
+                window.scrollTo(...currentPosition);
+                htmlElement.style.scrollBehavior = 'smooth';
+            });
+        }
+    }, 0);
     return false;
 };
