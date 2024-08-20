@@ -3,26 +3,29 @@ import { useLocation } from "@reach/router";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import summary from "../data/methods/summary";
 import * as pageStyles from "./sectioned.module.css";
 
 // Import all section files from the sections directory
 const importAllSections = () => {
-  const sectionsContext = require.context('../data/methods/sections', true, /\.js$/);
+  const sectionsContext = require.context('../data/openings', false, /\.js$/);
   const sections = sectionsContext.keys().map((key) => {
     const section = sectionsContext(key).default;
-    const folderName = key.split('/')[1]; // Assuming the structure is './folderName/index.js'
+    const fileName = key.replace('./', '').replace('.js', ''); // Assuming the structure is './folderName/index.js'
 
     return {
       ...section,
-      key: folderName,
-      id: folderName.replace(/\s+/g, '_').replace(/[^\w-]+/g, ''), // Sanitized for valid HTML ID
+      key: fileName,
+      id: fileName.replace(/\s+/g, '_').replace(/[^\w-]+/g, ''), // Sanitized for valid HTML ID
     };
   });
-  return sections.sort((a, b) => a.title.localeCompare(b.title));
+  return sections.sort((a, b) => {
+    if (a.title.includes("high school")) return 1; // a should come after b
+    if (b.title.includes("high school")) return -1; // a should come before b
+    return a.title.localeCompare(b.title);
+  });
 };
 
-const MethodsPage = () => {
+const OpeningsPage = () => {
   const [sections, setSections] = useState([]);
   const [openSections, setOpenSections] = useState([]);
   const sectionRefs = useRef({}); 
@@ -80,9 +83,8 @@ const MethodsPage = () => {
   return (
     <Layout>
       <div className={pageStyles.sectionedPage}>
-        <section key={"Summary"} id={"Summary"}>
-          <h1><b>Methodological Developments</b></h1>
-          {summary}
+        <section key={"top"} id={"top"}>
+          <h1><b>Openings</b></h1>
         </section>
         {sections.map((section) => (
           <section 
@@ -118,7 +120,6 @@ const MethodsPage = () => {
   );
 };
 
-export const Head = () => <Seo title="Methods" />
+export const Head = () => <Seo title="Openings" />
 
-export default MethodsPage;
-
+export default OpeningsPage;

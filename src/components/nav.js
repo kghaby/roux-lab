@@ -30,8 +30,13 @@ const Nav = forwardRef(({ className }, ref) => {
         <li className={isActive("/methods") ? "activeLink" : ""}>
           <Link to="/methods"><span className="textContent">Methods</span></Link>
         </li>
-        <li className={isActive("/publications") ? "activeLink" : ""}>
+        {/* <li className={isActive("/publications") ? "activeLink" : ""}>
           <Link to="/publications"><span className="textContent">Publications</span></Link>
+        </li> */}
+        <li className={isActive("/publications") ? "activeLink" : ""}>
+          <a href="https://scholar.google.com/citations?hl=en&user=hoGTGlMAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener noreferrer">
+            <span className="textContent">Publications</span>
+          </a>
         </li>
         <li className={isActive("/openings") ? "activeLink" : ""}>
           <Link to="/openings"><span className="textContent">Openings</span></Link>
@@ -39,11 +44,11 @@ const Nav = forwardRef(({ className }, ref) => {
         <li className={isActive("/gallery") ? "activeLink" : ""}>
           <Link to="/gallery"><span className="textContent">Gallery</span></Link>
         </li>
-        <li className={isActive("/tools") ? "activeLink" : ""}>
+        {/* <li className={isActive("/tools") ? "activeLink" : ""}>
           <Link to="/tools"><span className="textContent">Tools</span></Link>
-        </li>
-        <li className={isActive("/useful-links") ? "activeLink" : ""}>
-          <Link to="/useful-links"><span className="textContent">Useful Links</span></Link>
+        </li> */}
+        <li className={isActive("/ulinks") ? "activeLink" : ""}>
+          <Link to="/ulinks"><span className="textContent">Useful Links</span></Link>
         </li>
         <li className={isActive("/contacts") ? "activeLink" : ""}>
           <Link to="/contacts"><span className="textContent">Contacts</span></Link>

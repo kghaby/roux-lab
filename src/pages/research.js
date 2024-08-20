@@ -4,7 +4,7 @@ import { useLocation } from "@reach/router";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import summary from "../data/research/summary";
-import * as pageStyles from "./research.module.css";
+import * as pageStyles from "./sectioned.module.css";
 
 // Import all section files from the sections directory
 const importAllSections = () => {
@@ -79,7 +79,7 @@ const ResearchPage = () => {
 
   return (
     <Layout>
-      <div className={pageStyles.researchPage}>
+      <div className={pageStyles.sectionedPage}>
         <section key={"Summary"} id={"Summary"}>
           <h1><b>Research Projects</b></h1>
           {summary}
@@ -92,34 +92,20 @@ const ResearchPage = () => {
           >
             <button 
               onClick={() => toggleSection(section.id)} 
-              style={{ 
-                textAlign: "left", 
-                width: "100%", 
-                background: "none", 
-                border: "none", 
-                padding: 0, 
-                cursor: "pointer", 
-                marginTop: "1rem",
-              }}
+              className={pageStyles.sectionButton}
               aria-expanded={openSections.includes(section.id)}
             >
               <h2 style={{ display: "flex" }}>
-                <span style={{ fontFamily: "var(--font-mono)", marginRight: "0.5rem" }}>
+                <span className={pageStyles.sectionButtonIndicator}>
                   {openSections.includes(section.id) ? "-" : "+"}
                 </span>
-                <span 
-                  style={{ 
-                    display: "inline-block", 
-                    whiteSpace: "pre-wrap", 
-                    marginLeft: "0.5rem" 
-                  }}
-                >
+                <span className={pageStyles.sectionButtonTitle}>
                   {section.title}
                 </span>
               </h2>
             </button>
             {openSections.includes(section.id) && (
-              <div className={pageStyles.researchSection}>
+              <div className={pageStyles.pageSection}>
                 <div className={pageStyles.sectionInfo}>
                   {section.content}
                 </div>

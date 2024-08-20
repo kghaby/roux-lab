@@ -3,16 +3,16 @@ import * as React from "react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import * as pageStyles from "./research.module.css";
+import * as pageStyles from "./sectioned.module.css";
 
-const ResearchPage = () => (
+const Page = () => (
   <Layout>
-    <div className={pageStyles.researchPage}>
+    <div className={pageStyles.sectionedPage}>
       
     </div>
   </Layout>
 )
 
-export const Head = () => <Seo title="Research" />
+export const Head = () => <Seo title="Page" />
 
-export default ResearchPage
+export default Page
