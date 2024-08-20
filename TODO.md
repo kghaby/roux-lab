@@ -3,3 +3,6 @@
 - spell check methods sections
 - default open links in new tab
 - optimize memory
+- make sections reader-compatible
+- header font should be smaller on mobile
+- fix button styling on mobile
