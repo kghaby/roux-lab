@@ -7,3 +7,6 @@
 - header font should be smaller on mobile
 - fix button styling on mobile
 - fix url for downloads on pages. missing prefix
+- tools:
+  - kinetics
+  - current (eqn that ramon showed me from 2004 paper)
