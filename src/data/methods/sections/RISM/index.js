@@ -15,7 +15,7 @@ const RISM = {
     </p>
     <b>Downloads:</b>
     <ul><b>
-      <li><a href="rism.tar.gz"> RISM program with examples and documentation </a></li>
+      <li><a href="/resources/downloads/RISM/rism.tar.gz" download> RISM program with examples and documentation </a></li>
     </b></ul>
     </>
   ),

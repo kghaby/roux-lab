@@ -38,10 +38,10 @@ const Membrane = {
     </p>
     <b>Download:</b>
     <ul><b>
-      <li><a href="membrane.tar.gz"> Building the melittin/DMPC system </a></li>
-      <li><a href="dmpc.tar.gz"> Library of pre-equilibrated/pre-hydrated DMPC </a></li> 
-      <li><a href="dppc.tar.gz"> Library of pre-equilibrated/pre-hydrated DPPC </a></li> 
-      <li><a href="membrane_allen.tar.gz"> Building DMPC/DPPC/DOPC around a general shape Protein </a></li>
+      <li><a href="/resources/downloads/membrane/membrane.tar.gz" download> Building the melittin/DMPC system </a></li>
+      <li><a href="/resources/downloads/membrane/dmpc.tar.gz" download> Library of pre-equilibrated/pre-hydrated DMPC </a></li> 
+      <li><a href="/resources/downloads/membrane/dppc.tar.gz" download> Library of pre-equilibrated/pre-hydrated DPPC </a></li> 
+      <li><a href="/resources/downloads/membrane/membrane_allen.tar.gz" download> Building DMPC/DPPC/DOPC around a general shape Protein </a></li>
     </b></ul>
     </>
   ),

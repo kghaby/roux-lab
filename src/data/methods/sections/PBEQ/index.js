@@ -41,13 +41,13 @@ const PBEQ = {
     </p>
     <b>Downloads:</b>
     <ul><b>
-      <li><a href="radius.str"> Set of atomic Born radii for the 20 standard amino acids </a></li>
-      <li><a href="radii_prot_na.str"> Complete set of atomic Born radii for proteins and nucleic acids </a></li>
-      <li><a href="solvation.tar.gz"> Calculate the electrostatic solvation free energy  </a></li>
-      <li><a href="pka.tar.gz"> Calculate a pKa shift </a></li>
-      <li><a href="binding.tar.gz">Calculate protein-protein binding </a></li>
-      <li><a href="voltage.tar.gz">Calculate the transmembrane potential across the KcsA K+ channel </a></li>
-      <li><a href="pbforce.tar.gz">Simulation with analytical electrostatic solvation forces </a></li>
+      <li><a href="/resources/downloads/PBEQ/radius.str" download> Set of atomic Born radii for the 20 standard amino acids </a></li>
+      <li><a href="/resources/downloads/PBEQ/radii_prot_na.str" download> Complete set of atomic Born radii for proteins and nucleic acids </a></li>
+      <li><a href="/resources/downloads/PBEQ/solvation.tar.gz" download> Calculate the electrostatic solvation free energy  </a></li>
+      <li><a href="/resources/downloads/PBEQ/pka.tar.gz" download> Calculate a pKa shift </a></li>
+      <li><a href="/resources/downloads/PBEQ/binding.tar.gz" download>Calculate protein-protein binding </a></li>
+      <li><a href="/resources/downloads/PBEQ/voltage.tar.gz" download>Calculate the transmembrane potential across the KcsA K+ channel </a></li>
+      <li><a href="/resources/downloads/PBEQ/pbforce.tar.gz" download>Simulation with analytical electrostatic solvation forces </a></li>
     </b></ul>
     </>
   ),
