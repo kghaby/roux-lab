@@ -1,21 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "@reach/router";
-
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
-import Seo from "../components/seo";
-import * as pageStyles from "./sectioned.module.css";
+import * as pageStyles from "./gallery.module.css";
 
-// Import all section files from the sections directory
 const importAllSections = () => {
   const sectionsContext = require.context('../data/gallery', false, /\.js$/);
   const sections = sectionsContext.keys().map((key) => {
     const section = sectionsContext(key).default;
-    const fileName = key.replace('./', '').replace('.js', ''); // Assuming the structure is './folderName/index.js'
+    const fileName = key.replace('./', '').replace('.js', ''); 
 
     return {
       ...section,
       key: fileName,
-      id: fileName.replace(/\s+/g, '_').replace(/[^\w-]+/g, ''), // Sanitized for valid HTML ID
+      id: fileName.replace(/\s+/g, '_').replace(/[^\w-]+/g, ''), 
     };
   });
   return sections.sort((a, b) => {
@@ -24,100 +20,77 @@ const importAllSections = () => {
 };
 
 const GalleryPage = () => {
+  const [currentSlide, setCurrentSlide] = useState(null);
   const [sections, setSections] = useState([]);
-  const [openSections, setOpenSections] = useState([]);
-  const sectionRefs = useRef({}); 
-
-  const location = useLocation();
 
   useEffect(() => {
     const loadedSections = importAllSections();
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height'));
-  
     setSections(loadedSections);
-  
-    const hash = location.hash.replace("#", "");
-    if (hash) {
-      const ids = hash.split('||');
-      setOpenSections(ids);
-      setTimeout(() => {
-        if (ids.length > 0) {
-          const element = sectionRefs.current[ids[0]];
-          if (element) {
-            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-            const offset = headerHeight * fontSize;
-            window.scrollTo({
-              top: elementPosition - offset,
-              behavior: "instant"
-            });
-          }
-        }
-      }, 1);
+
+  }, []);
+
+  const openSlideshow = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const closeSlideshow = () => {
+    setCurrentSlide(null);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % sections.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + sections.length) % sections.length);
+  };
+
+  const handleKeyDown = (event, index) => {
+    if (event.key === "Enter" || event.key === " ") {
+      openSlideshow(index);
     }
-  }, [location.hash]);
- 
-  const toggleSection = (id) => {
-    setOpenSections((prevOpenSections) => {
-      let newOpenSections;
-  
-      if (prevOpenSections.includes(id)) {
-        newOpenSections = prevOpenSections.filter((section) => section !== id);
-      } else {
-        newOpenSections = [...prevOpenSections, id];
-      }
-  
-      if (newOpenSections.length === 0) {
-        window.history.replaceState({}, '', window.location.pathname); 
-      } else {
-        const hash = newOpenSections.join('||');
-        window.history.replaceState({}, '', `#${hash}`);
-      }
-  
-      return newOpenSections;
-    });
   };
 
   return (
     <Layout>
-      <div className={pageStyles.sectionedPage}>
-        <section key={"top"} id={"top"}>
-          <h1><b>Gallery</b></h1>
-        </section>
-        {sections.map((section) => (
-          <section 
-            key={section.key} 
-            id={section.id} 
-            ref={(el) => (sectionRefs.current[section.id] = el)}
+      <div className={pageStyles.galleryGrid}>
+        {sections.map((section, index) => (
+          <div
+            key={section.id}
+            className={pageStyles.thumbnail}
+            onClick={() => openSlideshow(index)}
+            onKeyDown={(event) => handleKeyDown(event, index)}
+            role="button"
+            tabIndex={0}
+            aria-label={`Open ${section.title}`}
           >
-            <button 
-              onClick={() => toggleSection(section.id)} 
-              className={pageStyles.sectionButton}
-              aria-expanded={openSections.includes(section.id)}
-            >
-              <h2 style={{ display: "flex" }}>
-                <span className={pageStyles.sectionButtonIndicator}>
-                  {openSections.includes(section.id) ? "-" : "+"}
-                </span>
-                <span className={pageStyles.sectionButtonTitle}>
-                  {section.title}
-                </span>
-              </h2>
-            </button>
-            {openSections.includes(section.id) && (
-              <div className={pageStyles.pageSection}>
-                <div className={pageStyles.sectionInfo}>
-                  {section.content}
-                </div>
-              </div>
-            )}
-          </section>
+            {section.media}
+            <h3>{section.title}</h3>
+          </div>
         ))}
       </div>
+
+      {currentSlide !== null && (
+        <div className={pageStyles.slideshow}>
+          <div className={pageStyles.slideContent}>
+            <div className={pageStyles.slideMedia}>{sections[currentSlide].media}</div>
+            <div className={pageStyles.slideDescription}>
+              {sections[currentSlide].description}
+            </div>
+          </div>
+          <button className={pageStyles.closeButton} onClick={closeSlideshow}>
+            &times;
+          </button>
+          <button className={pageStyles.prevButton} onClick={prevSlide}>
+            &#10094;
+          </button>
+          <button className={pageStyles.nextButton} onClick={nextSlide}>
+            &#10095;
+          </button>
+        </div>
+      )}
     </Layout>
   );
 };
-
-export const Head = () => <Seo title="Gallery" />
 
 export default GalleryPage;

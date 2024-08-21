@@ -1,13 +1,10 @@
 - gatsby github action/workflow?
-- graphql queries taking up lots of mem? query more specific paths?
 - spell check methods sections
-- default open links in new tab
 - optimize memory
 - make sections reader-compatible
-- header font should be smaller on mobile
-- fix button styling on mobile
-- fix url for downloads on pages. missing prefix
 - tools:
   - kinetics
   - current (eqn that ramon showed me from 2004 paper)
+  - MD parameter visualizer with animation
 - use template for sections?
+- parallax background. water molecules vector art?

@@ -46,7 +46,7 @@ const GCMC = {
 
       </div>
       <StaticImage 
-        src="../../../../images/collage/gcmc_bd.jpg" 
+        src="../../../../images/research/gcmc_bd.jpg" 
         alt="GCMC/BD"
         loading="lazy"
         width={250} 

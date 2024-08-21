@@ -1,0 +1,137 @@
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  flex-direction: column;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail h3 {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.mediaImage {
+  max-width: 80%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.615);
+  transition: transform 0.3s ease-in-out;
+  display: block;
+  margin: 0 auto; 
+}
+
+.slideContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  max-height: 90%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  color: white;
+  animation: slideIn 0.5s ease;
+  overflow-y: auto;
+}
+
+@media (max-width: 48rem) {
+  .slideContent {
+    flex-direction: column;
+    padding: 1rem;
+    max-height: 100vh;
+    /* overflow-y: auto; */
+  }
+}
+
+.slideMedia {
+  justify-self: center;
+  align-self: center;
+  max-width: 70%;
+  max-height: 80vh;
+  margin-right: 0rem;
+}
+
+.slideDescription {
+  max-width: 30%;
+}
+
+@media (max-width: 48rem) {
+  .slideMedia {
+    max-width: 100%;
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+
+  .slideDescription {
+    max-width: 90%;
+  }
+}
+
+.closeButton,
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.closeButton {
+  right: 1rem;
+  top: 0.5rem;
+}
+
+.prevButton {
+  left: 1rem;
+  transform: translateY(-50%);
+}
+
+.nextButton {
+  right: 1rem;
+  transform: translateY(-50%);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

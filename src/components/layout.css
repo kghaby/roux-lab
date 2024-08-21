@@ -142,7 +142,7 @@ body {
   background-color: #f8f8f8;
   border-top: 0.0625rem solid #e7e7e7;
   font-size: var(--font-sm);
-  z-index: 1000;
+  /* z-index: 1000; */
 }
 
 .footer p {

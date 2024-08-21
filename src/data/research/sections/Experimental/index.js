@@ -18,7 +18,7 @@ const ExperimentalResearch = {
         </p>
         </div>
         <StaticImage 
-          src="../../../../images/collage/roux_exptl.jpg" 
+          src="../../../../images/research/roux_exptl.jpg" 
           alt="In the lab"
           loading="lazy"
           style={{
@@ -31,7 +31,7 @@ const ExperimentalResearch = {
       </div>
       </>
   ),
-  // image: "collage/roux_exptl.jpg"
+  // image: "research/roux_exptl.jpg"
 };
 
 export default ExperimentalResearch;
