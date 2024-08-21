@@ -1,4 +1,5 @@
 import React from "react";
+import { withPrefix } from "gatsby";
 
 const PNP = {
   title: "Three-dimensional Poisson-Nersnt-Planck (3dPNP)",
@@ -14,7 +15,7 @@ const PNP = {
     </p>
     <b>Downloads:</b>
     <ul><b>
-      <li><a href="/resources/downloads/PNP/pbpnp.tar.gz" download> PNP program with examples and documentation </a></li>
+      <li><a href={withPrefix("/resources/downloads/PNP/pbpnp.tar.gz")} download> PNP program with examples and documentation </a></li>
     </b></ul>
     </>
   ),

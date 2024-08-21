@@ -1,5 +1,6 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import { withPrefix } from "gatsby";
 
 const GCMC = {
   title: "Grand canonical monte carlo Brownian dynamics (GCMC/BD)",
@@ -31,7 +32,7 @@ const GCMC = {
 				<i>Biophys. J.</i></a> <b>  79</b>, 788-801 (2000). 
 				[<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10920012&dopt=Abstract"> 
 				PubMed</a>]  
-				[<a href="/resources/publications/Im_Seefeld_Roux_2000.pdf">pdf</a>]
+				[<a href={withPrefix("/resources/publications/Im_Seefeld_Roux_2000.pdf")}>pdf</a>]
         <br /><br />
         
 				W. IM and B. ROUX, "Ion Permeation and Selectivity of OmpF Porin:  A Theoretical Study Based on Molecular Dynamics, Brownian Dynamics,  and Continuum Electrodiffusion Theory.",{" "}
@@ -39,7 +40,7 @@ const GCMC = {
 				<i>J. Mol. Biol.</i></a> <b> 322</b>, 851-869 (2002). 
 				[<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12270719&dopt=Abstract"> 
 				PubMed</a>]  
-				[<a href="/resources/publications/Im_Roux_JMB_2002b.pdf">pdf</a>]
+				[<a href={withPrefix("/resources/publications/Im_Roux_JMB_2002b.pdf")}>pdf</a>]
 
       </p>
 
@@ -58,7 +59,7 @@ const GCMC = {
     </div>
     <b>Downloads:</b>
     <ul>
-      <li><b><a href="/resources/downloads/GCMC/gcmc-bd.tar.gz" download> GCMC/BD program with examples and documentation </a></b></li>
+      <li><b><a href={withPrefix("/resources/downloads/GCMC/gcmc-bd.tar.gz")} download> GCMC/BD program with examples and documentation </a></b></li>
     </ul>
     </>
   ),

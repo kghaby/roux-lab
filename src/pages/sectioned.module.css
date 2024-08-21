@@ -1,5 +1,5 @@
 .sectionedPage {
-  padding: 2rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -17,7 +17,7 @@
   width:100%
 }
 
-.sectionButton {
+.sectionHeader {
   text-align: left; 
   width: 100%; 
   background: none; 
@@ -27,22 +27,31 @@
   margin-top: 1rem;
 }
 
-.sectionButtonIndicator {
+.sectionHeaderIndicator {
   font-family: var(--font-mono);
   margin-right: 0.5rem;
-  align-content: center;
+  align-self: center;
   font-size: 1rem;
 }
 
-.sectionButtonTitle {
+.sectionHeaderTitle {
   display: inline-block; 
   white-space: pre-wrap; 
   margin-left: 0.5rem; 
 }
 
-@media (max-width: 48rem) {
+.uLinks {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 30rem) {
   .sectionInfo {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+  .uLinks {
+    font-size: 1.3rem;
+  }
 }
+
+

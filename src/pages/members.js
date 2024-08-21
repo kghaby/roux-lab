@@ -43,9 +43,8 @@ const Members = () => {
         <section id="FormerMembers">
           <h2 style={{ 
             textAlign: "center", 
-            fontSize: "2rem",
             }}>Former Group Members</h2>
-          <h3>[ <a href="rouxworld.html">Map of past group members at permanent research positions</a> ]</h3>
+          <h3><a href="rouxworld.html">Map of past group members at permanent research positions</a></h3>
           <div className={pageStyles.membersGroup}>
             {sortedData["Former"] && sortedData["Former"].map((member, index) => (
               <MemberCard key={index} {...member} />

@@ -77,6 +77,12 @@ const MethodsPage = () => {
     });
   };
 
+  const handleKeyDown = (event, section) => {
+    if (event.key === "Enter" || event.key === " ") {
+      toggleSection(section.id);
+    }
+  };
+
   return (
     <Layout>
       <div className={pageStyles.sectionedPage}>
@@ -90,20 +96,24 @@ const MethodsPage = () => {
             id={section.id} 
             ref={(el) => (sectionRefs.current[section.id] = el)}
           >
-            <button 
+            <div 
               onClick={() => toggleSection(section.id)} 
-              className={pageStyles.sectionButton}
+              onKeyDown={(event) => handleKeyDown(event, section)}
+              className={pageStyles.sectionHeader}
+              role="button"
+              tabIndex={0}
+              aria-label="Toggle section"
               aria-expanded={openSections.includes(section.id)}
             >
               <h2 style={{ display: "flex" }}>
-                <span className={pageStyles.sectionButtonIndicator}>
+                <span className={pageStyles.sectionHeaderIndicator}>
                   {openSections.includes(section.id) ? "-" : "+"}
                 </span>
-                <span className={pageStyles.sectionButtonTitle}>
+                <span className={pageStyles.sectionHeaderTitle}>
                   {section.title}
                 </span>
               </h2>
-            </button>
+            </div>
             {openSections.includes(section.id) && (
               <div className={pageStyles.pageSection}>
                 <div className={pageStyles.sectionInfo}>

@@ -1,4 +1,5 @@
 import React from "react";
+import { withPrefix } from "gatsby";
 
 const RISM = {
   title: "Reference interaction site model (RISM)",
@@ -15,7 +16,7 @@ const RISM = {
     </p>
     <b>Downloads:</b>
     <ul><b>
-      <li><a href="/resources/downloads/RISM/rism.tar.gz" download> RISM program with examples and documentation </a></li>
+      <li><a href={withPrefix("/resources/downloads/RISM/rism.tar.gz")} download> RISM program with examples and documentation </a></li>
     </b></ul>
     </>
   ),

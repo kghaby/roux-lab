@@ -1,4 +1,5 @@
 import React from "react";
+import { withPrefix } from "gatsby";
 
 const Membrane = {
   title: "Membrane builder",
@@ -38,10 +39,10 @@ const Membrane = {
     </p>
     <b>Download:</b>
     <ul><b>
-      <li><a href="/resources/downloads/membrane/membrane.tar.gz" download> Building the melittin/DMPC system </a></li>
-      <li><a href="/resources/downloads/membrane/dmpc.tar.gz" download> Library of pre-equilibrated/pre-hydrated DMPC </a></li> 
-      <li><a href="/resources/downloads/membrane/dppc.tar.gz" download> Library of pre-equilibrated/pre-hydrated DPPC </a></li> 
-      <li><a href="/resources/downloads/membrane/membrane_allen.tar.gz" download> Building DMPC/DPPC/DOPC around a general shape Protein </a></li>
+      <li><a href={withPrefix("/resources/downloads/membrane/membrane.tar.gz")} download> Building the melittin/DMPC system </a></li>
+      <li><a href={withPrefix("/resources/downloads/membrane/dmpc.tar.gz")} download> Library of pre-equilibrated/pre-hydrated DMPC </a></li> 
+      <li><a href={withPrefix("/resources/downloads/membrane/dppc.tar.gz")} download> Library of pre-equilibrated/pre-hydrated DPPC </a></li> 
+      <li><a href={withPrefix("/resources/downloads/membrane/membrane_allen.tar.gz")} download> Building DMPC/DPPC/DOPC around a general shape Protein </a></li>
     </b></ul>
     </>
   ),

@@ -9,7 +9,7 @@ const ULinksPage = () => {
     <Layout>
       <div className={pageStyles.sectionedPage}>
         <h1><b>Useful Links</b></h1>
-        <ul style={{ fontSize: "1.5rem" }}>
+        <ul className={pageStyles.uLinks}>
           <li><a href="http://yuri.harvard.edu"> Harvard CHARMM home page </a></li>
           <li><a href="http://www.lobos.nih.gov/cbs/index.shtml "> Home page of B.R. Brooks at NIH </a></li>
           <li><a href="http://brooks.chem.lsa.umich.edu"> Home page of C.L. Brooks III at Scripps </a></li>
