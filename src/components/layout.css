@@ -457,4 +457,3 @@ pre tt:after {
   scroll-snap-align: center;
   max-width: min(var(--size-content), 100%);
 }
-

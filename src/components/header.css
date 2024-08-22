@@ -55,6 +55,12 @@
   text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
 }
 
+@media (max-height: 30rem) {
+  .siteTitle {
+    font-size: 2rem;
+  }
+}
+
 .siteTitle.animateHeader {
   animation: textEntry 0.7s ease-out 2s forwards;
 }

@@ -1,7 +1,15 @@
 .sectionedPage {
-  padding: 1rem 2rem;
+  padding: 0rem 1rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 1rem;
+  box-shadow: 0 0 0.6rem rgba(142, 142, 142, 0.1);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  border: 0.25rem solid rgba(255, 255, 255, 0.3);
 }
 
 .pageSection {

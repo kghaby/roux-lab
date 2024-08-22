@@ -9,7 +9,6 @@ import React, { useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./header";
 import "./layout.css"; // Import the global styles
-import WaterBackground from "../components/WaterBackground";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -43,7 +42,6 @@ const Layout = ({ children }) => {
 
   return (
     <div className="siteWrapper">
-      <WaterBackground density={10}/>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main className="mainContent">{children}</main>
       <footer className="footer">

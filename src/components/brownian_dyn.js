@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "../components/layout.css"; // global styles
 
-//TODO: potential function needs tweaking
+//TODO: potential function needs tweaking.
+// clean up redundant code
+// optimize and make better styling like water mols. vector art
+// translate instead of redraw?
 
 const BrownianDyn = ({ D, F, T, dt, particleDensity }) => {
   const canvasRef = useRef(null);
@@ -88,7 +91,7 @@ const BrownianDyn = ({ D, F, T, dt, particleDensity }) => {
         // Draw the particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, (particle.opacity * fontSize) ** 2, 0, 2 * Math.PI);
-        ctx.fillStyle = `rgba(118, 30, 30, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(150, 0, 0, ${particle.opacity})`;
         ctx.fill();
       });
 

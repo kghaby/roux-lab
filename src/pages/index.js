@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Tilt from 'react-parallax-tilt';
 
-import Layout from "../components/layout";
+import Layout from "../components/layout_home";
 import Seo from "../components/seo";
 import BrownianDyn from "../components/brownian_dyn";
 import * as pageStyles from "./index.module.css";

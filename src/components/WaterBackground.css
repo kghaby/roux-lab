@@ -1,0 +1,36 @@
+/* WaterBackground.css */
+
+.waterBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none; /* Ensures this layer does not interfere with other elements */
+  z-index: -1; /* Place it behind the main content */
+  /* background-color: rgb(63, 63, 63); */
+}
+
+.molecule {
+  position: absolute;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+}
+
+.atom {
+  position: absolute;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.oxygen {
+  background-color: rgb(219, 1, 1);
+  border: 1px solid rgba(94, 94, 94, 0.104);
+}
+
+.hydrogen {
+  background-color: rgb(211, 211, 211);
+  border: 1px solid rgba(121, 121, 121, 0.064);
+}

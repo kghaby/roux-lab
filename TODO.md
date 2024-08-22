@@ -8,3 +8,4 @@
   - MD parameter visualizer with animation
 - use template for sections?
 - parallax background. water molecules vector art?
+- gallery like the css video
