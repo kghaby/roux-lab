@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="siteWrapper">
-      <WaterBackground density={10}/>
+      <WaterBackground density={5}/>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main className="mainContent">{children}</main>
       <footer className="footer">
