@@ -9,4 +9,5 @@
 - use template for sections?
 - parallax background. water molecules vector art?
 - gallery like the css video or like the slider at https://codesignal.com/
-- at the bottom of members, "Wow you scrolled all the way down this list! Enjoy!" https://www.youtube.com/watch?v=SRG1J0H8DC8&t=22s&ab_channel=BenoitRoux 
+- at the bottom of members, "Wow you scrolled all the way down this list! Enjoy!" embed https://www.youtube.com/watch?v=SRG1J0H8DC8&t=22s&ab_channel=BenoitRoux
+- nglview (Alessia's for example) for structures and trajectories
