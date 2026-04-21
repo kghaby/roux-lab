@@ -2,7 +2,7 @@
   "name": "roux-lab",
   "private": true,
   "description": "Website for the Roux Lab",
-  "version": "0.13.2",
+  "version": "0.14.0",
   "license": "MIT",
   "author": "Kyle Ghaby <kyleghaby@gmail.com>",
   "dependencies": {
@@ -24,7 +24,6 @@
     "react-tilt": "^1.0.2"
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
     "prettier": "^2.8.8"
   },
   "keywords": [
@@ -36,8 +35,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -m \"${DEPLOYMSG}\""
+    "clean": "gatsby clean"
   },
   "repository": {
     "type": "git",

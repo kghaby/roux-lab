@@ -1,99 +1,127 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# Roux Lab Website
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Source for the website of the [Roux Lab](https://kghaby.github.io/roux-lab/) — Prof. Benoît Roux, Department of Biochemistry and Molecular Biology, The University of Chicago. Built with [Gatsby](https://www.gatsbyjs.com/) and deployed to GitHub Pages.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+## About the Lab
 
-## 🚀 Quick start
+The Roux group develops and applies theoretical and computational methods for studying biological macromolecules. Research spans molecular dynamics simulations, free energy calculations, enhanced sampling, and continuum electrostatics, applied to ion channels, membrane transporters, protein kinases, and signaling complexes.
 
-1.  **Create a Gatsby site.**
+## Live Site
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+Deployed at: **https://kghaby.github.io/roux-lab/**
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+Every push to `main` triggers the GitHub Actions workflow in `.github/workflows/gatsby.yml`, which builds the site and publishes it to GitHub Pages. No manual deploy step is needed.
 
-1.  **Start developing.**
+## Editing via GitHub (no local setup)
 
-    Navigate into your new site’s directory and start it up.
+You can edit directly in the browser:
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+1. Navigate to the file on [github.com](https://github.com/kghaby/roux-lab) (e.g. `src/data/membersData.js`).
+2. Click the pencil icon → edit → commit to `main` (or open a Pull Request).
+3. The Actions tab will show the build progressing. Once green (~2–5 min), the change is live.
 
-1.  **Open the source code and start editing!**
+To replace/add an image: drop it into the relevant folder (e.g. `src/images/`) via the GitHub UI's "Add file → Upload files" button. Make sure it is referenced properly from the intended page/data.
+> For member images, add an "imgName" attribute for the member's section in `src/data/membersData.js`
 
-    Your site is now running at `http://localhost:8000`!
+## Local development
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+### Prerequisites
+- [Node.js](https://nodejs.org/) ≥ 18 
+- `npm` (bundled with Node) or `yarn`
+- `git`
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+### Setup
+```bash
+git clone https://github.com/kghaby/roux-lab.git
+cd roux-lab
+npm install
+```
 
-## 🚀 Quick start (Netlify)
+### Run the dev server (hot reload)
+```bash
+npm run develop
+```
+Opens at `http://localhost:8000/`. Edits to source files reload automatically. GraphQL explorer at `http://localhost:8000/___graphql`.
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+### Preview a production build
+```bash
+npm run build
+npm run serve
+```
+Serves the `public/` output at `http://localhost:9000/`. Use this to catch issues that only appear in the built site (broken image paths, missing assets, etc.).
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+### Submitting changes
 
-## 🧐 What's inside?
+**Option 1** — commit directly to `main`:
+```bash
+git add -A && git commit -m ""
+git push origin main
+```
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+**Option 2** — use a branch and pull request so the change can be reviewed and the public build checked before going live:
+```bash
+git checkout -b 
+# ...edit...
+git add -A && git commit -m ""
+git push origin 
+```
+Then open a PR against `main` on GitHub. Merging triggers auto-deploy.
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+## Repository layout
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+```
+├── .github/workflows/gatsby.yml   # Continuous Integration (CI): build + deploy to GitHub Pages
+├── gatsby-config.js               # site metadata, plugins, pathPrefix
+├── gatsby-node.js                 # programmatic page creation
+├── src/
+│   ├── data/                      # page content (people, methods, gallery entries, etc.) (JS/JSON modules consumed by pages)
+│   ├── pages/                     # top-level routes (one file = one page)
+│   ├── components/                # reusable UI pieces (header, footer, etc.)
+│   ├── images/                    # imported assets (group photos, gallery photos, etc.)
+│   └── templates/                 # layouts for dynamically generated pages
+├── static/                        # verbatim-copied assets (PDFs, CNAME, etc.)
+├── content/                       # markdown content (if used)
+└── public/                        # build output — .gitignored
+```
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+### Common edit targets
+| What to change          | Where                                                         |
+| ----------------------- | ------------------------------------------------------------- |
+| People / group roster   | `src/data/membersData.js`                                     |
+| Gallery                 | `src/data/gallery/`                                           |
+| Method descriptions     | `src/data/methods/`                                           |
+| Research descriptions   | `src/data/research/`                                          |
+| Site title, nav, footer | `gatsby-config.js` (metadata), `src/components/`              |
+| Images                  | `src/images/` for imported use; `static/` for direct-URL use  |
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+<!-- | Publications            | `src/data/publications.js`   | -->
+<!-- | News / announcements    | `src/data/news.js`                     | -->
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+## Deployment details
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+The workflow (`.github/workflows/gatsby.yml`) runs on every push to `main`:
+1. Checkout + Node 20 + dependency install (`npm ci`)
+2. `configure-pages` injects the correct `pathPrefix` automatically (via `PREFIX_PATHS=true`)
+3. `gatsby build` → `public/`
+4. Artifact uploaded and deployed to the `github-pages` environment
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+**Pages source** must be set to "GitHub Actions" under `Settings → Pages`. The legacy `gh-pages` branch is no longer used.
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+<!-- ### Custom domain
+Place a single-line `CNAME` file in `static/` with the domain (e.g. `rouxlab.uchicago.edu`). Gatsby copies it verbatim into the build output. -->
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+## Troubleshooting
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+- **Images 404 on `npm run serve`** — you likely built with `--prefix-paths`. Delete `public/` and `.cache/`, then `npm run build && npm run serve` without the flag.
+- **Build fails on CI with `npm ci` error** — `package-lock.json` missing or out of sync. Run `npm install` locally and commit the updated lockfile.
+- **Live site shows old content** — check the Actions tab; deploy may still be in progress or failed. Hard-refresh (Ctrl+Shift+R) to bypass browser cache.
+- **`gatsby` command not found locally** — run via npm scripts (`npm run develop`), or use `npx gatsby develop`.
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
+## Tech stack
 
-## 🎓 Learning Gatsby
+Gatsby 5 · React 18 · GraphQL · GitHub Actions · GitHub Pages
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+## Contact
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/getting-started/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On Netlify](https://netlify.com)
-
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Questions about the site: open an issue on this repo.
+Questions about the lab's research: see the [lab website](https://kghaby.github.io/roux-lab/) or contact Prof. Roux directly.
