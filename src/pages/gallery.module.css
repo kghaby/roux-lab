@@ -24,12 +24,22 @@
   margin-top: 0.5rem;
 }
 
+.thumbnail > :first-child,
+.thumbnail img,
+.thumbnail svg,
+.thumbnail video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .slideshow {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
@@ -45,7 +55,7 @@
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.615);
   transition: transform 0.3s ease-in-out;
   display: block;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .slideContent {
@@ -54,7 +64,7 @@
   justify-content: center;
   align-items: center;
   max-width: 90%;
-  max-height: 90%;
+  max-height: 90dvh;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
   backdrop-filter: blur(10px);
@@ -64,18 +74,7 @@
   overflow-y: auto;
 }
 
-@media (max-width: 48rem) {
-  .slideContent {
-    flex-direction: column;
-    padding: 1rem;
-    max-height: 100vh;
-    /* overflow-y: auto; */
-  }
-}
-
 .slideMedia {
-  justify-self: center;
-  align-self: center;
   max-width: 70%;
   max-height: 80vh;
   margin-right: 0rem;
@@ -83,18 +82,6 @@
 
 .slideDescription {
   max-width: 30%;
-}
-
-@media (max-width: 48rem) {
-  .slideMedia {
-    max-width: 100%;
-    margin-bottom: 1rem;
-    margin-right: 0;
-  }
-
-  .slideDescription {
-    max-width: 90%;
-  }
 }
 
 .closeButton,
@@ -125,13 +112,48 @@
   transform: translateY(-50%);
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(10%);
+.slideInRight {
+  animation: slideInRight 0.35s ease both;
+}
+
+.slideInLeft {
+  animation: slideInLeft 0.35s ease both;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(8%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-8%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 48rem) {
+  .slideContent {
+    flex-direction: column;
+    padding: 1rem;
+    max-height: 100dvh;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  .slideMedia {
+    max-width: 100%;
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+  .slideDescription {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 30rem) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 1rem;
+  }
+  .thumbnail {
+    width: 100%;
+    max-width: 20rem;
   }
 }

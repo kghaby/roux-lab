@@ -9,7 +9,7 @@
   padding: 0;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis
 }
 
 .navHeader .navList li {
@@ -85,7 +85,6 @@
 
 @media (max-height: 30rem) {
  .navSide {
-    top: 2rem;
     padding-bottom: 2.25rem;
   }
 }

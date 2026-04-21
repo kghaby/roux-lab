@@ -3,52 +3,45 @@ import Layout from "../components/layout";
 import * as pageStyles from "./gallery.module.css";
 
 const importAllSections = () => {
-  const sectionsContext = require.context('../data/gallery', false, /\.js$/);
-  const sections = sectionsContext.keys().map((key) => {
-    const section = sectionsContext(key).default;
-    const fileName = key.replace('./', '').replace('.js', ''); 
-
-    return {
-      ...section,
-      key: fileName,
-      id: fileName.replace(/\s+/g, '_').replace(/[^\w-]+/g, ''), 
-    };
-  });
-  return sections.sort((a, b) => {
-    return a.title.localeCompare(b.title);
-  });
+  const ctx = require.context('../data/gallery', false, /\.js$/);
+  return ctx.keys().map((key) => {
+    const section = ctx(key).default;
+    const fileName = key.replace('./', '').replace('.js', '');
+    return { ...section, key: fileName, id: fileName.replace(/\s+/g, '_').replace(/[^\w-]+/g, '') };
+  }).sort((a, b) => a.title.localeCompare(b.title));
 };
 
 const GalleryPage = () => {
   const [currentSlide, setCurrentSlide] = useState(null);
+  const [direction, setDirection] = useState(1); // +1 right, -1 left
   const [sections, setSections] = useState([]);
+  const [animKey, setAnimKey] = useState(0); // forces remount → replays keyframe
 
+  useEffect(() => { setSections(importAllSections()); }, []);
+
+  const openSlideshow = (i) => { setDirection(1); setCurrentSlide(i); setAnimKey(k => k + 1); };
+  const closeSlideshow = () => setCurrentSlide(null);
+
+  const advance = (delta) => {
+    setDirection(delta);
+    setCurrentSlide((p) => (p + delta + sections.length) % sections.length);
+    setAnimKey(k => k + 1);
+  };
+
+  // keyboard nav (arrows + esc)
   useEffect(() => {
-    const loadedSections = importAllSections();
-    setSections(loadedSections);
+    if (currentSlide === null) return;
+    const onKey = (e) => {
+      if (e.key === "ArrowRight") advance(1);
+      else if (e.key === "ArrowLeft") advance(-1);
+      else if (e.key === "Escape") closeSlideshow();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [currentSlide, sections.length]);
 
-  }, []);
-
-  const openSlideshow = (index) => {
-    setCurrentSlide(index);
-  };
-
-  const closeSlideshow = () => {
-    setCurrentSlide(null);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % sections.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + sections.length) % sections.length);
-  };
-
-  const handleKeyDown = (event, index) => {
-    if (event.key === "Enter" || event.key === " ") {
-      openSlideshow(index);
-    }
+  const handleKeyDown = (e, i) => {
+    if (e.key === "Enter" || e.key === " ") openSlideshow(i);
   };
 
   return (
@@ -59,7 +52,7 @@ const GalleryPage = () => {
             key={section.id}
             className={pageStyles.thumbnail}
             onClick={() => openSlideshow(index)}
-            onKeyDown={(event) => handleKeyDown(event, index)}
+            onKeyDown={(e) => handleKeyDown(e, index)}
             role="button"
             tabIndex={0}
             aria-label={`Open ${section.title}`}
@@ -71,22 +64,20 @@ const GalleryPage = () => {
       </div>
 
       {currentSlide !== null && (
-        <div className={pageStyles.slideshow}>
-          <div className={pageStyles.slideContent}>
+        <div className={pageStyles.slideshow} onClick={closeSlideshow}>
+          <div
+            key={animKey}
+            className={`${pageStyles.slideContent} ${direction > 0 ? pageStyles.slideInRight : pageStyles.slideInLeft}`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={pageStyles.slideMedia}>{sections[currentSlide].media}</div>
             <div className={pageStyles.slideDescription}>
               {sections[currentSlide].description}
             </div>
           </div>
-          <button className={pageStyles.closeButton} onClick={closeSlideshow}>
-            &times;
-          </button>
-          <button className={pageStyles.prevButton} onClick={prevSlide}>
-            &#10094;
-          </button>
-          <button className={pageStyles.nextButton} onClick={nextSlide}>
-            &#10095;
-          </button>
+            <button className={pageStyles.closeButton} onClick={(e) => { e.stopPropagation(); closeSlideshow(); }} aria-label="Close">&times;</button>
+            <button className={pageStyles.prevButton} onClick={(e) => { e.stopPropagation(); advance(-1); }} aria-label="Previous">&#10094;</button>
+            <button className={pageStyles.nextButton} onClick={(e) => { e.stopPropagation(); advance(1); }} aria-label="Next">&#10095;</button>
         </div>
       )}
     </Layout>
