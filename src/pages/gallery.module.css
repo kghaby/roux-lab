@@ -13,6 +13,9 @@
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
   flex-direction: column;
+  width: 100%;
+  max-width: 18rem;
+  margin: 0 auto;
 }
 
 .thumbnail:hover {
@@ -22,16 +25,6 @@
 .thumbnail h3 {
   text-align: center;
   margin-top: 0.5rem;
-}
-
-.thumbnail > :first-child,
-.thumbnail img,
-.thumbnail svg,
-.thumbnail video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
 }
 
 .slideshow {
@@ -44,18 +37,43 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000;
   overflow: hidden;
 }
 
 .mediaImage {
-  max-width: 80%;
   height: auto;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.615);
   transition: transform 0.3s ease-in-out;
+}
+
+.mediaImageImg {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* thumbnail context: fill cell, unambiguous cross-axis centering in flex column */
+.thumbnail .mediaImage {
   display: block;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
+}
+
+/* slideshow context: preserve original 80% sizing, no vertical push */
+.slideMedia .mediaImage {
+  display: block;
+  max-width: 80%;
+  max-height: 80vh;
+  height: auto;
+  margin: 0 auto;
+}
+
+.slideMedia .mediaImageImg {
+  object-fit: contain;
+  object-position: center;
+  max-height: 80vh;
 }
 
 .slideContent {
@@ -69,9 +87,8 @@
   border-radius: 0.5rem;
   backdrop-filter: blur(10px);
   padding: 2rem;
-  color: white;
-  animation: slideIn 0.5s ease;
-  overflow-y: auto;
+  color: rgb(239, 239, 239);
+  overflow: hidden;
 }
 
 .slideMedia {
@@ -103,12 +120,12 @@
 }
 
 .prevButton {
-  left: 1rem;
+  left: 0.65rem;
   transform: translateY(-50%);
 }
 
 .nextButton {
-  right: 1rem;
+  right: 0.65rem;
   transform: translateY(-50%);
 }
 
@@ -131,18 +148,40 @@
 }
 
 @media (max-width: 48rem) {
+  .slideshow {
+    align-items: flex-start;
+  }
   .slideContent {
     flex-direction: column;
+    justify-content: flex-start;
     padding: 1rem;
-    max-height: 100dvh;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    max-height: calc(100dvh - 10vw);
+    overflow-y: auto;
   }
   .slideMedia {
+    width: 100%;
+    max-width: min(100%, 55dvh);
+    margin: 0 auto 1rem;
+  }
+  .slideMedia .mediaImage {
     max-width: 100%;
-    margin-bottom: 1rem;
-    margin-right: 0;
   }
   .slideDescription {
-    max-width: 90%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 48rem) {
+  .slideContent {
+    position: relative;
+  }
+  .closeButton {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    z-index: 1;
   }
 }
 
@@ -152,8 +191,13 @@
     justify-items: center;
     padding: 1rem;
   }
-  .thumbnail {
-    width: 100%;
-    max-width: 20rem;
+  .prevButton {
+    left: 0.3rem;
+    transform: translateY(-50%);
+  }
+
+  .nextButton {
+    right: 0.3rem;
+    transform: translateY(-50%);
   }
 }
