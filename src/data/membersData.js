@@ -20,8 +20,8 @@ const membersData = {
       name: "Kyle Ghaby",
       role: "Graduate Student",
       email: "kyleghaby@uchicago.edu",
-      topics: "Dynamics and kinetics of covalent inhibitors",
-      hobbies: "Programming, video games, chess",
+      // topics: "Dynamics and kinetics of covalent inhibitors",
+      // hobbies: "Programming, video games, chess",
     },
     {
       name: "Jonathan Thirman",
