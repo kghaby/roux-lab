@@ -21,7 +21,7 @@ const Postdocs = {
 			Salary and conditions will be discussed and established according to the level of experience of the candidate.  
 			Interested postdoc applicants should submit a letter of application, resume, 
 			and names of three professional references to
-			Prof. Benoit Roux  (<a href="mailto:roux@uchicago.edu">roux@uchicago.edu</a>).
+			Prof. Benoît Roux  (<a href="mailto:roux@uchicago.edu">roux@uchicago.edu</a>).
 		</p>
     </>
   ),
