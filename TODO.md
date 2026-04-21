@@ -1,7 +1,8 @@
 - optimize memory
+- optimize cpu usage from waters (render all at once instead of PBCs?)
 - make sections reader-compatible
 - tools:
-  - kinetics
+  - mass-action kinetics
   - current (eqn that ramon showed me from 2004 paper)
   - MD parameter visualizer with animation
 - use template for sections?
