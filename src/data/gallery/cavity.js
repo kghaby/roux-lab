@@ -1,5 +1,6 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import { withPrefix } from "gatsby";
 import * as pageStyles from "../../pages/gallery.module.css";
 
 const Cavity = {

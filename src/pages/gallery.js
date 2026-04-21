@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "@reach/router";
 import Layout from "../components/layout";
 import * as pageStyles from "./gallery.module.css";
 
@@ -16,6 +17,7 @@ const GalleryPage = () => {
   const [direction, setDirection] = useState(1); // +1 right, -1 left
   const [sections, setSections] = useState([]);
   const [animKey, setAnimKey] = useState(0); // forces remount → replays keyframe
+  const location = useLocation();
 
   useEffect(() => { setSections(importAllSections()); }, []);
 
@@ -39,6 +41,40 @@ const GalleryPage = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [currentSlide, sections.length]);
+
+  // hash → slide (on load or external nav back)
+  useEffect(() => {
+    if (!sections.length) return;
+    const hash = location.hash.replace("#", "");
+    if (!hash) return;
+    const idx = sections.findIndex((s) => s.id === hash);
+    if (idx !== -1) {
+      setDirection(1);
+      setCurrentSlide(idx);
+      setAnimKey((k) => k + 1);
+    }
+  }, [sections, location.hash]);
+
+  // slide → hash (mirror methods page URL-state pattern)
+  useEffect(() => {
+    if (currentSlide === null) {
+      if (window.location.hash) window.history.replaceState({}, "", window.location.pathname);
+      return;
+    }
+    const id = sections[currentSlide]?.id;
+    if (id) window.history.replaceState({}, "", `#${id}`);
+  }, [currentSlide, sections]);
+
+  // popstate: back/forward within SPA syncs slide with hash
+  useEffect(() => {
+    const onPop = () => {
+      const hash = window.location.hash.replace("#", "");
+      const idx = hash ? sections.findIndex((s) => s.id === hash) : -1;
+      setCurrentSlide(idx === -1 ? null : idx);
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [sections]);
 
   const handleKeyDown = (e, i) => {
     if (e.key === "Enter" || e.key === " ") openSlideshow(i);
@@ -75,9 +111,9 @@ const GalleryPage = () => {
               {sections[currentSlide].description}
             </div>
           </div>
-            <button className={pageStyles.closeButton} onClick={(e) => { e.stopPropagation(); closeSlideshow(); }} aria-label="Close">&times;</button>
-            <button className={pageStyles.prevButton} onClick={(e) => { e.stopPropagation(); advance(-1); }} aria-label="Previous">&#10094;</button>
-            <button className={pageStyles.nextButton} onClick={(e) => { e.stopPropagation(); advance(1); }} aria-label="Next">&#10095;</button>
+          <button className={pageStyles.closeButton} onClick={(e) => { e.stopPropagation(); closeSlideshow(); }} aria-label="Close">&times;</button>
+          <button className={pageStyles.prevButton} onClick={(e) => { e.stopPropagation(); advance(-1); }} aria-label="Previous">&#10094;</button>
+          <button className={pageStyles.nextButton} onClick={(e) => { e.stopPropagation(); advance(1); }} aria-label="Next">&#10095;</button>
         </div>
       )}
     </Layout>
